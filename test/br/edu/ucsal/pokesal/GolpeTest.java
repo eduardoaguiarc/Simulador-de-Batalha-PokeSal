@@ -18,6 +18,8 @@ public class GolpeTest {
         golpe.consumirUso();
         golpe.consumirUso();
 
+// O golpe tem 3 usos disponíveis, e você já consumiu os três
+// O assertThrows tenta consumir o quarto uso e verifica se o código lança uma IllegalStateException, sinalizando que não pode mais usar esse golpe.
         assertThrows(IllegalStateException.class, () -> golpe.consumirUso());
     }
 }

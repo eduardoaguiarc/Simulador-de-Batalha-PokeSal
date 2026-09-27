@@ -76,6 +76,7 @@ $measures | ConvertTo-Json -Depth 20 | Set-Content "$evidence/metricas.json" -En
 $gate | ConvertTo-Json -Depth 20 | Set-Content "$evidence/quality-gate.json" -Encoding UTF8
 Copy-Item out/quality/jacoco.xml "$evidence/jacoco.xml"
 Copy-Item out/quality/tests.log "$evidence/testes.txt"
+Copy-Item out/quality/sonar-scanner.log "$evidence/sonar-scanner.txt"
 Copy-Item .scannerwork/report-task.txt "$evidence/report-task.txt"
 $values = @{}
 foreach ($metric in $measures.component.measures) { $values[$metric.metric] = $metric.value }
@@ -112,6 +113,7 @@ Coverage combina linhas e condicoes; nao equivale apenas a cobertura de linhas d
 - [Identificacao do envio](evidencias/report-task.txt)
 - [Cobertura JaCoCo importada](evidencias/jacoco.xml)
 - [Execucao dos testes](evidencias/testes.txt)
+- [Log do SonarScanner](evidencias/sonar-scanner.txt)
 
 ## Reproducao
 
