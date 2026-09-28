@@ -1,0 +1,75 @@
+﻿{
+    "component":  {
+                      "key":  "Simulador-de-Batalha-PokeSal",
+                      "name":  "Simulador-de-Batalha-PokeSal",
+                      "qualifier":  "TRK",
+                      "measures":  [
+                                       {
+                                           "metric":  "coverage",
+                                           "value":  "36.4",
+                                           "bestValue":  false
+                                       },
+                                       {
+                                           "metric":  "code_smells",
+                                           "value":  "67",
+                                           "bestValue":  false
+                                       },
+                                       {
+                                           "metric":  "bugs",
+                                           "value":  "1",
+                                           "bestValue":  false
+                                       },
+                                       {
+                                           "metric":  "test_failures",
+                                           "value":  "0",
+                                           "bestValue":  true
+                                       },
+                                       {
+                                           "metric":  "lines_to_cover",
+                                           "value":  "490"
+                                       },
+                                       {
+                                           "metric":  "uncovered_conditions",
+                                           "value":  "170",
+                                           "bestValue":  false
+                                       },
+                                       {
+                                           "metric":  "tests",
+                                           "value":  "8"
+                                       },
+                                       {
+                                           "metric":  "branch_coverage",
+                                           "value":  "29.2",
+                                           "bestValue":  false
+                                       },
+                                       {
+                                           "metric":  "uncovered_lines",
+                                           "value":  "294",
+                                           "bestValue":  false
+                                       },
+                                       {
+                                           "metric":  "ncloc",
+                                           "value":  "901"
+                                       },
+                                       {
+                                           "metric":  "vulnerabilities",
+                                           "value":  "0",
+                                           "bestValue":  true
+                                       },
+                                       {
+                                           "metric":  "conditions_to_cover",
+                                           "value":  "240"
+                                       },
+                                       {
+                                           "metric":  "line_coverage",
+                                           "value":  "40.0",
+                                           "bestValue":  false
+                                       },
+                                       {
+                                           "metric":  "test_errors",
+                                           "value":  "0",
+                                           "bestValue":  true
+                                       }
+                                   ]
+                  }
+}

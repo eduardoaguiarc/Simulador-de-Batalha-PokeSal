@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--Extrato da execucao: atributos da suite e dos casos; propriedades e saidas auxiliares omitidas.-->
+<testsuite name="JUnit Jupiter" tests="8" skipped="0" failures="0" errors="0" time="0.189" hostname="DESKTOP-UUEPQ4F" timestamp="2026-09-26T00:31:40">
+  <testcase name="testMaximoDeGolpes()" classname="br.edu.ucsal.pokesal.PokesalTest" time="0.002" />
+  <testcase name="testOrdemDeAtaquePorVelocidade()" classname="br.edu.ucsal.pokesal.BatalhaTest" time="0.001" />
+  <testcase name="testMaximoDeUsoGolpes()" classname="br.edu.ucsal.pokesal.GolpeTest" time="0.053" />
+  <testcase name="testMaximoDeUsoGolpes()" classname="br.edu.ucsal.pokesal.PokesalTest" time="0.001" />
+  <testcase name="testVantagemElemental()" classname="br.edu.ucsal.pokesal.TipoElementalTest" time="0" />
+  <testcase name="testUsoLimiteDeItensExcedido()" classname="br.edu.ucsal.pokesal.BatalhaTest" time="0.026" />
+  <testcase name="testCalculoDanoBoundaryValues()" classname="br.edu.ucsal.pokesal.BatalhaTest" time="0.007" />
+  <testcase name="testEfeitoTerrenoEstacionamentoUCSal()" classname="br.edu.ucsal.pokesal.ArenaTest" time="0.01" />
+</testsuite>

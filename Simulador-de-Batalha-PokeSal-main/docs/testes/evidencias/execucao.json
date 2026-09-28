@@ -1,0 +1,146 @@
+﻿{
+    "project":  "Simulador-de-Batalha-PokeSal",
+    "referenceCommit":  "532b38ab1cd2d2dfbb3e1e8054e22bfe49a5b180",
+    "executionTimestamp":  "2026-09-26T00:31:40",
+    "timezone":  "America/Bahia",
+    "utcOffset":  "-03:00",
+    "command":  "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/analisar-sonar.ps1 -SomenteTestes",
+    "environment":  {
+                        "os":  "Windows 11 amd64",
+                        "java":  "Azul OpenJDK 25.0.4.1",
+                        "release":  21,
+                        "junitJupiter":  "5.10.2",
+                        "junitPlatform":  "1.10.2",
+                        "jacoco":  "0.8.14"
+                    },
+    "result":  {
+                   "tests":  8,
+                   "failures":  0,
+                   "errors":  0,
+                   "skipped":  0,
+                   "methodsWithAssertions":  7,
+                   "emptyMethods":  [
+                                        "br.edu.ucsal.pokesal.PokesalTest.testMaximoDeUsoGolpes"
+                                    ],
+                   "consoleDurationMs":  330,
+                   "suiteDurationSeconds":  "0.189"
+               },
+    "coverage":  [
+                     {
+                         "type":  "INSTRUCTION",
+                         "covered":  682,
+                         "missed":  1229
+                     },
+                     {
+                         "type":  "BRANCH",
+                         "covered":  70,
+                         "missed":  170
+                     },
+                     {
+                         "type":  "LINE",
+                         "covered":  196,
+                         "missed":  294
+                     },
+                     {
+                         "type":  "COMPLEXITY",
+                         "covered":  67,
+                         "missed":  150
+                     },
+                     {
+                         "type":  "METHOD",
+                         "covered":  51,
+                         "missed":  41
+                     },
+                     {
+                         "type":  "CLASS",
+                         "covered":  13,
+                         "missed":  1
+                     }
+                 ],
+    "files":  [
+                  {
+                      "path":  "scripts/analisar-sonar.ps1",
+                      "sha256":  "7ae1a10a737deeba903781f5f226b057aa4fa4543033c428aa82b041a203915f"
+                  },
+                  {
+                      "path":  "sonar-project.properties",
+                      "sha256":  "75b288de7593744189c64615f290f1adb2e7c6ac8c7483e71f66cc2905991e1b"
+                  },
+                  {
+                      "path":  "src/br/edu/ucsal/pokesal/app/Main.java",
+                      "sha256":  "5282bb5734b5dd873f3b03fec0af80e9c2b57a349dc1d8963e20a73dd382412a"
+                  },
+                  {
+                      "path":  "src/br/edu/ucsal/pokesal/arena/Arena.java",
+                      "sha256":  "f88c5b7c32f6e2d91f0d86bf7aa13efce8fe8ca53e76ec15831596128f97193a"
+                  },
+                  {
+                      "path":  "src/br/edu/ucsal/pokesal/batalha/Batalha.java",
+                      "sha256":  "60190eba252defa43a34c8469e4ae0504339559bfb23865b0beb7b71807a2b6b"
+                  },
+                  {
+                      "path":  "src/br/edu/ucsal/pokesal/enums/Status.java",
+                      "sha256":  "7ffd599513ac70ad92c0fecfe8319132d11ab50aa4c34a7f4bf247be4e6661c7"
+                  },
+                  {
+                      "path":  "src/br/edu/ucsal/pokesal/enums/TipoElemental.java",
+                      "sha256":  "95140359295c61d8604950d02da6d6ced358b50cee6448f1f0299cb8572511c3"
+                  },
+                  {
+                      "path":  "src/br/edu/ucsal/pokesal/enums/TipoTerreno.java",
+                      "sha256":  "8a018e59293515f50b070c0adc3078de4266369f7c70c6490ea7c2cd62d7b9e6"
+                  },
+                  {
+                      "path":  "src/br/edu/ucsal/pokesal/item/Antidoto.java",
+                      "sha256":  "bf344be41563de4215526e84f6177edbccdaceb3a1c0cb64f4028ef99f739d8f"
+                  },
+                  {
+                      "path":  "src/br/edu/ucsal/pokesal/item/Item.java",
+                      "sha256":  "59fe5bae2c1375053ac73e38ad4c9e4bddba3164420731ac18b300551cf13309"
+                  },
+                  {
+                      "path":  "src/br/edu/ucsal/pokesal/item/ItemCura.java",
+                      "sha256":  "1f0d1bf613e68060ddd30e2a55c908e19aeefef2c7d1f6cead3ad774a9670aa4"
+                  },
+                  {
+                      "path":  "src/br/edu/ucsal/pokesal/pokesal/EfeitoStatus.java",
+                      "sha256":  "1fa4ce398948b5b94cfa9ed9e3cb6cabcdc682076232d8e7ca4d56c5ca9f6ef5"
+                  },
+                  {
+                      "path":  "src/br/edu/ucsal/pokesal/pokesal/Golpe.java",
+                      "sha256":  "19582a6fbf3a4d4a4c0be5bcf632f4d41ba20b48349921327d8a12ec53b2e7d6"
+                  },
+                  {
+                      "path":  "src/br/edu/ucsal/pokesal/pokesal/Pokesal.java",
+                      "sha256":  "89f47dbec8843f29ede745d9941048c7c750c400fc7cf9a7bc54cf8a1fa68326"
+                  },
+                  {
+                      "path":  "src/br/edu/ucsal/pokesal/treinador/Mochila.java",
+                      "sha256":  "4b31597250d8fedbdc754009f382520596c57ce1e684ebcc93d3a52b391c3c58"
+                  },
+                  {
+                      "path":  "src/br/edu/ucsal/pokesal/treinador/Treinador.java",
+                      "sha256":  "eaabeaa35a49f723c735a87f65119109080cd6d1de9d49dda9ba2391f42f1a73"
+                  },
+                  {
+                      "path":  "test/br/edu/ucsal/pokesal/ArenaTest.java",
+                      "sha256":  "e97f369d3e229adb6e089d29b63ff62056d97c1d48de48b61e9b7eac92e5efb1"
+                  },
+                  {
+                      "path":  "test/br/edu/ucsal/pokesal/BatalhaTest.java",
+                      "sha256":  "22557bd26de5a70829b42c164e08dc2c28a862c94450b1cf672362f8e0405b97"
+                  },
+                  {
+                      "path":  "test/br/edu/ucsal/pokesal/GolpeTest.java",
+                      "sha256":  "4c03fe63332d9cda2c9219a73d83f3453652d3f6e0218165f0148578f0ea9c35"
+                  },
+                  {
+                      "path":  "test/br/edu/ucsal/pokesal/PokesalTest.java",
+                      "sha256":  "0472c04afc0ec4484c1267a86905237fd05d811edcab921cc8c1fe1ae874f90a"
+                  },
+                  {
+                      "path":  "test/br/edu/ucsal/pokesal/TipoElementalTest.java",
+                      "sha256":  "3ac205587ceb66860132431a068d18253dbfa3dd9e134a7253d81c60459b503c"
+                  }
+              ]
+}

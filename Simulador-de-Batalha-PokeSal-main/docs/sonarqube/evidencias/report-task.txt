@@ -1,0 +1,6 @@
+projectKey=Simulador-de-Batalha-PokeSal
+serverUrl=http://localhost:9000
+serverVersion=26.9.0.129388
+dashboardUrl=http://localhost:9000/dashboard?id=Simulador-de-Batalha-PokeSal
+ceTaskId=48ecb62f-830f-4760-9b3c-512f7a5f0a37
+ceTaskUrl=http://localhost:9000/api/ce/task?id=48ecb62f-830f-4760-9b3c-512f7a5f0a37

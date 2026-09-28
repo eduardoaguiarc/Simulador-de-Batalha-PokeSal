@@ -1,0 +1,19 @@
+﻿
+Thanks for using JUnit! Support its development at https://junit.org/sponsoring
+
+Treinador 1 usou Antidoto em Pok�Sal Teste!
+Treinador 1 usou Cura em Pok�Sal Teste!
+
+Test run finished after 330 ms
+[         8 containers found      ]
+[         0 containers skipped    ]
+[         8 containers started    ]
+[         0 containers aborted    ]
+[         8 containers successful ]
+[         0 containers failed     ]
+[         8 tests found           ]
+[         0 tests skipped         ]
+[         8 tests started         ]
+[         0 tests aborted         ]
+[         8 tests successful      ]
+[         0 tests failed          ]
