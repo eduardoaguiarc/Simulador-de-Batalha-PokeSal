@@ -139,10 +139,6 @@ combine essa tabela com outros modificadores.
 
 ## Cobertura estrutural
 
-Valores extraídos do [XML JaCoCo desta execução](evidencias/jacoco.xml).
-Frações indicam elementos cobertos / total; “—” significa que não há ramos
-contabilizados para a classe.
-
 | Classe | Linhas | Cobertura de linhas | Ramos |
 | --- | ---: | ---: | ---: |
 | Main | 0 / 84 | 0,0% | 0 / 20 |

@@ -34,25 +34,6 @@ public class Golpe {
   public Golpe(String nome, int poder, double precisao, TipoElemental tipoElemental,
       int maximosUsos, Status statusAplicado, double chanceStatus) {
 
-    if (nome == null || nome.isBlank()) {
-      throw new IllegalArgumentException("O nome do golpe é obrigatório!");
-    }
-    if (poder < 0) {
-      throw new IllegalArgumentException("O poder do golpe não pode ser negativo!");
-    }
-    if (precisao < 0.0 || precisao > 1.0) {
-      throw new IllegalArgumentException("A precisão deve estar entre 0.0 e 1.0!");
-    }
-    if (tipoElemental == null) {
-      throw new IllegalArgumentException("O tipo elemental do golpe é obrigatório!");
-    }
-    if (maximosUsos <= 0) {
-      throw new IllegalArgumentException("O golpe deve ter ao menos 1 uso permitido!");
-    }
-    if (chanceStatus < 0.0 || chanceStatus > 1.0) {
-      throw new IllegalArgumentException("A chance de status deve estar entre 0.0 e 1.0!");
-    }
-
     this.nome = nome;
     this.poder = poder;
     this.precisao = precisao;
@@ -60,7 +41,7 @@ public class Golpe {
     this.maximosUsos = maximosUsos;
     this.usosRestantes = maximosUsos;
     this.statusAplicado = statusAplicado;
-    this.chanceStatus = chanceStatus;
+    //this.chanceStatus = chanceStatus;
 
     if (statusAplicado == Status.NENHUM) {
       this.chanceStatus = 0.0;

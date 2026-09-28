@@ -17,7 +17,7 @@ public class ArenaTest {
         Arena asfalto = new Arena("Asfalto Quente", TipoTerreno.ASFALTO_QUENTE);
         Arena poca = new Arena("Poça de Chuva", TipoTerreno.POCA_DE_CHUVA);
         Arena canteiro = new Arena("Canteiro Central", TipoTerreno.CANTEIRO_CENTRAL);
-  // O assertEquals é uma função do JUnit que verifica se o resultado do código é igual ao valor esperado:
+
         assertEquals(1.15, asfalto.calcularMultiplicadorDano(TipoElemental.FOGO));
         assertEquals(1.0, asfalto.calcularMultiplicadorDano(TipoElemental.AGUA));
         assertEquals(1.0, asfalto.calcularMultiplicadorDano(TipoElemental.PLANTA));
