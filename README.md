@@ -66,7 +66,7 @@ Além das regras propostas para o trabalho, acrescentamos:
 
 ## Organização do código
 
-Os pacotes ficam em `src/br/edu/ucsal/pokesal`:
+Os pacotes ficam em `Simulador-de-Batalha-PokeSal-main/src/br/edu/ucsal/pokesal`:
 
 | Pacote | Responsabilidade |
 | --- | --- |
@@ -84,19 +84,19 @@ Estes são os diagramas usados na modelagem do projeto:
 
 ### Casos de uso
 
-![Diagrama de casos de uso do simulador](docs/diagramas/diagrama-de-casos-de-uso.png)
+![Diagrama de casos de uso do simulador](Simulador-de-Batalha-PokeSal-main/docs/diagramas/diagrama-de-casos-de-uso.png)
 
 ### Classes
 
-![Diagrama de classes do Pokésal](docs/diagramas/diagrama-de-classes.png)
+![Diagrama de classes do Pokésal](Simulador-de-Batalha-PokeSal-main/docs/diagramas/diagrama-de-classes.png)
 
 ## Qualidade do código
 
 ### Relatório de testes e rastreabilidade
 
-- [Relatório detalhado dos testes](docs/testes/RELATORIO-TESTES.md): cenários,
+- [Relatório detalhado dos testes](Simulador-de-Batalha-PokeSal-main/docs/testes/RELATORIO-TESTES.md): cenários,
   entradas, resultados esperados e observados, cobertura e evidências da execução.
-- [Matriz de rastreabilidade](docs/testes/MATRIZ-RASTREABILIDADE.md): relação entre
+- [Matriz de rastreabilidade](Simulador-de-Batalha-PokeSal-main/docs/testes/MATRIZ-RASTREABILIDADE.md): relação entre
   requisitos, implementação, testes e lacunas de validação.
 
 Na execução documentada, os oito testes passaram no JUnit; um deles está vazio
@@ -105,20 +105,17 @@ com asserções e registra 40,0% de cobertura de linhas pelo JaCoCo.
 
 ### SonarQube e cobertura de testes
 
-O [relatório de análise](docs/sonarqube/RELATORIO.md) registra o estado da
-execução e as evidências de testes e cobertura. A tentativa de análise do
-SonarQube depende de autenticação para concluir a coleta de **Code Smells,
-Bugs, Vulnerabilities e Coverage %**. O relatório informa explicitamente
-quando uma métrica ainda não está disponível.
+O [relatório de análise](Simulador-de-Batalha-PokeSal-main/docs/sonarqube/RELATORIO.md) registra o estado da
+execução documentada e as evidências de testes e cobertura. Esses arquivos
+preservam os resultados daquela execução; novas análises podem apresentar
+resultados diferentes.
 
-Para executar os testes, gerar a cobertura JaCoCo e analisar o projeto:
-
-```powershell
-# Requer JDK 21+, sonar-scanner, SonarQube local e SONAR_TOKEN no ambiente.
-powershell -ExecutionPolicy Bypass -File scripts/analisar-sonar.ps1
-```
-
-Use `-SomenteTestes` para executar apenas testes e cobertura local.
+A configuração do SonarQube fica em
+`Simulador-de-Batalha-PokeSal-main/sonar-project.properties`.
+Para uma nova análise, são necessários JDK 21+, SonarScanner, SonarQube local
+e `SONAR_TOKEN` no ambiente. Antes de executar `sonar-scanner` nessa pasta,
+compile o projeto e os testes e gere os relatórios JUnit e JaCoCo nos caminhos
+indicados no arquivo de configuração.
 
 ### Práticas adotadas
 
