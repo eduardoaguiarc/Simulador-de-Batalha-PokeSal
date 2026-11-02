@@ -1,8 +1,9 @@
 # Fase 03 — implementação e validação
 
-> Atualização das etapas 4.2–4.4: os dois novos requisitos autorais, a suíte Mockito
-> e a cobertura JaCoCo estão em [Requisitos autorais, Mockito e JaCoCo](testes/FASE-03-MOCKITO-JACOCO.md).
-> A nova execução tem 81 testes aprovados, 95,90% de linhas e 85,71% de branches.
+> Atualização das etapas 4.2–4.6:
+> - Requisitos autorais, suíte Mockito e JaCoCo: [Requisitos autorais, Mockito e JaCoCo](testes/FASE-03-MOCKITO-JACOCO.md) (81 testes aprovados, 95,90% de linhas e 85,71% de branches no escopo de negócio).
+> - SonarQube comparativo (Fase 02 vs. Fase 03) e CI: [Relatório Comparativo SonarQube](sonarqube/RELATORIO.md) (`Coverage: 36,4% → 78,1%`, `Duplications: 1,5% → 1,1%`, Quality Gate **OK**).
+> - Rastreabilidade, justificativa de mocks e registro de bugs: [Matriz de Rastreabilidade](testes/MATRIZ-RASTREABILIDADE.md) e [Documento de Testes e Registro de Bugs](testes/RELATORIO-TESTES.md).
 > A execução de 48 testes descrita abaixo permanece como histórico da etapa inicial.
 
 As regras de tipos elementais, dano-base mínimo, HP, status, quatro golpes por
@@ -114,7 +115,5 @@ modos: batalha avulsa (1 resultado), torneio de 4 (3 resultados) e torneio de 8
 ranking, e os CSVs tiveram os registros esperados.
 
 O `pom.xml` permite reproduzir a suíte com `mvn test` dentro da pasta do projeto.
-Nesta execução, os testes foram compilados com `javac` e executados pelo launcher
-com as bibliotecas JUnit locais; o comando Maven não foi executado.
-Não foi gerada nova medição de cobertura, análise SonarQube ou execução Checkstyle.
-Os números históricos desses relatórios não foram reaproveitados como evidência nova.
+Nesta execução inicial de 48 testes, os testes foram compilados com `javac` e executados pelo launcher
+com as bibliotecas JUnit locais. A execução posterior com Maven, JaCoCo e SonarQube (81 testes) está documentada nos relatórios das etapas 4.2–4.6.

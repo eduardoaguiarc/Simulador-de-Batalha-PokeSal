@@ -10,6 +10,13 @@
     <maven.compiler.release>21</maven.compiler.release>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <argLine></argLine>
+    <sonar.projectKey>Simulador-de-Batalha-PokeSal</sonar.projectKey>
+    <sonar.projectName>Simulador-de-Batalha-PokeSal</sonar.projectName>
+    <sonar.sources>src</sonar.sources>
+    <sonar.tests>test</sonar.tests>
+    <sonar.exclusions>pom.xml</sonar.exclusions>
+    <sonar.coverage.jacoco.xmlReportPaths>${project.build.directory}/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+    <sonar.junit.reportPaths>${project.build.directory}/surefire-reports</sonar.junit.reportPaths>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -104,6 +111,11 @@
             </configuration>
           </execution>
         </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.sonarsource.scanner.maven</groupId>
+        <artifactId>sonar-maven-plugin</artifactId>
+        <version>5.0.0.4389</version>
       </plugin>
     </plugins>
   </build>

@@ -6,13 +6,43 @@
                       "measures":  [
                                        {
                                            "metric":  "coverage",
-                                           "value":  "36.4",
+                                           "value":  "78.1",
+                                           "bestValue":  false
+                                       },
+                                       {
+                                           "metric":  "reliability_rating",
+                                           "value":  "2.0",
                                            "bestValue":  false
                                        },
                                        {
                                            "metric":  "code_smells",
-                                           "value":  "67",
+                                           "value":  "80",
                                            "bestValue":  false
+                                       },
+                                       {
+                                           "metric":  "duplicated_lines_density",
+                                           "value":  "1.1",
+                                           "bestValue":  false
+                                       },
+                                       {
+                                           "metric":  "duplicated_lines",
+                                           "value":  "24",
+                                           "bestValue":  false
+                                       },
+                                       {
+                                           "metric":  "security_rating",
+                                           "value":  "1.0",
+                                           "bestValue":  true
+                                       },
+                                       {
+                                           "metric":  "sqale_index",
+                                           "value":  "721",
+                                           "bestValue":  false
+                                       },
+                                       {
+                                           "metric":  "sqale_rating",
+                                           "value":  "1.0",
+                                           "bestValue":  true
                                        },
                                        {
                                            "metric":  "bugs",
@@ -26,30 +56,40 @@
                                        },
                                        {
                                            "metric":  "lines_to_cover",
-                                           "value":  "490"
+                                           "value":  "750"
                                        },
                                        {
                                            "metric":  "uncovered_conditions",
-                                           "value":  "170",
+                                           "value":  "44",
                                            "bestValue":  false
                                        },
                                        {
                                            "metric":  "tests",
-                                           "value":  "8"
+                                           "value":  "81"
                                        },
                                        {
                                            "metric":  "branch_coverage",
-                                           "value":  "29.2",
+                                           "value":  "85.7",
                                            "bestValue":  false
                                        },
                                        {
                                            "metric":  "uncovered_lines",
-                                           "value":  "294",
+                                           "value":  "188",
+                                           "bestValue":  false
+                                       },
+                                       {
+                                           "metric":  "duplicated_blocks",
+                                           "value":  "2",
+                                           "bestValue":  false
+                                       },
+                                       {
+                                           "metric":  "duplicated_files",
+                                           "value":  "2",
                                            "bestValue":  false
                                        },
                                        {
                                            "metric":  "ncloc",
-                                           "value":  "901"
+                                           "value":  "1400"
                                        },
                                        {
                                            "metric":  "vulnerabilities",
@@ -58,12 +98,16 @@
                                        },
                                        {
                                            "metric":  "conditions_to_cover",
-                                           "value":  "240"
+                                           "value":  "308"
                                        },
                                        {
                                            "metric":  "line_coverage",
-                                           "value":  "40.0",
+                                           "value":  "74.9",
                                            "bestValue":  false
+                                       },
+                                       {
+                                           "metric":  "lines",
+                                           "value":  "2242"
                                        },
                                        {
                                            "metric":  "test_errors",

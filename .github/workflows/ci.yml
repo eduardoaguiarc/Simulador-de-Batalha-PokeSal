@@ -1,0 +1,54 @@
+name: CI — Testes, Cobertura JaCoCo e SonarQube
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-test-quality:
+    name: Build, Testes (JUnit 5 + Mockito) e Cobertura (JaCoCo)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do repositório (histórico completo para SCM/SonarQube)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configurar JDK 21 (Temurin) e cache Maven
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+          cache-dependency-path: Simulador-de-Batalha-PokeSal-main/pom.xml
+
+      - name: Compilar, executar suíte JUnit 5 + Mockito e validar metas JaCoCo
+        run: mvn -B -f Simulador-de-Batalha-PokeSal-main/pom.xml clean verify
+
+      - name: Executar análise SonarQube (quando SONAR_TOKEN e SONAR_HOST_URL estiverem configurados)
+        if: env.SONAR_TOKEN != '' && env.SONAR_HOST_URL != ''
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ vars.SONAR_HOST_URL }}
+        run: >-
+          mvn -B -f Simulador-de-Batalha-PokeSal-main/pom.xml sonar:sonar
+          -Dsonar.host.url="${SONAR_HOST_URL}"
+          -Dsonar.token="${SONAR_TOKEN}"
+          -Dsonar.qualitygate.wait=true
+
+      - name: Publicar relatórios de testes Surefire e cobertura JaCoCo
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: relatorios-testes-jacoco
+          path: |
+            Simulador-de-Batalha-PokeSal-main/target/surefire-reports/
+            Simulador-de-Batalha-PokeSal-main/target/site/jacoco/
+          retention-days: 14

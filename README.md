@@ -51,7 +51,7 @@ Cada Pokésal tem HP (vida), ATK (ataque), DEF (defesa), SPD (velocidade) e um t
 O tipo do golpe é comparado com o tipo do defensor para definir o multiplicador de dano:
 
 | Tipo do golpe | Contra Fogo | Contra Água | Contra Planta |
-| --- | --- | --- | --- |
+| --- | ---: | ---: | ---: |
 | Fogo | ×1,0 | ×0,5 | ×2,0 |
 | Água | ×2,0 | ×1,0 | ×0,5 |
 | Planta | ×0,5 | ×2,0 | ×1,0 |
@@ -139,35 +139,26 @@ Os diagramas originais abaixo foram preservados. A evolução para a Fase 03 est
 
 ## Qualidade do código
 
-### Relatório de testes e rastreabilidade
+### Relatório de testes, rastreabilidade, mocks e registro de bugs
 
+- [Matriz de rastreabilidade e justificativa de mocks (4.6)](Simulador-de-Batalha-PokeSal-main/docs/testes/MATRIZ-RASTREABILIDADE.md):
+  mapeamento `Requisito → Caso de Teste → Colaboradores mockados → Resultado esperado e obtido`, justificativa dos colaboradores mockados e não mockados, e síntese dos bugs corrigidos.
+- [Documento de testes e registro de bugs (4.6)](Simulador-de-Batalha-PokeSal-main/docs/testes/RELATORIO-TESTES.md):
+  visão consolidada das 14 classes de teste (81 execuções aprovadas), cobertura por pacote e registro detalhado de `BUG-01` a `BUG-05` com commits correspondentes.
 - [Etapas 4.2–4.4 da Fase 03](Simulador-de-Batalha-PokeSal-main/docs/testes/FASE-03-MOCKITO-JACOCO.md):
-  dois requisitos autorais novos, suíte Mockito e cobertura JaCoCo atual; 81 testes aprovados.
-- [Validação inicial da Fase 03](Simulador-de-Batalha-PokeSal-main/docs/FASE-03.md): 48 testes aprovados naquela etapa,
-  rastreabilidade dos novos requisitos e verificação dos três modos do console.
+  dois requisitos autorais novos, suíte Mockito e cobertura JaCoCo atual (`95,90%` de linhas e `85,71%` de branches no escopo de negócio).
+- [Validação inicial da Fase 03](Simulador-de-Batalha-PokeSal-main/docs/FASE-03.md):
+  registro da implementação das regras da Fase 03 e verificação dos três modos do console.
 
-- [Relatório detalhado dos testes](Simulador-de-Batalha-PokeSal-main/docs/testes/RELATORIO-TESTES.md): cenários,
-  entradas, resultados esperados e observados, cobertura e evidências da execução.
-- [Matriz de rastreabilidade](Simulador-de-Batalha-PokeSal-main/docs/testes/MATRIZ-RASTREABILIDADE.md): relação entre
-  requisitos, implementação, testes e lacunas de validação.
+### SonarQube comparativo e Integração Contínua (4.5)
 
-Na execução histórica das fases anteriores, os oito testes passaram no JUnit; um deles estava vazio
-e não valida comportamento. O relatório distingue esse caso dos sete testes
-com asserções e registra 40,0% de cobertura de linhas pelo JaCoCo.
+O [relatório comparativo do SonarQube](Simulador-de-Batalha-PokeSal-main/docs/sonarqube/RELATORIO.md) apresenta a comparação entre a **Fase 02** e a **Fase 03** no SonarQube `26.9.0.129388` (`Code Smells: 67 → 80`, `Bugs: 1 → 1`, `Vulnerabilities: 0 → 0`, `Coverage: 36,4% → 78,1%`, `Duplications: 1,5% → 1,1%`, Quality Gate **OK**), a justificativa técnica das métricas que variaram e as evidências exportadas da API.
 
-### SonarQube e cobertura de testes
+O pipeline de Integração Contínua está em [`.github/workflows/ci.yml`](.github/workflows/ci.yml), executando automaticamente build em JDK 21, suíte JUnit 5 + Mockito, verificação das metas por classe do JaCoCo e publicação dos artefatos a cada `push` ou `pull_request`. Para rodar a análise SonarQube localmente via Maven (com servidor ativo e `SONAR_TOKEN` configurado no ambiente):
 
-O [relatório de análise](Simulador-de-Batalha-PokeSal-main/docs/sonarqube/RELATORIO.md) registra o estado da
-execução documentada e as evidências de testes e cobertura. Esses arquivos
-preservam os resultados daquela execução; novas análises podem apresentar
-resultados diferentes.
-
-A configuração do SonarQube fica em
-`Simulador-de-Batalha-PokeSal-main/sonar-project.properties`.
-Para uma nova análise, são necessários JDK 21+, SonarScanner, SonarQube local
-e `SONAR_TOKEN` no ambiente. Antes de executar `sonar-scanner` nessa pasta,
-compile o projeto e os testes e gere os relatórios JUnit e JaCoCo nos caminhos
-indicados no arquivo de configuração.
+```powershell
+mvn -B -f Simulador-de-Batalha-PokeSal-main/pom.xml clean verify sonar:sonar "-Dsonar.host.url=http://localhost:9000" "-Dsonar.qualitygate.wait=true"
+```
 
 ### Práticas adotadas
 
