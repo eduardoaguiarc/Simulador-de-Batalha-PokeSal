@@ -18,8 +18,9 @@ public class EfeitoStatus {
   /**
    * Cria um efeito com o status e a duração informados.
    *
-   * @param tipo status aplicado
-   * @param turnosAtivos duração em turnos; zero mantém o efeito sem expiração automática
+   * @param tipo         status aplicado
+   * @param turnosAtivos duração em turnos; zero mantém o efeito sem expiração
+   *                     automática
    */
   public EfeitoStatus(Status tipo, int turnosAtivos) {
     this.tipo = tipo;

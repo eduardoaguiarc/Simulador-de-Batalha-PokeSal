@@ -7,7 +7,29 @@ https://youtu.be/_2LNdvr_v-I
 
 ## Como funciona a partida
 
-Cada treinador informa seu nome e escolhe **um único Pokésal**. Depois, os jogadores escolhem o terreno da arena e a batalha começa. A cada ação, é possível atacar ou usar um item da mochila. A partida termina quando um dos Pokésal fica sem HP.
+O menu permite jogar uma **batalha avulsa** ou um **torneio eliminatório com 4 ou 8 treinadores**. Cada treinador informa seu nome e escolhe **um único Pokésal**. Depois, os jogadores escolhem o clima e o terreno da arena. A cada ação, é possível atacar ou usar um item da mochila. A partida termina quando um dos Pokésal fica sem HP.
+
+Na Fase 03, cada golpe usa precisão de **0 a 100** e tem **6,25% de chance de crítico**, que multiplica o dano por **1,5**. Um erro causa dano zero e continua consumindo um uso. Os resultados são acrescentados a `resultados.csv`; se a gravação falhar, o erro é registrado e o torneio continua. Ao final, o console mostra o campeão e o ranking por vitórias.
+
+As regras adotadas para clima, horário, desempates, recuperação entre rodadas e registro estão em [Fase 03 — implementação e validação](Simulador-de-Batalha-PokeSal-main/docs/FASE-03.md).
+
+## Executar e testar
+
+Requer JDK 21 ou superior. Na raiz do repositório, pelo PowerShell:
+
+```powershell
+$fontes = Get-ChildItem -Recurse Simulador-de-Batalha-PokeSal-main/src -Filter '*.java'
+javac -encoding UTF-8 --release 21 -d .build/classes $fontes.FullName
+java -cp .build/classes br.edu.ucsal.pokesal.app.Main
+```
+
+Para executar os testes com Maven instalado, ou pelo Maven integrado à IDE:
+
+```powershell
+mvn -f Simulador-de-Batalha-PokeSal-main/pom.xml test
+```
+
+Também é possível executar as classes de teste JUnit 5 diretamente pela IDE.
 
 Os seis iniciais estão divididos em dois grupos:
 
@@ -32,11 +54,13 @@ O tipo do golpe é comparado com o tipo do defensor para definir o multiplicador
 
 | Arena | Efeito |
 | --- | --- |
-| Asfalto Quente | Golpes de Fogo causam 15% a mais de dano. |
-| Poça de Chuva / Piso Escorregadio | Golpes de Água causam 10% a mais de dano. |
+| Asfalto Quente | Com sol, das 06h (inclusive) às 18h (exclusive), golpes de Fogo causam 15% a mais de dano. |
+| Poça de Chuva / Piso Escorregadio | Com chuva, golpes de Água causam 10% a mais de dano. |
 | Canteiro Central | Pokésal de Planta recuperam 5% do HP máximo ao final do turno. |
 
 Para a Poça de Chuva, escolhemos implementar o bônus no **dano**, uma das opções previstas no enunciado. A cura respeita o HP máximo e não recupera um Pokésal já derrotado.
+
+O `ServicoTerreno` consulta clima e horário a cada efeito. No console, o clima é escolhido no início e o relógio usa o fuso `America/Bahia`. Nos testes, ambos são controlados por dependências injetadas.
 
 ### Turnos e efeitos de status
 
@@ -77,10 +101,15 @@ Os pacotes ficam em `Simulador-de-Batalha-PokeSal-main/src/br/edu/ucsal/pokesal`
 | `item` | Itens de cura e remoção de status. |
 | `pokesal` | Atributos dos Pokésal, golpes e efeitos de status. |
 | `treinador` | Treinadores e suas mochilas. |
+| `aleatorio` | Interface da fonte de aleatoriedade. |
+| `resultado` | Resultado imutável e interface de persistência. |
+| `infraestrutura` | Gravação em CSV e registro de eventos no console. |
+| `torneio` | Chaves eliminatórias, classificação e fábrica injetável de batalhas. |
 
 ## Diagramas
 
-Estes são os diagramas usados na modelagem do projeto:
+Os diagramas originais abaixo foram preservados. A evolução para a Fase 03 está nos
+[diagramas de classes e sequência atualizados](Simulador-de-Batalha-PokeSal-main/docs/diagramas/FASE-03.md).
 
 ### Casos de uso
 
@@ -94,12 +123,15 @@ Estes são os diagramas usados na modelagem do projeto:
 
 ### Relatório de testes e rastreabilidade
 
+- [Validação da Fase 03](Simulador-de-Batalha-PokeSal-main/docs/FASE-03.md): 48 testes aprovados,
+  rastreabilidade dos novos requisitos e verificação dos três modos do console.
+
 - [Relatório detalhado dos testes](Simulador-de-Batalha-PokeSal-main/docs/testes/RELATORIO-TESTES.md): cenários,
   entradas, resultados esperados e observados, cobertura e evidências da execução.
 - [Matriz de rastreabilidade](Simulador-de-Batalha-PokeSal-main/docs/testes/MATRIZ-RASTREABILIDADE.md): relação entre
   requisitos, implementação, testes e lacunas de validação.
 
-Na execução documentada, os oito testes passaram no JUnit; um deles está vazio
+Na execução histórica das fases anteriores, os oito testes passaram no JUnit; um deles estava vazio
 e não valida comportamento. O relatório distingue esse caso dos sete testes
 com asserções e registra 40,0% de cobertura de linhas pelo JaCoCo.
 
@@ -130,4 +162,4 @@ O código segue estas práticas:
 - **Formatação:** linhas de até **100 caracteres** nos arquivos Java e recuo de **2 espaços**,
   sem tabulações na indentação.
 
-Os 14 arquivos Java foram revisados com **Checkstyle 14.1.0**, usando **Google Checks**, sem avisos ou erros na verificação.
+Na revisão histórica das fases anteriores, os 14 arquivos Java foram revisados com **Checkstyle 14.1.0**, usando **Google Checks**, sem avisos ou erros. Essa evidência não representa uma nova execução de Checkstyle sobre a Fase 03.

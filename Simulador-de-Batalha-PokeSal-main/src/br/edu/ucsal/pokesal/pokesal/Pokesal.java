@@ -27,15 +27,16 @@ public class Pokesal {
   /**
    * Cria um Pokésal com HP completo e os golpes informados.
    *
-   * @param id identificador do Pokésal
-   * @param nome nome do Pokésal
-   * @param hpMaximo quantidade máxima de HP, maior que zero
-   * @param ataque atributo de ataque, maior ou igual a zero
-   * @param defesa atributo de defesa, maior ou igual a zero
-   * @param velocidade atributo de velocidade, maior ou igual a zero
+   * @param id            identificador do Pokésal
+   * @param nome          nome do Pokésal
+   * @param hpMaximo      quantidade máxima de HP, maior que zero
+   * @param ataque        atributo de ataque, maior ou igual a zero
+   * @param defesa        atributo de defesa, maior ou igual a zero
+   * @param velocidade    atributo de velocidade, maior ou igual a zero
    * @param tipoElemental tipo elemental do Pokésal
-   * @param golpes lista inicial com até quatro golpes
-   * @throws IllegalArgumentException se os atributos ou a lista de golpes forem inválidos
+   * @param golpes        lista inicial com até quatro golpes
+   * @throws IllegalArgumentException se os atributos ou a lista de golpes forem
+   *                                  inválidos
    */
   public Pokesal(
       int id,
@@ -88,7 +89,7 @@ public class Pokesal {
    *
    * @param golpe golpe a adicionar
    * @throws IllegalArgumentException se o golpe for nulo
-   * @throws IllegalStateException se a lista já possuir quatro golpes
+   * @throws IllegalStateException    se a lista já possuir quatro golpes
    */
   public void adicionarGolpe(Golpe golpe) {
     if (golpe == null) {
@@ -213,6 +214,18 @@ public class Pokesal {
     return nome;
   }
 
+  /** Retorna o identificador do Pokésal para o histórico de resultados. */
+  public int getId() {
+    return id;
+  }
+
+  /** Prepara uma nova batalha do torneio com HP, status e usos restaurados. */
+  public void prepararParaBatalha() {
+    hpAtual = hpMaximo;
+    removerStatus();
+    resetarUsosDosGolpes();
+  }
+
   /**
    * Retorna os pontos de vida restantes após danos e curas.
    *
@@ -250,7 +263,8 @@ public class Pokesal {
   }
 
   /**
-   * Retorna uma visão da lista de golpes que impede adicionar ou remover elementos.
+   * Retorna uma visão da lista de golpes que impede adicionar ou remover
+   * elementos.
    *
    * @return lista não modificável que acompanha os golpes adicionados ao Pokésal
    */

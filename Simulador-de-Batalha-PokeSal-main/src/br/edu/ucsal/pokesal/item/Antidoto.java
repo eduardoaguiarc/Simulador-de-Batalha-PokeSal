@@ -8,7 +8,7 @@ public class Antidoto extends Item {
   /**
    * Cria um antídoto com o identificador e o nome informados.
    *
-   * @param id identificador do item
+   * @param id   identificador do item
    * @param nome nome de exibição do item
    */
   public Antidoto(int id, String nome) {
@@ -28,7 +28,8 @@ public class Antidoto extends Item {
   }
 
   /**
-   * Remove o status de um Pokésal apto a batalhar ou informa que o uso não foi possível.
+   * Remove o status de um Pokésal apto a batalhar ou informa que o uso não foi
+   * possível.
    *
    * @param pokesal Pokésal cujo status será removido
    * @throws NullPointerException se o Pokésal for nulo

@@ -1,7 +1,12 @@
 package br.edu.ucsal.pokesal.app;
 
 import br.edu.ucsal.pokesal.arena.Arena;
+import br.edu.ucsal.pokesal.arena.ServicoTerreno;
+import br.edu.ucsal.pokesal.arena.ServicoTerrenoClimatico;
+import br.edu.ucsal.pokesal.aleatorio.GeradorAleatorio;
 import br.edu.ucsal.pokesal.batalha.Batalha;
+import br.edu.ucsal.pokesal.batalha.RegistroBatalha;
+import br.edu.ucsal.pokesal.enums.Clima;
 import br.edu.ucsal.pokesal.enums.Status;
 import br.edu.ucsal.pokesal.enums.TipoElemental;
 import br.edu.ucsal.pokesal.enums.TipoTerreno;
@@ -11,24 +16,33 @@ import br.edu.ucsal.pokesal.pokesal.Golpe;
 import br.edu.ucsal.pokesal.pokesal.Pokesal;
 import br.edu.ucsal.pokesal.treinador.Mochila;
 import br.edu.ucsal.pokesal.treinador.Treinador;
+import br.edu.ucsal.pokesal.infraestrutura.RegistroBatalhaConsole;
+import br.edu.ucsal.pokesal.infraestrutura.RepositorioResultadosCsv;
+import br.edu.ucsal.pokesal.resultado.RepositorioResultados;
+import br.edu.ucsal.pokesal.torneio.Classificacao;
+import br.edu.ucsal.pokesal.torneio.Torneio;
+import java.nio.file.Path;
+import java.time.Clock;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Random;
 
 /** Ponto de entrada do torneio de Pokésal pelo console. */
 public class Main {
 
   private static final int PODER_INVESTIDA = 20;
-  private static final double PRECISAO_INVESTIDA = 1.0;
+  private static final double PRECISAO_INVESTIDA = 100.0;
   private static final int MAX_USOS_INVESTIDA = 20;
   private static final int PODER_ATAQUE_ELEMENTAL = 25;
-  private static final double PRECISAO_ATAQUE_ELEMENTAL = 0.9;
+  private static final double PRECISAO_ATAQUE_ELEMENTAL = 90.0;
   private static final int MAX_USOS_ATAQUE_ELEMENTAL = 15;
   private static final int PODER_INVESTIDA_ELEMENTAL = 30;
-  private static final double PRECISAO_INVESTIDA_ELEMENTAL = 0.75;
+  private static final double PRECISAO_INVESTIDA_ELEMENTAL = 75.0;
   private static final int MAX_USOS_INVESTIDA_ELEMENTAL = 10;
   private static final int PODER_GOLPE_STATUS = 15;
-  private static final double PRECISAO_GOLPE_STATUS = 0.85;
+  private static final double PRECISAO_GOLPE_STATUS = 85.0;
   private static final int MAX_USOS_GOLPE_STATUS = 10;
   private static final double CHANCE_APLICAR_STATUS = 0.3;
   private static final double SEM_CHANCE_STATUS = 0.0;
@@ -36,7 +50,8 @@ public class Main {
   private static final int CURA_SUPER_POTION = 40;
 
   /**
-   * Cadastra os treinadores, seleciona a arena e inicia a batalha.
+   * Monta as dependências, cadastra os treinadores e executa uma batalha ou
+   * torneio.
    *
    */
   public static void main(String[] args) {
@@ -44,13 +59,36 @@ public class Main {
 
     System.out.println("TORNEIO POKÉSAL - Estacionamento UCSal\n");
 
-    Treinador treinador1 = cadastrarTreinador(scanner, 1);
-    Treinador treinador2 = cadastrarTreinador(scanner, 2);
+    System.out.println("1 - Batalha avulsa\n2 - Torneio com 4 treinadores"
+        + "\n3 - Torneio com 8 treinadores");
+    int modo = lerOpcao(scanner, 1, 3);
+    int quantidade = modo == 1 ? 2 : (modo == 2 ? 4 : 8);
+    List<Treinador> treinadores = new ArrayList<>();
+    for (int id = 1; id <= quantidade; id++) {
+      treinadores.add(cadastrarTreinador(scanner, id));
+    }
 
-    Arena arena = escolherArena(scanner);
+    System.out.println("Clima: 1 - Ensolarado | 2 - Chuvoso | 3 - Nublado");
+    Clima clima = Clima.values()[lerOpcao(scanner, 1, 3) - 1];
+    Clock relogio = Clock.system(ZoneId.of("America/Bahia"));
+    ServicoTerreno servicoTerreno = new ServicoTerrenoClimatico(relogio, () -> clima);
+    Arena arena = escolherArena(scanner, servicoTerreno);
+    Random random = new Random();
+    GeradorAleatorio gerador = random::nextDouble;
+    RepositorioResultados repositorio = new RepositorioResultadosCsv(Path.of("resultados.csv"));
+    RegistroBatalha registro = new RegistroBatalhaConsole(System.out);
 
-    Batalha batalha = new Batalha(1, treinador1, treinador2, arena, scanner);
-    batalha.iniciarBatalha();
+    if (modo == 1) {
+      new Batalha(1, treinadores.get(0), treinadores.get(1), arena, scanner,
+          gerador, repositorio, registro).iniciarBatalha();
+    } else {
+      Torneio torneio = new Torneio(treinadores,
+          (id, primeiro, segundo) -> new Batalha(id, primeiro, segundo, arena, scanner,
+              gerador, repositorio, registro));
+      Treinador campeao = torneio.iniciar();
+      System.out.println("\nCampeão do torneio: " + campeao.getNome());
+      exibirRanking(torneio.getRanking());
+    }
 
     scanner.close();
   }
@@ -143,10 +181,10 @@ public class Main {
     return mochila;
   }
 
-  private static Arena escolherArena(Scanner scanner) {
+  private static Arena escolherArena(Scanner scanner, ServicoTerreno servicoTerreno) {
     System.out.println("--- Escolha da Arena ---");
-    System.out.println("1 - Asfalto Quente (bônus para golpes de Fogo)");
-    System.out.println("2 - Poça de Chuva / Piso Escorregadio (bônus para golpes de Água)");
+    System.out.println("1 - Asfalto Quente (bônus de Fogo com sol, das 06h às 18h)");
+    System.out.println("2 - Poça de Chuva / Piso Escorregadio (bônus de Água com chuva)");
     System.out.println("3 - Canteiro Central (cura Pokésal do tipo Planta)");
     int opcao = lerOpcao(scanner, 1, 3);
 
@@ -168,7 +206,22 @@ public class Main {
     }
 
     System.out.println();
-    return new Arena(nomeArena, terreno);
+    return new Arena(nomeArena, terreno, servicoTerreno);
+  }
+
+  private static void exibirRanking(List<Classificacao> ranking) {
+    System.out.println("\nRanking do torneio:");
+    int posicao = 0;
+    int vitoriasAnteriores = -1;
+    for (int i = 0; i < ranking.size(); i++) {
+      Classificacao classificacao = ranking.get(i);
+      if (classificacao.vitorias() != vitoriasAnteriores) {
+        posicao = i + 1;
+        vitoriasAnteriores = classificacao.vitorias();
+      }
+      System.out.printf("%dº - %s: %d vitória(s), %d derrota(s)%n", posicao,
+          classificacao.treinador().getNome(), classificacao.vitorias(), classificacao.derrotas());
+    }
   }
 
   private static int lerOpcao(Scanner scanner, int minimo, int maximo) {

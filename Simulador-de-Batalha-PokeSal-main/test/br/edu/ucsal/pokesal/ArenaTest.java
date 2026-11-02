@@ -1,22 +1,21 @@
 package br.edu.ucsal.pokesal;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import br.edu.ucsal.pokesal.arena.Arena;
 import br.edu.ucsal.pokesal.enums.TipoElemental;
 import br.edu.ucsal.pokesal.enums.TipoTerreno;
 import br.edu.ucsal.pokesal.pokesal.Pokesal;
-import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
 
 public class ArenaTest {
 
     @Test
     public void testEfeitoTerrenoEstacionamentoUCSal() {
-        Arena asfalto = new Arena("Asfalto Quente", TipoTerreno.ASFALTO_QUENTE);
-        Arena poca = new Arena("Poça de Chuva", TipoTerreno.POCA_DE_CHUVA);
-        Arena canteiro = new Arena("Canteiro Central", TipoTerreno.CANTEIRO_CENTRAL);
+        Arena asfalto = ApoioTeste.arena(TipoTerreno.ASFALTO_QUENTE);
+        Arena poca = ApoioTeste.arena(TipoTerreno.POCA_DE_CHUVA);
+        Arena canteiro = ApoioTeste.arena(TipoTerreno.CANTEIRO_CENTRAL);
 
         assertEquals(1.15, asfalto.calcularMultiplicadorDano(TipoElemental.FOGO));
         assertEquals(1.0, asfalto.calcularMultiplicadorDano(TipoElemental.AGUA));
@@ -37,4 +36,5 @@ public class ArenaTest {
 
         assertEquals(85, pokesalPlanta.getHpAtual());
     }
+
 }

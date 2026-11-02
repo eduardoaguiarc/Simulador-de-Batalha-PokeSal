@@ -10,7 +10,7 @@ public abstract class Item {
   /**
    * Cria um item com o identificador e o nome informados.
    *
-   * @param id identificador do item
+   * @param id   identificador do item
    * @param nome nome de exibição do item
    */
   public Item(int id, String nome) {

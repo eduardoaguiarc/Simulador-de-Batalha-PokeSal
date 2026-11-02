@@ -2,7 +2,6 @@ package br.edu.ucsal.pokesal.pokesal;
 
 import br.edu.ucsal.pokesal.enums.Status;
 import br.edu.ucsal.pokesal.enums.TipoElemental;
-import java.util.Random;
 
 /**
  * Representa um golpe com poder, precisão, usos e aplicação de status.
@@ -17,23 +16,26 @@ public class Golpe {
   private Status statusAplicado;
   private double chanceStatus;
 
-  private static final Random RANDOM = new Random();
-
   /**
    * Cria um golpe e valida seus atributos.
    *
-   * @param nome nome do golpe
-   * @param poder poder de ataque, maior ou igual a zero
-   * @param precisao probabilidade de acerto, entre zero e um
-   * @param tipoElemental tipo elemental do golpe
-   * @param maximosUsos quantidade máxima de usos, maior que zero
+   * @param nome           nome do golpe
+   * @param poder          poder de ataque, maior ou igual a zero
+   * @param precisao       porcentagem de acerto, entre zero e cem
+   * @param tipoElemental  tipo elemental do golpe
+   * @param maximosUsos    quantidade máxima de usos, maior que zero
    * @param statusAplicado status que o golpe pode aplicar
-   * @param chanceStatus probabilidade de aplicar o status, entre zero e um
+   * @param chanceStatus   probabilidade de aplicar o status, entre zero e um
    * @throws IllegalArgumentException se algum atributo obrigatório for inválido
    */
   public Golpe(String nome, int poder, double precisao, TipoElemental tipoElemental,
       int maximosUsos, Status statusAplicado, double chanceStatus) {
-
+    if (nome == null || nome.isBlank() || poder < 0 || maximosUsos <= 0
+        || tipoElemental == null || statusAplicado == null
+        || !Double.isFinite(precisao) || precisao < 0 || precisao > 100
+        || !Double.isFinite(chanceStatus) || chanceStatus < 0 || chanceStatus > 1) {
+      throw new IllegalArgumentException("Atributos inválidos para o golpe.");
+    }
     this.nome = nome;
     this.poder = poder;
     this.precisao = precisao;
@@ -41,7 +43,6 @@ public class Golpe {
     this.maximosUsos = maximosUsos;
     this.usosRestantes = maximosUsos;
     this.statusAplicado = statusAplicado;
-    //this.chanceStatus = chanceStatus;
 
     if (statusAplicado == Status.NENHUM) {
       this.chanceStatus = 0.0;
@@ -72,29 +73,14 @@ public class Golpe {
     usosRestantes--;
   }
 
-  /**
-   * Sorteia o acerto de acordo com a precisão do golpe.
-   *
-   * @return verdadeiro quando o golpe acerta
-   */
-  public boolean testarAcerto() {
-    return RANDOM.nextDouble() < precisao;
+  /** Retorna a probabilidade de status para o sorteio feito pela batalha. */
+  public double getChanceStatus() {
+    return chanceStatus;
   }
 
   /**
-   * Sorteia a aplicação do status associado ao golpe.
-   *
-   * @return verdadeiro quando o status deve ser aplicado
-   */
-  public boolean testarAplicacaoStatus() {
-    if (statusAplicado == Status.NENHUM) {
-      return false;
-    }
-    return RANDOM.nextDouble() < chanceStatus;
-  }
-
-  /**
-   *  Restaura a quantidade de usos restantes do golpe para o valor máximo permitido.
+   * Restaura a quantidade de usos restantes do golpe para o valor máximo
+   * permitido.
    */
   public void resetarUsos() {
     usosRestantes = maximosUsos;
@@ -119,7 +105,7 @@ public class Golpe {
   }
 
   /**
-   * Retorna a probabilidade usada para sortear o acerto do golpe.
+   * Retorna a porcentagem usada para sortear o acerto do golpe (0 a 100).
    *
    * @return precisão configurada para o golpe
    */
@@ -128,7 +114,8 @@ public class Golpe {
   }
 
   /**
-   * Retorna o tipo usado para calcular a efetividade e os bônus de terreno do golpe.
+   * Retorna o tipo usado para calcular a efetividade e os bônus de terreno do
+   * golpe.
    *
    * @return tipo elemental do golpe
    */

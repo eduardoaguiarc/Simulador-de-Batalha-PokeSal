@@ -41,7 +41,8 @@ public class Mochila {
    * Remove a primeira ocorrência de um item da mochila.
    *
    * @param item item a remover
-   * @return {@code true} se o item foi removido; {@code false} se ele for nulo ou ausente
+   * @return {@code true} se o item foi removido; {@code false} se ele for nulo ou
+   *         ausente
    */
   public boolean removerItem(Item item) {
     if (item == null) {
