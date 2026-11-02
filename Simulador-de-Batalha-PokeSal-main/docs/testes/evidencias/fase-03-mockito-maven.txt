@@ -1,0 +1,22 @@
+﻿[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.276 s -- in br.edu.ucsal.pokesal.AdaptadoresAutoraisTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.020 s -- in br.edu.ucsal.pokesal.ArenaTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.698 s -- in br.edu.ucsal.pokesal.BatalhaMockitoTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.026 s -- in br.edu.ucsal.pokesal.BatalhaTest
+[INFO] Tests run: 20, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.270 s -- in br.edu.ucsal.pokesal.Fase03BatalhaTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in br.edu.ucsal.pokesal.GolpeTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in br.edu.ucsal.pokesal.PokesalTest
+[INFO] Tests run: 15, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.428 s -- in br.edu.ucsal.pokesal.RegrasDominioTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.082 s -- in br.edu.ucsal.pokesal.RepositorioResultadosCsvTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.231 s -- in br.edu.ucsal.pokesal.RequisitosAutoraisMockitoTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.204 s -- in br.edu.ucsal.pokesal.ServicoTerrenoTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.213 s -- in br.edu.ucsal.pokesal.TerrenoMockitoTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in br.edu.ucsal.pokesal.TipoElementalTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.185 s -- in br.edu.ucsal.pokesal.TorneioMockitoTest
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.108 s -- in br.edu.ucsal.pokesal.TorneioTest
+[INFO] Tests run: 81, Failures: 0, Errors: 0, Skipped: 0
+[INFO] Analyzed bundle 'pokesal' with 23 classes
+[INFO] Analyzed bundle 'pokesal' with 23 classes
+[INFO] All coverage checks have been met.
+[INFO] BUILD SUCCESS
+[INFO] Total time:  13.135 s
+[INFO] Finished at: 2026-11-02T17:54:57-03:00

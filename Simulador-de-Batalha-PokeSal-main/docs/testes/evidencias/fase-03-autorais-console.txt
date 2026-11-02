@@ -1,0 +1,3 @@
+Modo 1: 2 treinadores; 1 resultados CSV; 2 avisos; saldos exibidos; processo finalizado com codigo 0.
+Modo 2: 4 treinadores; 3 resultados CSV; 6 avisos; saldos exibidos; processo finalizado com codigo 0.
+Modo 3: 8 treinadores; 7 resultados CSV; 14 avisos; saldos exibidos; processo finalizado com codigo 0.

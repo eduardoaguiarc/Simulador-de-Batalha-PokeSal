@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Arena.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">pokesal</a> &gt; <a href="index.source.html" class="el_package">br.edu.ucsal.pokesal.arena</a> &gt; <span class="el_source">Arena.java</span></div><h1>Arena.java</h1><pre class="source lang-java linenums">package br.edu.ucsal.pokesal.arena;
+
+import br.edu.ucsal.pokesal.enums.TipoElemental;
+import br.edu.ucsal.pokesal.enums.TipoTerreno;
+import br.edu.ucsal.pokesal.pokesal.Pokesal;
+import java.util.Objects;
+
+/** Arena cujo terreno modifica o dano dos golpes e a recuperação de HP. */
+public class Arena {
+
+  private String nome;
+  private TipoTerreno tipoTerreno;
+  private final ServicoTerreno servicoTerreno;
+
+  /**
+   * Cria uma arena com o terreno informado.
+   *
+   * @param nome nome da arena
+   * @param tipoTerreno terreno que determina os efeitos da arena
+   * @param servicoTerreno serviço que consulta as condições atuais
+   */
+<span class="fc" id="L22">  public Arena(String nome, TipoTerreno tipoTerreno, ServicoTerreno servicoTerreno) {</span>
+<span class="fc" id="L23">    this.nome = nome;</span>
+<span class="fc" id="L24">    this.tipoTerreno = Objects.requireNonNull(tipoTerreno);</span>
+<span class="fc" id="L25">    this.servicoTerreno = Objects.requireNonNull(servicoTerreno);</span>
+<span class="fc" id="L26">  }</span>
+
+  /**
+   * Calcula o bônus de dano do terreno para o tipo do golpe.
+   *
+   * @param tipoGolpe tipo elemental do golpe, ou {@code null} para o multiplicador neutro
+   * @return multiplicador de dano aplicado pelo terreno
+   */
+  public double calcularMultiplicadorDano(TipoElemental tipoGolpe) {
+<span class="fc" id="L35">    return servicoTerreno.obterEfeito(tipoTerreno).multiplicadorPara(tipoGolpe);</span>
+  }
+
+  /**
+   * Recupera HP de um Pokésal de planta no canteiro central ao fim do turno.
+   *
+   * @param alvo Pokésal que recebe o efeito; alvos nulos ou derrotados são ignorados
+   */
+  public void aplicarEfeitoFimDoTurno(Pokesal alvo) {
+<span class="pc bpc" id="L44" title="1 of 4 branches missed.">    if (alvo == null || alvo.estaDerrotado()) {</span>
+<span class="fc" id="L45">      return;</span>
+    }
+
+<span class="fc" id="L48">    EfeitoTerreno efeito = servicoTerreno.obterEfeito(tipoTerreno);</span>
+<span class="fc bfc" id="L49" title="All 2 branches covered.">    if (alvo.getTipoElemental() == TipoElemental.PLANTA) {</span>
+<span class="fc" id="L50">      int cura = (int) Math.round(alvo.getHpMaximo() * efeito.curaPlanta());</span>
+<span class="fc" id="L51">      alvo.recuperarHp(cura);</span>
+    }
+<span class="fc" id="L53">  }</span>
+
+  /**
+   * Retorna o nome de exibição da arena.
+   *
+   * @return nome da arena
+   */
+  public String getNome() {
+<span class="fc" id="L61">    return nome;</span>
+  }
+
+  /**
+   * Retorna o terreno que determina os efeitos da arena.
+   *
+   * @return tipo de terreno da arena
+   */
+  public TipoTerreno getTipoTerreno() {
+<span class="fc" id="L70">    return tipoTerreno;</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.16.202610240946</span></div></body></html>

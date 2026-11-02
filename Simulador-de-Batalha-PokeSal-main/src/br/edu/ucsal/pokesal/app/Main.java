@@ -18,6 +18,9 @@ import br.edu.ucsal.pokesal.treinador.Mochila;
 import br.edu.ucsal.pokesal.treinador.Treinador;
 import br.edu.ucsal.pokesal.infraestrutura.RegistroBatalhaConsole;
 import br.edu.ucsal.pokesal.infraestrutura.RepositorioResultadosCsv;
+import br.edu.ucsal.pokesal.infraestrutura.CarteiraPontosMemoria;
+import br.edu.ucsal.pokesal.infraestrutura.NotificadorResultadoConsole;
+import br.edu.ucsal.pokesal.resultado.ServicoPosBatalha;
 import br.edu.ucsal.pokesal.resultado.RepositorioResultados;
 import br.edu.ucsal.pokesal.torneio.Classificacao;
 import br.edu.ucsal.pokesal.torneio.Torneio;
@@ -77,19 +80,26 @@ public class Main {
     GeradorAleatorio gerador = random::nextDouble;
     RepositorioResultados repositorio = new RepositorioResultadosCsv(Path.of("resultados.csv"));
     RegistroBatalha registro = new RegistroBatalhaConsole(System.out);
+    CarteiraPontosMemoria carteira = new CarteiraPontosMemoria();
+    ServicoPosBatalha posBatalha = new ServicoPosBatalha(carteira,
+        new NotificadorResultadoConsole(System.out), registro);
 
     if (modo == 1) {
       new Batalha(1, treinadores.get(0), treinadores.get(1), arena, scanner,
-          gerador, repositorio, registro).iniciarBatalha();
+          gerador, repositorio, registro, posBatalha).iniciarBatalha();
     } else {
       Torneio torneio = new Torneio(treinadores,
           (id, primeiro, segundo) -> new Batalha(id, primeiro, segundo, arena, scanner,
-              gerador, repositorio, registro));
+              gerador, repositorio, registro, posBatalha));
       Treinador campeao = torneio.iniciar();
       System.out.println("\nCampeão do torneio: " + campeao.getNome());
       exibirRanking(torneio.getRanking());
     }
 
+    System.out.println("\nPontos conquistados nesta sessão:");
+    for (Treinador treinador : treinadores) {
+      System.out.printf("%s: %d pontos%n", treinador.getNome(), carteira.saldo(treinador.getId()));
+    }
     scanner.close();
   }
 

@@ -11,6 +11,7 @@ import br.edu.ucsal.pokesal.treinador.Treinador;
 import br.edu.ucsal.pokesal.resultado.ParticipanteResultado;
 import br.edu.ucsal.pokesal.resultado.RepositorioResultados;
 import br.edu.ucsal.pokesal.resultado.ResultadoBatalha;
+import br.edu.ucsal.pokesal.resultado.PosBatalha;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -32,6 +33,7 @@ public class Batalha {
   private final GeradorAleatorio gerador;
   private final RepositorioResultados repositorio;
   private final RegistroBatalha registro;
+  private final PosBatalha posBatalha;
   private final List<EventoBatalha> eventosDoTurno = new ArrayList<>();
   private boolean executandoTurno;
   private ResultadoBatalha resultado;
@@ -62,6 +64,14 @@ public class Batalha {
   public Batalha(int id, Treinador treinador1, Treinador treinador2, Arena arena,
       Scanner scanner, GeradorAleatorio gerador, RepositorioResultados repositorio,
       RegistroBatalha registro) {
+    this(id, treinador1, treinador2, arena, scanner, gerador, repositorio, registro,
+        resultado -> { });
+  }
+
+  /** Prepara uma batalha com as ações autorais de premiação e notificação. */
+  public Batalha(int id, Treinador treinador1, Treinador treinador2, Arena arena,
+      Scanner scanner, GeradorAleatorio gerador, RepositorioResultados repositorio,
+      RegistroBatalha registro, PosBatalha posBatalha) {
     if (treinador1 == treinador2) {
       throw new IllegalArgumentException("A batalha exige dois treinadores distintos.");
     }
@@ -73,6 +83,7 @@ public class Batalha {
     this.gerador = Objects.requireNonNull(gerador);
     this.repositorio = Objects.requireNonNull(repositorio);
     this.registro = Objects.requireNonNull(registro);
+    this.posBatalha = Objects.requireNonNull(posBatalha);
     this.numeroTurno = 0;
     this.itensUsadosTreinador1 = 0;
     this.itensUsadosTreinador2 = 0;
@@ -550,5 +561,6 @@ public class Batalha {
               + ": " + erro.getMessage(),
           0, false);
     }
+    posBatalha.processar(resultado);
   }
 }

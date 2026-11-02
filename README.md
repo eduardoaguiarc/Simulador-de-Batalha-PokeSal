@@ -26,10 +26,16 @@ java -cp .build/classes br.edu.ucsal.pokesal.app.Main
 Para executar os testes com Maven instalado, ou pelo Maven integrado à IDE:
 
 ```powershell
-mvn -f Simulador-de-Batalha-PokeSal-main/pom.xml test
+mvn -f Simulador-de-Batalha-PokeSal-main/pom.xml clean verify
 ```
 
 Também é possível executar as classes de teste JUnit 5 diretamente pela IDE.
+
+O comando `verify` também gera o JaCoCo e exige, em cada classe de negócio,
+80% de linhas e 70% de branches. A execução atual tem **81 testes aprovados**,
+**95,90% de linhas** e **85,71% de branches** no conjunto das regras de negócio.
+O [relatório JaCoCo incluído no repositório](Simulador-de-Batalha-PokeSal-main/docs/testes/jacoco-fase03/index.html)
+permite consultar cada classe.
 
 Os seis iniciais estão divididos em dois grupos:
 
@@ -80,13 +86,25 @@ Cada treinador começa com uma Potion, uma Super Potion e um Antidote. As poçõ
 
 O limite é de **dois itens por treinador em cada batalha**. Usar um item ocupa a ação daquele treinador no turno, e o item utilizado é retirado da mochila.
 
-## Os três requisitos criados pela equipe
+## Os três requisitos criados pela equipe nas fases anteriores
 
 Além das regras propostas para o trabalho, acrescentamos:
 
 1. **Até quatro golpes por Pokésal.** Cada inicial já começa com quatro opções de ataque.
 2. **Precisão importa.** Se um golpe falhar no teste de precisão, ele não causa dano.
 3. **Golpes têm usos limitados.** Cada golpe possui uma quantidade máxima de utilizações. Uma tentativa consome um uso mesmo quando erra, e golpes esgotados não podem ser escolhidos.
+
+## Os dois requisitos autorais novos da Fase 03
+
+1. **Pontuação por vitória:** 100 pontos ao vencedor, mais 50 se vencer em até três
+   turnos. A carteira acumula os pontos da sessão e o console mostra os saldos.
+2. **Aviso do resultado:** vencedor e perdedor recebem avisos individuais ao final.
+   A falha em um envio não impede o outro nem invalida a batalha.
+
+As regras dependem de `CarteiraPontos` e `NotificadorResultado`, respectivamente,
+ambos injetados e mockados nos testes. Veja as condições, os oito testes obrigatórios,
+os testes autorais e todos os recursos Mockito na
+[validação das etapas 4.2–4.4](Simulador-de-Batalha-PokeSal-main/docs/testes/FASE-03-MOCKITO-JACOCO.md).
 
 ## Organização do código
 
@@ -123,7 +141,9 @@ Os diagramas originais abaixo foram preservados. A evolução para a Fase 03 est
 
 ### Relatório de testes e rastreabilidade
 
-- [Validação da Fase 03](Simulador-de-Batalha-PokeSal-main/docs/FASE-03.md): 48 testes aprovados,
+- [Etapas 4.2–4.4 da Fase 03](Simulador-de-Batalha-PokeSal-main/docs/testes/FASE-03-MOCKITO-JACOCO.md):
+  dois requisitos autorais novos, suíte Mockito e cobertura JaCoCo atual; 81 testes aprovados.
+- [Validação inicial da Fase 03](Simulador-de-Batalha-PokeSal-main/docs/FASE-03.md): 48 testes aprovados naquela etapa,
   rastreabilidade dos novos requisitos e verificação dos três modos do console.
 
 - [Relatório detalhado dos testes](Simulador-de-Batalha-PokeSal-main/docs/testes/RELATORIO-TESTES.md): cenários,

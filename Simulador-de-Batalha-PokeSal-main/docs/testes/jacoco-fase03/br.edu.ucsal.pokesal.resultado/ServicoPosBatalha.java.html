@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ServicoPosBatalha.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">pokesal</a> &gt; <a href="index.source.html" class="el_package">br.edu.ucsal.pokesal.resultado</a> &gt; <span class="el_source">ServicoPosBatalha.java</span></div><h1>ServicoPosBatalha.java</h1><pre class="source lang-java linenums">package br.edu.ucsal.pokesal.resultado;
+
+import br.edu.ucsal.pokesal.batalha.EventoBatalha;
+import br.edu.ucsal.pokesal.batalha.RegistroBatalha;
+import br.edu.ucsal.pokesal.batalha.TipoEvento;
+import java.util.Objects;
+
+/** Premia o vencedor e avisa os participantes, isolando falhas dos colaboradores. */
+public final class ServicoPosBatalha implements PosBatalha {
+  private static final int PONTOS_VITORIA = 100;
+  private static final int BONUS_VITORIA_RAPIDA = 50;
+  private static final int LIMITE_TURNOS_RAPIDA = 3;
+  private final CarteiraPontos carteira;
+  private final NotificadorResultado notificador;
+  private final RegistroBatalha registro;
+
+  /** Recebe carteira, canal de aviso e registro de erros substituíveis em testes. */
+  public ServicoPosBatalha(CarteiraPontos carteira, NotificadorResultado notificador,
+<span class="fc" id="L19">      RegistroBatalha registro) {</span>
+<span class="fc" id="L20">    this.carteira = Objects.requireNonNull(carteira);</span>
+<span class="fc" id="L21">    this.notificador = Objects.requireNonNull(notificador);</span>
+<span class="fc" id="L22">    this.registro = Objects.requireNonNull(registro);</span>
+<span class="fc" id="L23">  }</span>
+
+  @Override
+  public void processar(ResultadoBatalha resultado) {
+<span class="fc" id="L27">    Objects.requireNonNull(resultado);</span>
+    // Sem turno disputado não há premiação; ainda se comunica o resultado.
+<span class="fc bfc" id="L29" title="All 2 branches covered.">    if (resultado.numeroTurnos() &gt; 0) {</span>
+<span class="fc" id="L30">      int pontos = PONTOS_VITORIA</span>
+<span class="fc bfc" id="L31" title="All 2 branches covered.">          + (resultado.numeroTurnos() &lt;= LIMITE_TURNOS_RAPIDA ? BONUS_VITORIA_RAPIDA : 0);</span>
+      try {
+<span class="fc" id="L33">        carteira.creditar(resultado.vencedor().idTreinador(), pontos);</span>
+<span class="fc" id="L34">      } catch (RuntimeException erro) {</span>
+<span class="fc" id="L35">        registrarFalha(resultado, TipoEvento.ERRO_PREMIACAO, erro);</span>
+<span class="fc" id="L36">      }</span>
+    }
+<span class="fc" id="L38">    notificar(resultado.vencedor().idTreinador(), resultado);</span>
+<span class="fc" id="L39">    notificar(resultado.perdedor().idTreinador(), resultado);</span>
+<span class="fc" id="L40">  }</span>
+
+  private void notificar(int idTreinador, ResultadoBatalha resultado) {
+    try {
+<span class="fc" id="L44">      notificador.notificar(idTreinador, resultado);</span>
+<span class="fc" id="L45">    } catch (RuntimeException erro) {</span>
+<span class="fc" id="L46">      registrarFalha(resultado, TipoEvento.ERRO_NOTIFICACAO, erro);</span>
+<span class="fc" id="L47">    }</span>
+<span class="fc" id="L48">  }</span>
+
+  private void registrarFalha(ResultadoBatalha resultado, TipoEvento tipo, RuntimeException erro) {
+<span class="fc" id="L51">    registro.registrar(new EventoBatalha(resultado.idBatalha(), resultado.numeroTurnos(), tipo,</span>
+<span class="fc" id="L52">        erro.getClass().getSimpleName() + &quot;: &quot; + erro.getMessage(), 0, false));</span>
+<span class="fc" id="L53">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.16.202610240946</span></div></body></html>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Golpe.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">pokesal</a> &gt; <a href="index.source.html" class="el_package">br.edu.ucsal.pokesal.pokesal</a> &gt; <span class="el_source">Golpe.java</span></div><h1>Golpe.java</h1><pre class="source lang-java linenums">package br.edu.ucsal.pokesal.pokesal;
+
+import br.edu.ucsal.pokesal.enums.Status;
+import br.edu.ucsal.pokesal.enums.TipoElemental;
+
+/**
+ * Representa um golpe com poder, precisão, usos e aplicação de status.
+ */
+public class Golpe {
+  private String nome;
+  private int poder;
+  private double precisao;
+  private TipoElemental tipoElemental;
+  private int maximosUsos;
+  private int usosRestantes;
+  private Status statusAplicado;
+  private double chanceStatus;
+
+  /**
+   * Cria um golpe e valida seus atributos.
+   *
+   * @param nome           nome do golpe
+   * @param poder          poder de ataque, maior ou igual a zero
+   * @param precisao       porcentagem de acerto, entre zero e cem
+   * @param tipoElemental  tipo elemental do golpe
+   * @param maximosUsos    quantidade máxima de usos, maior que zero
+   * @param statusAplicado status que o golpe pode aplicar
+   * @param chanceStatus   probabilidade de aplicar o status, entre zero e um
+   * @throws IllegalArgumentException se algum atributo obrigatório for inválido
+   */
+  public Golpe(String nome, int poder, double precisao, TipoElemental tipoElemental,
+<span class="fc" id="L32">      int maximosUsos, Status statusAplicado, double chanceStatus) {</span>
+<span class="pc bpc" id="L33" title="6 of 12 branches missed.">    if (nome == null || nome.isBlank() || poder &lt; 0 || maximosUsos &lt;= 0</span>
+        || tipoElemental == null || statusAplicado == null
+<span class="fc bfc" id="L35" title="All 6 branches covered.">        || !Double.isFinite(precisao) || precisao &lt; 0 || precisao &gt; 100</span>
+<span class="pc bpc" id="L36" title="3 of 6 branches missed.">        || !Double.isFinite(chanceStatus) || chanceStatus &lt; 0 || chanceStatus &gt; 1) {</span>
+<span class="fc" id="L37">      throw new IllegalArgumentException(&quot;Atributos inválidos para o golpe.&quot;);</span>
+    }
+<span class="fc" id="L39">    this.nome = nome;</span>
+<span class="fc" id="L40">    this.poder = poder;</span>
+<span class="fc" id="L41">    this.precisao = precisao;</span>
+<span class="fc" id="L42">    this.tipoElemental = tipoElemental;</span>
+<span class="fc" id="L43">    this.maximosUsos = maximosUsos;</span>
+<span class="fc" id="L44">    this.usosRestantes = maximosUsos;</span>
+<span class="fc" id="L45">    this.statusAplicado = statusAplicado;</span>
+
+<span class="fc bfc" id="L47" title="All 2 branches covered.">    if (statusAplicado == Status.NENHUM) {</span>
+<span class="fc" id="L48">      this.chanceStatus = 0.0;</span>
+    } else {
+<span class="fc" id="L50">      this.chanceStatus = chanceStatus;</span>
+    }
+<span class="fc" id="L52">  }</span>
+
+  /**
+   * Verifica se o golpe ainda possui usos disponíveis.
+   *
+   * @return verdadeiro quando há pelo menos um uso restante
+   */
+  public boolean podeUsar() {
+<span class="fc bfc" id="L60" title="All 2 branches covered.">    return usosRestantes &gt; 0;</span>
+  }
+
+  /**
+   * Consome um dos usos disponíveis do golpe.
+   *
+   * @throws IllegalStateException se o golpe não possuir usos restantes
+   */
+  public void consumirUso() {
+<span class="fc bfc" id="L69" title="All 2 branches covered.">    if (!podeUsar()) {</span>
+<span class="fc" id="L70">      throw new IllegalStateException(&quot;O golpe &quot; + nome + &quot; não possui mais usos restantes!&quot;);</span>
+    }
+
+<span class="fc" id="L73">    usosRestantes--;</span>
+<span class="fc" id="L74">  }</span>
+
+  /** Retorna a probabilidade de status para o sorteio feito pela batalha. */
+  public double getChanceStatus() {
+<span class="fc" id="L78">    return chanceStatus;</span>
+  }
+
+  /**
+   * Restaura a quantidade de usos restantes do golpe para o valor máximo
+   * permitido.
+   */
+  public void resetarUsos() {
+<span class="fc" id="L86">    usosRestantes = maximosUsos;</span>
+<span class="fc" id="L87">  }</span>
+
+  /**
+   * Retorna o nome usado para identificar o golpe nas opções de ataque.
+   *
+   * @return nome de exibição do golpe
+   */
+  public String getNome() {
+<span class="fc" id="L95">    return nome;</span>
+  }
+
+  /**
+   * Retorna o poder base usado no cálculo de dano do golpe.
+   *
+   * @return poder de ataque do golpe
+   */
+  public int getPoder() {
+<span class="fc" id="L104">    return poder;</span>
+  }
+
+  /**
+   * Retorna a porcentagem usada para sortear o acerto do golpe (0 a 100).
+   *
+   * @return precisão configurada para o golpe
+   */
+  public double getPrecisao() {
+<span class="fc" id="L113">    return precisao;</span>
+  }
+
+  /**
+   * Retorna o tipo usado para calcular a efetividade e os bônus de terreno do
+   * golpe.
+   *
+   * @return tipo elemental do golpe
+   */
+  public TipoElemental getTipoElemental() {
+<span class="fc" id="L123">    return tipoElemental;</span>
+  }
+
+  /**
+   * Retorna a quantidade máxima de usos permitida para o golpe.
+   *
+   * @return quantidade máxima de usos do golpe
+   */
+  public int getMaximosUsos() {
+<span class="fc" id="L132">    return maximosUsos;</span>
+  }
+
+  /**
+   * Retorna quantas vezes o golpe ainda pode ser utilizado.
+   *
+   * @return quantidade de usos disponíveis
+   */
+  public int getUsosRestantes() {
+<span class="fc" id="L141">    return usosRestantes;</span>
+  }
+
+  /**
+   * Retorna o status que o golpe pode aplicar ao defensor.
+   *
+   * @return status associado ao golpe
+   */
+  public Status getStatusAplicado() {
+<span class="fc" id="L150">    return statusAplicado;</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.16.202610240946</span></div></body></html>

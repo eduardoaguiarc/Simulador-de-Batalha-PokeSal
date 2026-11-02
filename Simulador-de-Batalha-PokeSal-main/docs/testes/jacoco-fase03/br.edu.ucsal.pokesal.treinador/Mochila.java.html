@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Mochila.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">pokesal</a> &gt; <a href="index.source.html" class="el_package">br.edu.ucsal.pokesal.treinador</a> &gt; <span class="el_source">Mochila.java</span></div><h1>Mochila.java</h1><pre class="source lang-java linenums">package br.edu.ucsal.pokesal.treinador;
+
+import br.edu.ucsal.pokesal.item.Item;
+import java.util.ArrayList;
+import java.util.List;
+
+/** Armazena os itens disponíveis para uso por um treinador. */
+public class Mochila {
+
+  private List&lt;Item&gt; itens;
+
+  /** Cria uma mochila sem itens. */
+<span class="fc" id="L13">  public Mochila() {</span>
+<span class="fc" id="L14">    this.itens = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L15">  }</span>
+
+  /**
+   * Adiciona um item à mochila.
+   *
+   * @param item item a armazenar
+   * @throws IllegalArgumentException se o item for nulo
+   */
+  public void adicionarItem(Item item) {
+<span class="fc bfc" id="L24" title="All 2 branches covered.">    if (item == null) {</span>
+<span class="fc" id="L25">      throw new IllegalArgumentException(&quot;O item não pode ser nulo.&quot;);</span>
+    }
+
+<span class="fc" id="L28">    itens.add(item);</span>
+<span class="fc" id="L29">  }</span>
+
+  /**
+   * Retorna uma cópia não modificável da lista de itens presentes na mochila.
+   *
+   * @return lista dos itens existentes no momento da consulta
+   */
+  public List&lt;Item&gt; getItens() {
+<span class="fc" id="L37">    return List.copyOf(itens);</span>
+  }
+
+  /**
+   * Remove a primeira ocorrência de um item da mochila.
+   *
+   * @param item item a remover
+   * @return {@code true} se o item foi removido; {@code false} se ele for nulo ou
+   *         ausente
+   */
+  public boolean removerItem(Item item) {
+<span class="fc bfc" id="L48" title="All 2 branches covered.">    if (item == null) {</span>
+<span class="fc" id="L49">      return false;</span>
+    }
+
+<span class="fc" id="L52">    return itens.remove(item);</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.16.202610240946</span></div></body></html>

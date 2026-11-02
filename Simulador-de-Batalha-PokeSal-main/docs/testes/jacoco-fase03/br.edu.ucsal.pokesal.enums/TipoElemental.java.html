@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TipoElemental.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">pokesal</a> &gt; <a href="index.source.html" class="el_package">br.edu.ucsal.pokesal.enums</a> &gt; <span class="el_source">TipoElemental.java</span></div><h1>TipoElemental.java</h1><pre class="source lang-java linenums">package br.edu.ucsal.pokesal.enums;
+
+/** Tipos elementais e suas relações de efetividade nos ataques. */
+<span class="fc" id="L4">public enum TipoElemental {</span>
+<span class="fc" id="L5">  FOGO,</span>
+<span class="fc" id="L6">  AGUA,</span>
+<span class="fc" id="L7">  PLANTA;</span>
+
+  private static final double MULTIPLICADOR_SUPER_EFETIVO = 2.0;
+  private static final double MULTIPLICADOR_POUCO_EFETIVO = 0.5;
+  private static final double MULTIPLICADOR_NEUTRO = 1.0;
+
+  /**
+   * Calcula a efetividade deste tipo elemental contra o tipo do defensor.
+   *
+   * @param defensor tipo elemental que recebe o ataque
+   * @return multiplicador de dano de acordo com a relação entre os tipos
+   * @throws IllegalArgumentException se o tipo do defensor for nulo
+   */
+  public double calcularMultiplicadorContra(TipoElemental defensor) {
+<span class="pc bpc" id="L21" title="1 of 2 branches missed.">    if (defensor == null) {</span>
+<span class="nc" id="L22">      throw new IllegalArgumentException(&quot;O tipo do defensor é obrigatório!&quot;);</span>
+    }
+
+<span class="fc bfc" id="L25" title="All 3 branches covered.">    return switch (this) {</span>
+<span class="fc bfc" id="L26" title="All 3 branches covered.">      case FOGO -&gt; switch (defensor) {</span>
+<span class="fc" id="L27">        case PLANTA -&gt; MULTIPLICADOR_SUPER_EFETIVO;</span>
+
+<span class="fc" id="L29">        case AGUA -&gt; MULTIPLICADOR_POUCO_EFETIVO;</span>
+
+<span class="fc" id="L31">        case FOGO -&gt; MULTIPLICADOR_NEUTRO;</span>
+      };
+
+<span class="fc bfc" id="L34" title="All 3 branches covered.">      case AGUA -&gt; switch (defensor) {</span>
+<span class="fc" id="L35">        case FOGO -&gt; MULTIPLICADOR_SUPER_EFETIVO;</span>
+
+<span class="fc" id="L37">        case PLANTA -&gt; MULTIPLICADOR_POUCO_EFETIVO;</span>
+
+<span class="fc" id="L39">        case AGUA -&gt; MULTIPLICADOR_NEUTRO;</span>
+      };
+
+<span class="fc bfc" id="L42" title="All 3 branches covered.">      case PLANTA -&gt; switch (defensor) {</span>
+<span class="fc" id="L43">        case AGUA -&gt; MULTIPLICADOR_SUPER_EFETIVO;</span>
+
+<span class="fc" id="L45">        case FOGO -&gt; MULTIPLICADOR_POUCO_EFETIVO;</span>
+
+<span class="fc" id="L47">        case PLANTA -&gt; MULTIPLICADOR_NEUTRO;</span>
+      };
+    };
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.16.202610240946</span></div></body></html>
