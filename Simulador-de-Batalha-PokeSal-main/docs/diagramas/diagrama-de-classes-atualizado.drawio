@@ -1,0 +1,1504 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" type="device">
+  <diagram id="pokesal-classes" name="Classes - Fase 03">
+    <mxGraphModel dx="4180" dy="3580" grid="1" gridSize="10" page="0" pageScale="1" pageWidth="4180" pageHeight="3580" background="#ffffff" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="POKÉSAL — DIAGRAMA DE CLASSES" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontFamily=Arial;fontSize=28;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="26" width="2000" height="40" />
+        </mxCell>
+        <mxCell id="subtitle" value="Fase 03 · 36 tipos · Classes, interfaces, records e enumerações do código-fonte Java" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontFamily=Arial;fontSize=16;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="74" width="2500" height="30" />
+        </mxCell>
+        <mxCell id="section" value="REGISTRO, RESULTADOS E SERVIÇOS DE PÓS-BATALHA" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontFamily=Arial;fontSize=20;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="2115" width="2800" height="40" />
+        </mxCell>
+        <mxCell id="GeradorAleatorio" value="«interface»&lt;br&gt;GeradorAleatorio &lt;font color=&quot;#66512f&quot; style=&quot;font-size:10px&quot;&gt;(aleatorio)&lt;/font&gt;" style="swimlane;html=1;startSize=48;horizontal=1;collapsible=0;rounded=0;fillColor=#f3d193;swimlaneFillColor=#ffffff;strokeColor=#e99b7f;fontFamily=Consolas;fontSize=14;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1460" y="1580" width="540" height="116" />
+        </mxCell>
+        <mxCell id="GeradorAleatorio-separator" value="" style="shape=line;strokeColor=#e99b7f;" vertex="1" parent="GeradorAleatorio">
+          <mxGeometry as="geometry" x="0" y="78" width="540" height="1" />
+        </mxCell>
+        <mxCell id="GeradorAleatorio-methods-0" value="&lt;i&gt;+ proximoDouble() : double {abstract}&lt;/i&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="GeradorAleatorio">
+          <mxGeometry as="geometry" x="10" y="84" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Main" value="Main &lt;font color=&quot;#66512f&quot; style=&quot;font-size:10px&quot;&gt;(app)&lt;/font&gt;" style="swimlane;html=1;startSize=48;horizontal=1;collapsible=0;rounded=0;fillColor=#f3d193;swimlaneFillColor=#ffffff;strokeColor=#e99b7f;fontFamily=Consolas;fontSize=14;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="180" width="540" height="564" />
+        </mxCell>
+        <mxCell id="Main-fields-0" value="&lt;u&gt;- PODER_INVESTIDA : int {readOnly} = 20&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Main">
+          <mxGeometry as="geometry" x="10" y="54" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Main-fields-1" value="&lt;u&gt;- PRECISAO_INVESTIDA : double {readOnly} = 100.0&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Main">
+          <mxGeometry as="geometry" x="10" y="70" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Main-fields-2" value="&lt;u&gt;- MAX_USOS_INVESTIDA : int {readOnly} = 20&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Main">
+          <mxGeometry as="geometry" x="10" y="86" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Main-fields-3" value="&lt;u&gt;- PODER_ATAQUE_ELEMENTAL : int {readOnly} = 25&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Main">
+          <mxGeometry as="geometry" x="10" y="102" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Main-fields-4" value="&lt;u&gt;- PRECISAO_ATAQUE_ELEMENTAL : double {readOnly} = 90.0&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Main">
+          <mxGeometry as="geometry" x="10" y="118" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Main-fields-5" value="&lt;u&gt;- MAX_USOS_ATAQUE_ELEMENTAL : int {readOnly} = 15&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Main">
+          <mxGeometry as="geometry" x="10" y="134" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Main-fields-6" value="&lt;u&gt;- PODER_INVESTIDA_ELEMENTAL : int {readOnly} = 30&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Main">
+          <mxGeometry as="geometry" x="10" y="150" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Main-fields-7" value="&lt;u&gt;- PRECISAO_INVESTIDA_ELEMENTAL : double {readOnly} = 75.0&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Main">
+          <mxGeometry as="geometry" x="10" y="166" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Main-fields-8" value="&lt;u&gt;- MAX_USOS_INVESTIDA_ELEMENTAL : int {readOnly} = 10&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Main">
+          <mxGeometry as="geometry" x="10" y="182" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Main-fields-9" value="&lt;u&gt;- PODER_GOLPE_STATUS : int {readOnly} = 15&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Main">
+          <mxGeometry as="geometry" x="10" y="198" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Main-fields-10" value="&lt;u&gt;- PRECISAO_GOLPE_STATUS : double {readOnly} = 85.0&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Main">
+          <mxGeometry as="geometry" x="10" y="214" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Main-fields-11" value="&lt;u&gt;- MAX_USOS_GOLPE_STATUS : int {readOnly} = 10&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Main">
+          <mxGeometry as="geometry" x="10" y="230" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Main-fields-12" value="&lt;u&gt;- CHANCE_APLICAR_STATUS : double {readOnly} = 0.3&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Main">
+          <mxGeometry as="geometry" x="10" y="246" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Main-fields-13" value="&lt;u&gt;- SEM_CHANCE_STATUS : double {readOnly} = 0.0&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Main">
+          <mxGeometry as="geometry" x="10" y="262" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Main-fields-14" value="&lt;u&gt;- CURA_POTION : int {readOnly} = 20&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Main">
+          <mxGeometry as="geometry" x="10" y="278" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Main-fields-15" value="&lt;u&gt;- CURA_SUPER_POTION : int {readOnly} = 40&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Main">
+          <mxGeometry as="geometry" x="10" y="294" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Main-separator" value="" style="shape=line;strokeColor=#e99b7f;" vertex="1" parent="Main">
+          <mxGeometry as="geometry" x="0" y="318" width="540" height="1" />
+        </mxCell>
+        <mxCell id="Main-methods-0" value="&lt;u&gt;+ main(args : String[]) : void&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Main">
+          <mxGeometry as="geometry" x="10" y="324" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Main-methods-1" value="&lt;u&gt;- cadastrarTreinador(scanner : Scanner, id : int) : Treinador&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Main">
+          <mxGeometry as="geometry" x="10" y="340" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Main-methods-2" value="&lt;u&gt;- escolherPokesalInicial(scanner : Scanner, nomeTreinador : String) :&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Main">
+          <mxGeometry as="geometry" x="10" y="356" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Main-methods-3" value="&lt;u&gt;  Pokesal&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Main">
+          <mxGeometry as="geometry" x="10" y="372" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Main-methods-4" value="&lt;u&gt;- criarPokesal(id : int, nome : String, hpMaximo : int, ataque : int,&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Main">
+          <mxGeometry as="geometry" x="10" y="388" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Main-methods-5" value="&lt;u&gt;  defesa : int, velocidade : int, tipoElemental : TipoElemental) :&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Main">
+          <mxGeometry as="geometry" x="10" y="404" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Main-methods-6" value="&lt;u&gt;  Pokesal&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Main">
+          <mxGeometry as="geometry" x="10" y="420" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Main-methods-7" value="&lt;u&gt;- criarGolpesIniciais(tipo : TipoElemental) : List&amp;lt;Golpe&amp;gt;&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Main">
+          <mxGeometry as="geometry" x="10" y="436" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Main-methods-8" value="&lt;u&gt;- criarGolpeDeStatus(tipo : TipoElemental) : Golpe&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Main">
+          <mxGeometry as="geometry" x="10" y="452" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Main-methods-9" value="&lt;u&gt;- montarMochila() : Mochila&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Main">
+          <mxGeometry as="geometry" x="10" y="468" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Main-methods-10" value="&lt;u&gt;- escolherArena(scanner : Scanner, servicoTerreno : ServicoTerreno) :&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Main">
+          <mxGeometry as="geometry" x="10" y="484" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Main-methods-11" value="&lt;u&gt;  Arena&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Main">
+          <mxGeometry as="geometry" x="10" y="500" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Main-methods-12" value="&lt;u&gt;- exibirRanking(ranking : List&amp;lt;Classificacao&amp;gt;) : void&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Main">
+          <mxGeometry as="geometry" x="10" y="516" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Main-methods-13" value="&lt;u&gt;- lerOpcao(scanner : Scanner, minimo : int, maximo : int) : int&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Main">
+          <mxGeometry as="geometry" x="10" y="532" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Arena" value="Arena &lt;font color=&quot;#66512f&quot; style=&quot;font-size:10px&quot;&gt;(arena)&lt;/font&gt;" style="swimlane;html=1;startSize=48;horizontal=1;collapsible=0;rounded=0;fillColor=#f3d193;swimlaneFillColor=#ffffff;strokeColor=#e99b7f;fontFamily=Consolas;fontSize=14;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="760" y="180" width="540" height="228" />
+        </mxCell>
+        <mxCell id="Arena-fields-0" value="- nome : String" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Arena">
+          <mxGeometry as="geometry" x="10" y="54" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Arena-fields-1" value="- tipoTerreno : TipoTerreno" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Arena">
+          <mxGeometry as="geometry" x="10" y="70" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Arena-fields-2" value="- servicoTerreno : ServicoTerreno {readOnly}" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Arena">
+          <mxGeometry as="geometry" x="10" y="86" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Arena-separator" value="" style="shape=line;strokeColor=#e99b7f;" vertex="1" parent="Arena">
+          <mxGeometry as="geometry" x="0" y="110" width="540" height="1" />
+        </mxCell>
+        <mxCell id="Arena-methods-0" value="+ Arena(nome : String, tipoTerreno : TipoTerreno, servicoTerreno :" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Arena">
+          <mxGeometry as="geometry" x="10" y="116" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Arena-methods-1" value="  ServicoTerreno)" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Arena">
+          <mxGeometry as="geometry" x="10" y="132" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Arena-methods-2" value="+ calcularMultiplicadorDano(tipoGolpe : TipoElemental) : double" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Arena">
+          <mxGeometry as="geometry" x="10" y="148" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Arena-methods-3" value="+ aplicarEfeitoFimDoTurno(alvo : Pokesal) : void" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Arena">
+          <mxGeometry as="geometry" x="10" y="164" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Arena-methods-4" value="+ getNome() : String" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Arena">
+          <mxGeometry as="geometry" x="10" y="180" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Arena-methods-5" value="+ getTipoTerreno() : TipoTerreno" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Arena">
+          <mxGeometry as="geometry" x="10" y="196" width="520" height="16" />
+        </mxCell>
+        <mxCell id="EfeitoTerreno" value="«record»&lt;br&gt;EfeitoTerreno &lt;font color=&quot;#66512f&quot; style=&quot;font-size:10px&quot;&gt;(arena)&lt;/font&gt;" style="swimlane;html=1;startSize=48;horizontal=1;collapsible=0;rounded=0;fillColor=#f3d193;swimlaneFillColor=#ffffff;strokeColor=#e99b7f;fontFamily=Consolas;fontSize=14;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="760" y="1250" width="540" height="148" />
+        </mxCell>
+        <mxCell id="EfeitoTerreno-fields-0" value="- multiplicadorFogo : double {readOnly}" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="EfeitoTerreno">
+          <mxGeometry as="geometry" x="10" y="54" width="520" height="16" />
+        </mxCell>
+        <mxCell id="EfeitoTerreno-fields-1" value="- multiplicadorAgua : double {readOnly}" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="EfeitoTerreno">
+          <mxGeometry as="geometry" x="10" y="70" width="520" height="16" />
+        </mxCell>
+        <mxCell id="EfeitoTerreno-fields-2" value="- curaPlanta : double {readOnly}" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="EfeitoTerreno">
+          <mxGeometry as="geometry" x="10" y="86" width="520" height="16" />
+        </mxCell>
+        <mxCell id="EfeitoTerreno-separator" value="" style="shape=line;strokeColor=#e99b7f;" vertex="1" parent="EfeitoTerreno">
+          <mxGeometry as="geometry" x="0" y="110" width="540" height="1" />
+        </mxCell>
+        <mxCell id="EfeitoTerreno-methods-0" value="+ multiplicadorPara(tipo : TipoElemental) : double" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="EfeitoTerreno">
+          <mxGeometry as="geometry" x="10" y="116" width="520" height="16" />
+        </mxCell>
+        <mxCell id="ServicoTerreno" value="«interface»&lt;br&gt;ServicoTerreno &lt;font color=&quot;#66512f&quot; style=&quot;font-size:10px&quot;&gt;(arena)&lt;/font&gt;" style="swimlane;html=1;startSize=48;horizontal=1;collapsible=0;rounded=0;fillColor=#f3d193;swimlaneFillColor=#ffffff;strokeColor=#e99b7f;fontFamily=Consolas;fontSize=14;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="760" y="560" width="540" height="116" />
+        </mxCell>
+        <mxCell id="ServicoTerreno-separator" value="" style="shape=line;strokeColor=#e99b7f;" vertex="1" parent="ServicoTerreno">
+          <mxGeometry as="geometry" x="0" y="78" width="540" height="1" />
+        </mxCell>
+        <mxCell id="ServicoTerreno-methods-0" value="&lt;i&gt;+ obterEfeito(terreno : TipoTerreno) : EfeitoTerreno {abstract}&lt;/i&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="ServicoTerreno">
+          <mxGeometry as="geometry" x="10" y="84" width="520" height="16" />
+        </mxCell>
+        <mxCell id="ServicoTerrenoClimatico" value="ServicoTerrenoClimatico &lt;font color=&quot;#66512f&quot; style=&quot;font-size:10px&quot;&gt;(arena)&lt;/font&gt;" style="swimlane;html=1;startSize=48;horizontal=1;collapsible=0;rounded=0;fillColor=#f3d193;swimlaneFillColor=#ffffff;strokeColor=#e99b7f;fontFamily=Consolas;fontSize=14;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="760" y="810" width="540" height="260" />
+        </mxCell>
+        <mxCell id="ServicoTerrenoClimatico-fields-0" value="&lt;u&gt;- INICIO_DIA : int {readOnly} = 6&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="ServicoTerrenoClimatico">
+          <mxGeometry as="geometry" x="10" y="54" width="520" height="16" />
+        </mxCell>
+        <mxCell id="ServicoTerrenoClimatico-fields-1" value="&lt;u&gt;- FIM_DIA : int {readOnly} = 18&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="ServicoTerrenoClimatico">
+          <mxGeometry as="geometry" x="10" y="70" width="520" height="16" />
+        </mxCell>
+        <mxCell id="ServicoTerrenoClimatico-fields-2" value="&lt;u&gt;- MULTIPLICADOR_FOGO : double {readOnly} = 1.15&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="ServicoTerrenoClimatico">
+          <mxGeometry as="geometry" x="10" y="86" width="520" height="16" />
+        </mxCell>
+        <mxCell id="ServicoTerrenoClimatico-fields-3" value="&lt;u&gt;- MULTIPLICADOR_AGUA : double {readOnly} = 1.10&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="ServicoTerrenoClimatico">
+          <mxGeometry as="geometry" x="10" y="102" width="520" height="16" />
+        </mxCell>
+        <mxCell id="ServicoTerrenoClimatico-fields-4" value="&lt;u&gt;- TAXA_CURA_PLANTA : double {readOnly} = 0.05&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="ServicoTerrenoClimatico">
+          <mxGeometry as="geometry" x="10" y="118" width="520" height="16" />
+        </mxCell>
+        <mxCell id="ServicoTerrenoClimatico-fields-5" value="&lt;u&gt;- NEUTRO : EfeitoTerreno {readOnly}&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="ServicoTerrenoClimatico">
+          <mxGeometry as="geometry" x="10" y="134" width="520" height="16" />
+        </mxCell>
+        <mxCell id="ServicoTerrenoClimatico-fields-6" value="- relogio : Clock {readOnly}" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="ServicoTerrenoClimatico">
+          <mxGeometry as="geometry" x="10" y="150" width="520" height="16" />
+        </mxCell>
+        <mxCell id="ServicoTerrenoClimatico-fields-7" value="- fonteClima : Supplier&amp;lt;Clima&amp;gt; {readOnly}" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="ServicoTerrenoClimatico">
+          <mxGeometry as="geometry" x="10" y="166" width="520" height="16" />
+        </mxCell>
+        <mxCell id="ServicoTerrenoClimatico-separator" value="" style="shape=line;strokeColor=#e99b7f;" vertex="1" parent="ServicoTerrenoClimatico">
+          <mxGeometry as="geometry" x="0" y="190" width="540" height="1" />
+        </mxCell>
+        <mxCell id="ServicoTerrenoClimatico-methods-0" value="+ ServicoTerrenoClimatico(relogio : Clock, fonteClima :" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="ServicoTerrenoClimatico">
+          <mxGeometry as="geometry" x="10" y="196" width="520" height="16" />
+        </mxCell>
+        <mxCell id="ServicoTerrenoClimatico-methods-1" value="  Supplier&amp;lt;Clima&amp;gt;)" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="ServicoTerrenoClimatico">
+          <mxGeometry as="geometry" x="10" y="212" width="520" height="16" />
+        </mxCell>
+        <mxCell id="ServicoTerrenoClimatico-methods-2" value="+ obterEfeito(terreno : TipoTerreno) : EfeitoTerreno" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="ServicoTerrenoClimatico">
+          <mxGeometry as="geometry" x="10" y="228" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha" value="Batalha &lt;font color=&quot;#66512f&quot; style=&quot;font-size:10px&quot;&gt;(batalha)&lt;/font&gt;" style="swimlane;html=1;startSize=48;horizontal=1;collapsible=0;rounded=0;fillColor=#f3d193;swimlaneFillColor=#ffffff;strokeColor=#e99b7f;fontFamily=Consolas;fontSize=14;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1460" y="180" width="540" height="980" />
+        </mxCell>
+        <mxCell id="Batalha-fields-0" value="&lt;u&gt;+ MAX_ITENS_POR_BATALHA : int {readOnly} = 2&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="54" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-fields-1" value="&lt;u&gt;- DANO_BASE_MINIMO : int {readOnly} = 1&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="70" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-fields-2" value="&lt;u&gt;- FATOR_PORCENTAGEM : int {readOnly} = 100&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="86" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-fields-3" value="&lt;u&gt;- CHANCE_CRITICO : double {readOnly} = 0.0625&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="102" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-fields-4" value="&lt;u&gt;- MULTIPLICADOR_CRITICO : double {readOnly} = 1.5&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="118" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-fields-5" value="- gerador : GeradorAleatorio {readOnly}" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="134" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-fields-6" value="- repositorio : RepositorioResultados {readOnly}" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="150" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-fields-7" value="- registro : RegistroBatalha {readOnly}" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="166" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-fields-8" value="- posBatalha : PosBatalha {readOnly}" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="182" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-fields-9" value="- eventosDoTurno : List&amp;lt;EventoBatalha&amp;gt; {readOnly}" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="198" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-fields-10" value="- executandoTurno : boolean" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="214" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-fields-11" value="- resultado : ResultadoBatalha" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="230" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-fields-12" value="- vencedor : Treinador" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="246" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-fields-13" value="- id : int" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="262" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-fields-14" value="- treinador1 : Treinador" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="278" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-fields-15" value="- treinador2 : Treinador" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="294" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-fields-16" value="- arena : Arena" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="310" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-fields-17" value="- scanner : Scanner" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="326" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-fields-18" value="- numeroTurno : int" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="342" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-fields-19" value="- itensUsadosTreinador1 : int" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="358" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-fields-20" value="- itensUsadosTreinador2 : int" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="374" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-fields-21" value="- iniciada : boolean" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="390" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-separator" value="" style="shape=line;strokeColor=#e99b7f;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="0" y="414" width="540" height="1" />
+        </mxCell>
+        <mxCell id="Batalha-methods-0" value="+ Batalha(id : int, treinador1 : Treinador, treinador2 : Treinador," style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="420" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-methods-1" value="  arena : Arena, scanner : Scanner, gerador : GeradorAleatorio," style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="436" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-methods-2" value="  repositorio : RepositorioResultados, registro : RegistroBatalha)" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="452" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-methods-3" value="+ Batalha(id : int, treinador1 : Treinador, treinador2 : Treinador," style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="468" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-methods-4" value="  arena : Arena, scanner : Scanner, gerador : GeradorAleatorio," style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="484" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-methods-5" value="  repositorio : RepositorioResultados, registro : RegistroBatalha," style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="500" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-methods-6" value="  posBatalha : PosBatalha)" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="516" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-methods-7" value="+ iniciarBatalha() : void" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="532" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-methods-8" value="+ executarTurno() : void" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="548" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-methods-9" value="+ determinarPrimeiroAtacante() : Treinador" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="564" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-methods-10" value="+ realizarAcao(treinador : Treinador) : void" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="580" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-methods-11" value="+ escolherGolpe(treinador : Treinador) : Golpe" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="596" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-methods-12" value="+ escolherItem(treinador : Treinador) : Item" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="612" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-methods-13" value="+ executarAtaque(treinador : Treinador) : void" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="628" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-methods-14" value="+ executarAtaque(treinador : Treinador, golpe : Golpe) : void" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="644" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-methods-15" value="- calcularDano(atacante : Pokesal, defensor : Pokesal, golpe : Golpe) :" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="660" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-methods-16" value="  int" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="676" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-methods-17" value="- calcularDano(atacante : Pokesal, defensor : Pokesal, golpe : Golpe," style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="692" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-methods-18" value="  multiplicadorTerreno : double, critico : boolean) : int" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="708" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-methods-19" value="+ executarUsoItem(treinador : Treinador, item : Item) : void" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="724" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-methods-20" value="- registrarUsoItem(treinador : Treinador) : void" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="740" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-methods-21" value="+ aplicarEfeitosFimDoTurno() : void" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="756" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-methods-22" value="- aplicarEfeitoStatus(pokesal : Pokesal) : void" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="772" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-methods-23" value="- aplicarEfeitoTerreno(pokesal : Pokesal) : void" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="788" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-methods-24" value="+ verificarFimDaBatalha() : boolean" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="804" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-methods-25" value="+ obterAdversario(treinador : Treinador) : Treinador" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="820" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-methods-26" value="+ quantidadeItensUsados(treinador : Treinador) : int" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="836" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-methods-27" value="+ exibirPokesal(treinador : Treinador) : void" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="852" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-methods-28" value="+ lerOpcao(minimo : int, maximo : int) : int" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="868" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-methods-29" value="+ obterVencedor() : Treinador" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="884" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-methods-30" value="+ getResultado() : ResultadoBatalha" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="900" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-methods-31" value="- registrarEvento(tipo : TipoEvento, descricao : String, valor : int," style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="916" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-methods-32" value="  critico : boolean) : void" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="932" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Batalha-methods-33" value="- finalizarBatalha() : void" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Batalha">
+          <mxGeometry as="geometry" x="10" y="948" width="520" height="16" />
+        </mxCell>
+        <mxCell id="EventoBatalha" value="«record»&lt;br&gt;EventoBatalha &lt;font color=&quot;#66512f&quot; style=&quot;font-size:10px&quot;&gt;(batalha)&lt;/font&gt;" style="swimlane;html=1;startSize=48;horizontal=1;collapsible=0;rounded=0;fillColor=#f3d193;swimlaneFillColor=#ffffff;strokeColor=#e99b7f;fontFamily=Consolas;fontSize=14;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="2850" width="540" height="164" />
+        </mxCell>
+        <mxCell id="EventoBatalha-fields-0" value="- idBatalha : int {readOnly}" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="EventoBatalha">
+          <mxGeometry as="geometry" x="10" y="54" width="520" height="16" />
+        </mxCell>
+        <mxCell id="EventoBatalha-fields-1" value="- turno : int {readOnly}" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="EventoBatalha">
+          <mxGeometry as="geometry" x="10" y="70" width="520" height="16" />
+        </mxCell>
+        <mxCell id="EventoBatalha-fields-2" value="- tipo : TipoEvento {readOnly}" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="EventoBatalha">
+          <mxGeometry as="geometry" x="10" y="86" width="520" height="16" />
+        </mxCell>
+        <mxCell id="EventoBatalha-fields-3" value="- descricao : String {readOnly}" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="EventoBatalha">
+          <mxGeometry as="geometry" x="10" y="102" width="520" height="16" />
+        </mxCell>
+        <mxCell id="EventoBatalha-fields-4" value="- valor : int {readOnly}" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="EventoBatalha">
+          <mxGeometry as="geometry" x="10" y="118" width="520" height="16" />
+        </mxCell>
+        <mxCell id="EventoBatalha-fields-5" value="- critico : boolean {readOnly}" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="EventoBatalha">
+          <mxGeometry as="geometry" x="10" y="134" width="520" height="16" />
+        </mxCell>
+        <mxCell id="RegistroBatalha" value="«interface»&lt;br&gt;RegistroBatalha &lt;font color=&quot;#66512f&quot; style=&quot;font-size:10px&quot;&gt;(batalha)&lt;/font&gt;" style="swimlane;html=1;startSize=48;horizontal=1;collapsible=0;rounded=0;fillColor=#f3d193;swimlaneFillColor=#ffffff;strokeColor=#e99b7f;fontFamily=Consolas;fontSize=14;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="2230" width="540" height="116" />
+        </mxCell>
+        <mxCell id="RegistroBatalha-separator" value="" style="shape=line;strokeColor=#e99b7f;" vertex="1" parent="RegistroBatalha">
+          <mxGeometry as="geometry" x="0" y="78" width="540" height="1" />
+        </mxCell>
+        <mxCell id="RegistroBatalha-methods-0" value="&lt;i&gt;+ registrar(evento : EventoBatalha) : void {abstract}&lt;/i&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="RegistroBatalha">
+          <mxGeometry as="geometry" x="10" y="84" width="520" height="16" />
+        </mxCell>
+        <mxCell id="TipoEvento" value="«enumeration»&lt;br&gt;TipoEvento &lt;font color=&quot;#66512f&quot; style=&quot;font-size:10px&quot;&gt;(batalha)&lt;/font&gt;" style="swimlane;html=1;startSize=48;horizontal=1;collapsible=0;rounded=0;fillColor=#f3d193;swimlaneFillColor=#f3d193;strokeColor=#e99b7f;fontFamily=Consolas;fontSize=14;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="3200" width="540" height="196" />
+        </mxCell>
+        <mxCell id="TipoEvento-fields-0" value="ATAQUE" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="TipoEvento">
+          <mxGeometry as="geometry" x="10" y="54" width="520" height="16" />
+        </mxCell>
+        <mxCell id="TipoEvento-fields-1" value="DANO" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="TipoEvento">
+          <mxGeometry as="geometry" x="10" y="70" width="520" height="16" />
+        </mxCell>
+        <mxCell id="TipoEvento-fields-2" value="EFEITO_STATUS" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="TipoEvento">
+          <mxGeometry as="geometry" x="10" y="86" width="520" height="16" />
+        </mxCell>
+        <mxCell id="TipoEvento-fields-3" value="EFEITO_TERRENO" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="TipoEvento">
+          <mxGeometry as="geometry" x="10" y="102" width="520" height="16" />
+        </mxCell>
+        <mxCell id="TipoEvento-fields-4" value="USO_ITEM" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="TipoEvento">
+          <mxGeometry as="geometry" x="10" y="118" width="520" height="16" />
+        </mxCell>
+        <mxCell id="TipoEvento-fields-5" value="ERRO_REPOSITORIO" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="TipoEvento">
+          <mxGeometry as="geometry" x="10" y="134" width="520" height="16" />
+        </mxCell>
+        <mxCell id="TipoEvento-fields-6" value="ERRO_PREMIACAO" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="TipoEvento">
+          <mxGeometry as="geometry" x="10" y="150" width="520" height="16" />
+        </mxCell>
+        <mxCell id="TipoEvento-fields-7" value="ERRO_NOTIFICACAO" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="TipoEvento">
+          <mxGeometry as="geometry" x="10" y="166" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Clima" value="«enumeration»&lt;br&gt;Clima &lt;font color=&quot;#66512f&quot; style=&quot;font-size:10px&quot;&gt;(enums)&lt;/font&gt;" style="swimlane;html=1;startSize=48;horizontal=1;collapsible=0;rounded=0;fillColor=#f3d193;swimlaneFillColor=#f3d193;strokeColor=#e99b7f;fontFamily=Consolas;fontSize=14;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="760" y="1810" width="540" height="116" />
+        </mxCell>
+        <mxCell id="Clima-fields-0" value="ENSOLARADO" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Clima">
+          <mxGeometry as="geometry" x="10" y="54" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Clima-fields-1" value="CHUVOSO" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Clima">
+          <mxGeometry as="geometry" x="10" y="70" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Clima-fields-2" value="NUBLADO" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Clima">
+          <mxGeometry as="geometry" x="10" y="86" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Status" value="«enumeration»&lt;br&gt;Status &lt;font color=&quot;#66512f&quot; style=&quot;font-size:10px&quot;&gt;(enums)&lt;/font&gt;" style="swimlane;html=1;startSize=48;horizontal=1;collapsible=0;rounded=0;fillColor=#f3d193;swimlaneFillColor=#f3d193;strokeColor=#e99b7f;fontFamily=Consolas;fontSize=14;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="2860" y="1810" width="540" height="132" />
+        </mxCell>
+        <mxCell id="Status-fields-0" value="NENHUM" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Status">
+          <mxGeometry as="geometry" x="10" y="54" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Status-fields-1" value="QUEIMADO" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Status">
+          <mxGeometry as="geometry" x="10" y="70" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Status-fields-2" value="ENVENENADO" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Status">
+          <mxGeometry as="geometry" x="10" y="86" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Status-fields-3" value="PARALISADO" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Status">
+          <mxGeometry as="geometry" x="10" y="102" width="520" height="16" />
+        </mxCell>
+        <mxCell id="TipoElemental" value="«enumeration»&lt;br&gt;TipoElemental &lt;font color=&quot;#66512f&quot; style=&quot;font-size:10px&quot;&gt;(enums)&lt;/font&gt;" style="swimlane;html=1;startSize=48;horizontal=1;collapsible=0;rounded=0;fillColor=#f3d193;swimlaneFillColor=#f3d193;strokeColor=#e99b7f;fontFamily=Consolas;fontSize=14;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="2860" y="1380" width="540" height="196" />
+        </mxCell>
+        <mxCell id="TipoElemental-fields-0" value="FOGO" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="TipoElemental">
+          <mxGeometry as="geometry" x="10" y="54" width="520" height="16" />
+        </mxCell>
+        <mxCell id="TipoElemental-fields-1" value="AGUA" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="TipoElemental">
+          <mxGeometry as="geometry" x="10" y="70" width="520" height="16" />
+        </mxCell>
+        <mxCell id="TipoElemental-fields-2" value="PLANTA" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="TipoElemental">
+          <mxGeometry as="geometry" x="10" y="86" width="520" height="16" />
+        </mxCell>
+        <mxCell id="TipoElemental-fields-3" value="&lt;u&gt;- MULTIPLICADOR_SUPER_EFETIVO : double {readOnly} = 2.0&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="TipoElemental">
+          <mxGeometry as="geometry" x="10" y="102" width="520" height="16" />
+        </mxCell>
+        <mxCell id="TipoElemental-fields-4" value="&lt;u&gt;- MULTIPLICADOR_POUCO_EFETIVO : double {readOnly} = 0.5&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="TipoElemental">
+          <mxGeometry as="geometry" x="10" y="118" width="520" height="16" />
+        </mxCell>
+        <mxCell id="TipoElemental-fields-5" value="&lt;u&gt;- MULTIPLICADOR_NEUTRO : double {readOnly} = 1.0&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="TipoElemental">
+          <mxGeometry as="geometry" x="10" y="134" width="520" height="16" />
+        </mxCell>
+        <mxCell id="TipoElemental-separator" value="" style="shape=line;strokeColor=#e99b7f;" vertex="1" parent="TipoElemental">
+          <mxGeometry as="geometry" x="0" y="158" width="540" height="1" />
+        </mxCell>
+        <mxCell id="TipoElemental-methods-0" value="+ calcularMultiplicadorContra(defensor : TipoElemental) : double" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="TipoElemental">
+          <mxGeometry as="geometry" x="10" y="164" width="520" height="16" />
+        </mxCell>
+        <mxCell id="TipoTerreno" value="«enumeration»&lt;br&gt;TipoTerreno &lt;font color=&quot;#66512f&quot; style=&quot;font-size:10px&quot;&gt;(enums)&lt;/font&gt;" style="swimlane;html=1;startSize=48;horizontal=1;collapsible=0;rounded=0;fillColor=#f3d193;swimlaneFillColor=#f3d193;strokeColor=#e99b7f;fontFamily=Consolas;fontSize=14;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="760" y="1550" width="540" height="116" />
+        </mxCell>
+        <mxCell id="TipoTerreno-fields-0" value="ASFALTO_QUENTE" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="TipoTerreno">
+          <mxGeometry as="geometry" x="10" y="54" width="520" height="16" />
+        </mxCell>
+        <mxCell id="TipoTerreno-fields-1" value="POCA_DE_CHUVA" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="TipoTerreno">
+          <mxGeometry as="geometry" x="10" y="70" width="520" height="16" />
+        </mxCell>
+        <mxCell id="TipoTerreno-fields-2" value="CANTEIRO_CENTRAL" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="TipoTerreno">
+          <mxGeometry as="geometry" x="10" y="86" width="520" height="16" />
+        </mxCell>
+        <mxCell id="CarteiraPontosMemoria" value="CarteiraPontosMemoria &lt;font color=&quot;#66512f&quot; style=&quot;font-size:10px&quot;&gt;(infraestrutura)&lt;/font&gt;" style="swimlane;html=1;startSize=48;horizontal=1;collapsible=0;rounded=0;fillColor=#f3d193;swimlaneFillColor=#ffffff;strokeColor=#e99b7f;fontFamily=Consolas;fontSize=14;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="2160" y="2510" width="540" height="132" />
+        </mxCell>
+        <mxCell id="CarteiraPontosMemoria-fields-0" value="- saldos : Map&amp;lt;Integer, Integer&amp;gt; {readOnly}" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="CarteiraPontosMemoria">
+          <mxGeometry as="geometry" x="10" y="54" width="520" height="16" />
+        </mxCell>
+        <mxCell id="CarteiraPontosMemoria-separator" value="" style="shape=line;strokeColor=#e99b7f;" vertex="1" parent="CarteiraPontosMemoria">
+          <mxGeometry as="geometry" x="0" y="78" width="540" height="1" />
+        </mxCell>
+        <mxCell id="CarteiraPontosMemoria-methods-0" value="+ creditar(idTreinador : int, pontos : int) : void" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="CarteiraPontosMemoria">
+          <mxGeometry as="geometry" x="10" y="84" width="520" height="16" />
+        </mxCell>
+        <mxCell id="CarteiraPontosMemoria-methods-1" value="+ saldo(idTreinador : int) : int" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="CarteiraPontosMemoria">
+          <mxGeometry as="geometry" x="10" y="100" width="520" height="16" />
+        </mxCell>
+        <mxCell id="NotificadorResultadoConsole" value="NotificadorResultadoConsole &lt;font color=&quot;#66512f&quot; style=&quot;font-size:10px&quot;&gt;(infraestrutura)&lt;/font&gt;" style="swimlane;html=1;startSize=48;horizontal=1;collapsible=0;rounded=0;fillColor=#f3d193;swimlaneFillColor=#ffffff;strokeColor=#e99b7f;fontFamily=Consolas;fontSize=14;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="2860" y="2510" width="540" height="132" />
+        </mxCell>
+        <mxCell id="NotificadorResultadoConsole-fields-0" value="- saida : PrintStream {readOnly}" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="NotificadorResultadoConsole">
+          <mxGeometry as="geometry" x="10" y="54" width="520" height="16" />
+        </mxCell>
+        <mxCell id="NotificadorResultadoConsole-separator" value="" style="shape=line;strokeColor=#e99b7f;" vertex="1" parent="NotificadorResultadoConsole">
+          <mxGeometry as="geometry" x="0" y="78" width="540" height="1" />
+        </mxCell>
+        <mxCell id="NotificadorResultadoConsole-methods-0" value="+ NotificadorResultadoConsole(saida : PrintStream)" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="NotificadorResultadoConsole">
+          <mxGeometry as="geometry" x="10" y="84" width="520" height="16" />
+        </mxCell>
+        <mxCell id="NotificadorResultadoConsole-methods-1" value="+ notificar(idTreinador : int, resultado : ResultadoBatalha) : void" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="NotificadorResultadoConsole">
+          <mxGeometry as="geometry" x="10" y="100" width="520" height="16" />
+        </mxCell>
+        <mxCell id="RegistroBatalhaConsole" value="RegistroBatalhaConsole &lt;font color=&quot;#66512f&quot; style=&quot;font-size:10px&quot;&gt;(infraestrutura)&lt;/font&gt;" style="swimlane;html=1;startSize=48;horizontal=1;collapsible=0;rounded=0;fillColor=#f3d193;swimlaneFillColor=#ffffff;strokeColor=#e99b7f;fontFamily=Consolas;fontSize=14;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="2510" width="540" height="132" />
+        </mxCell>
+        <mxCell id="RegistroBatalhaConsole-fields-0" value="- saida : PrintStream {readOnly}" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="RegistroBatalhaConsole">
+          <mxGeometry as="geometry" x="10" y="54" width="520" height="16" />
+        </mxCell>
+        <mxCell id="RegistroBatalhaConsole-separator" value="" style="shape=line;strokeColor=#e99b7f;" vertex="1" parent="RegistroBatalhaConsole">
+          <mxGeometry as="geometry" x="0" y="78" width="540" height="1" />
+        </mxCell>
+        <mxCell id="RegistroBatalhaConsole-methods-0" value="+ RegistroBatalhaConsole(saida : PrintStream)" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="RegistroBatalhaConsole">
+          <mxGeometry as="geometry" x="10" y="84" width="520" height="16" />
+        </mxCell>
+        <mxCell id="RegistroBatalhaConsole-methods-1" value="+ registrar(evento : EventoBatalha) : void" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="RegistroBatalhaConsole">
+          <mxGeometry as="geometry" x="10" y="100" width="520" height="16" />
+        </mxCell>
+        <mxCell id="RepositorioResultadosCsv" value="RepositorioResultadosCsv &lt;font color=&quot;#66512f&quot; style=&quot;font-size:10px&quot;&gt;(infraestrutura)&lt;/font&gt;" style="swimlane;html=1;startSize=48;horizontal=1;collapsible=0;rounded=0;fillColor=#f3d193;swimlaneFillColor=#ffffff;strokeColor=#e99b7f;fontFamily=Consolas;fontSize=14;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="760" y="2510" width="540" height="164" />
+        </mxCell>
+        <mxCell id="RepositorioResultadosCsv-fields-0" value="- arquivo : Path {readOnly}" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="RepositorioResultadosCsv">
+          <mxGeometry as="geometry" x="10" y="54" width="520" height="16" />
+        </mxCell>
+        <mxCell id="RepositorioResultadosCsv-separator" value="" style="shape=line;strokeColor=#e99b7f;" vertex="1" parent="RepositorioResultadosCsv">
+          <mxGeometry as="geometry" x="0" y="78" width="540" height="1" />
+        </mxCell>
+        <mxCell id="RepositorioResultadosCsv-methods-0" value="+ RepositorioResultadosCsv(arquivo : Path)" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="RepositorioResultadosCsv">
+          <mxGeometry as="geometry" x="10" y="84" width="520" height="16" />
+        </mxCell>
+        <mxCell id="RepositorioResultadosCsv-methods-1" value="+ salvar(resultado : ResultadoBatalha) : void" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="RepositorioResultadosCsv">
+          <mxGeometry as="geometry" x="10" y="100" width="520" height="16" />
+        </mxCell>
+        <mxCell id="RepositorioResultadosCsv-methods-2" value="- participante(participante : ParticipanteResultado) : String" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="RepositorioResultadosCsv">
+          <mxGeometry as="geometry" x="10" y="116" width="520" height="16" />
+        </mxCell>
+        <mxCell id="RepositorioResultadosCsv-methods-3" value="- campo(texto : String) : String" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="RepositorioResultadosCsv">
+          <mxGeometry as="geometry" x="10" y="132" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Antidoto" value="Antidoto &lt;font color=&quot;#66512f&quot; style=&quot;font-size:10px&quot;&gt;(item)&lt;/font&gt;" style="swimlane;html=1;startSize=48;horizontal=1;collapsible=0;rounded=0;fillColor=#f3d193;swimlaneFillColor=#ffffff;strokeColor=#e99b7f;fontFamily=Consolas;fontSize=14;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="3560" y="1040" width="540" height="148" />
+        </mxCell>
+        <mxCell id="Antidoto-separator" value="" style="shape=line;strokeColor=#e99b7f;" vertex="1" parent="Antidoto">
+          <mxGeometry as="geometry" x="0" y="78" width="540" height="1" />
+        </mxCell>
+        <mxCell id="Antidoto-methods-0" value="+ Antidoto(id : int, nome : String)" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Antidoto">
+          <mxGeometry as="geometry" x="10" y="84" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Antidoto-methods-1" value="+ podeUsar(pokesal : Pokesal) : boolean" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Antidoto">
+          <mxGeometry as="geometry" x="10" y="100" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Antidoto-methods-2" value="+ aplicarEfeito(pokesal : Pokesal) : void" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Antidoto">
+          <mxGeometry as="geometry" x="10" y="116" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Item" value="«abstract»&lt;br&gt;Item &lt;font color=&quot;#66512f&quot; style=&quot;font-size:10px&quot;&gt;(item)&lt;/font&gt;" style="swimlane;html=1;startSize=48;horizontal=1;collapsible=0;rounded=0;fillColor=#f3d193;swimlaneFillColor=#ffffff;strokeColor=#e99b7f;fontFamily=Consolas;fontSize=14;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="3560" y="180" width="540" height="180" />
+        </mxCell>
+        <mxCell id="Item-fields-0" value="- id : int" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Item">
+          <mxGeometry as="geometry" x="10" y="54" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Item-fields-1" value="- nome : String" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Item">
+          <mxGeometry as="geometry" x="10" y="70" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Item-separator" value="" style="shape=line;strokeColor=#e99b7f;" vertex="1" parent="Item">
+          <mxGeometry as="geometry" x="0" y="94" width="540" height="1" />
+        </mxCell>
+        <mxCell id="Item-methods-0" value="+ Item(id : int, nome : String)" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Item">
+          <mxGeometry as="geometry" x="10" y="100" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Item-methods-1" value="+ getNome() : String" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Item">
+          <mxGeometry as="geometry" x="10" y="116" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Item-methods-2" value="&lt;i&gt;+ podeUsar(pokesal : Pokesal) : boolean {abstract}&lt;/i&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Item">
+          <mxGeometry as="geometry" x="10" y="132" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Item-methods-3" value="&lt;i&gt;+ aplicarEfeito(pokesal : Pokesal) : void {abstract}&lt;/i&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Item">
+          <mxGeometry as="geometry" x="10" y="148" width="520" height="16" />
+        </mxCell>
+        <mxCell id="ItemCura" value="ItemCura &lt;font color=&quot;#66512f&quot; style=&quot;font-size:10px&quot;&gt;(item)&lt;/font&gt;" style="swimlane;html=1;startSize=48;horizontal=1;collapsible=0;rounded=0;fillColor=#f3d193;swimlaneFillColor=#ffffff;strokeColor=#e99b7f;fontFamily=Consolas;fontSize=14;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="3560" y="650" width="540" height="148" />
+        </mxCell>
+        <mxCell id="ItemCura-fields-0" value="- quantidadeCura : int" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="ItemCura">
+          <mxGeometry as="geometry" x="10" y="54" width="520" height="16" />
+        </mxCell>
+        <mxCell id="ItemCura-separator" value="" style="shape=line;strokeColor=#e99b7f;" vertex="1" parent="ItemCura">
+          <mxGeometry as="geometry" x="0" y="78" width="540" height="1" />
+        </mxCell>
+        <mxCell id="ItemCura-methods-0" value="+ ItemCura(id : int, nome : String, quantidadeCura : int)" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="ItemCura">
+          <mxGeometry as="geometry" x="10" y="84" width="520" height="16" />
+        </mxCell>
+        <mxCell id="ItemCura-methods-1" value="+ podeUsar(pokesal : Pokesal) : boolean" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="ItemCura">
+          <mxGeometry as="geometry" x="10" y="100" width="520" height="16" />
+        </mxCell>
+        <mxCell id="ItemCura-methods-2" value="+ aplicarEfeito(pokesal : Pokesal) : void" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="ItemCura">
+          <mxGeometry as="geometry" x="10" y="116" width="520" height="16" />
+        </mxCell>
+        <mxCell id="EfeitoStatus" value="EfeitoStatus &lt;font color=&quot;#66512f&quot; style=&quot;font-size:10px&quot;&gt;(pokesal)&lt;/font&gt;" style="swimlane;html=1;startSize=48;horizontal=1;collapsible=0;rounded=0;fillColor=#f3d193;swimlaneFillColor=#ffffff;strokeColor=#e99b7f;fontFamily=Consolas;fontSize=14;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="2160" y="1600" width="540" height="260" />
+        </mxCell>
+        <mxCell id="EfeitoStatus-fields-0" value="&lt;u&gt;- REDUCAO_ATAQUE_QUEIMADO : double {readOnly} = 0.5&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="EfeitoStatus">
+          <mxGeometry as="geometry" x="10" y="54" width="520" height="16" />
+        </mxCell>
+        <mxCell id="EfeitoStatus-fields-1" value="&lt;u&gt;- REDUCAO_VELOCIDADE_PARALISADO : double {readOnly} = 0.5&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="EfeitoStatus">
+          <mxGeometry as="geometry" x="10" y="70" width="520" height="16" />
+        </mxCell>
+        <mxCell id="EfeitoStatus-fields-2" value="&lt;u&gt;- DANO_QUEIMADO_PERCENTUAL : double {readOnly} = 0.065&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="EfeitoStatus">
+          <mxGeometry as="geometry" x="10" y="86" width="520" height="16" />
+        </mxCell>
+        <mxCell id="EfeitoStatus-fields-3" value="&lt;u&gt;- DANO_VENENO_PERCENTUAL : double {readOnly} = 0.125&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="EfeitoStatus">
+          <mxGeometry as="geometry" x="10" y="102" width="520" height="16" />
+        </mxCell>
+        <mxCell id="EfeitoStatus-fields-4" value="- tipo : Status" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="EfeitoStatus">
+          <mxGeometry as="geometry" x="10" y="118" width="520" height="16" />
+        </mxCell>
+        <mxCell id="EfeitoStatus-fields-5" value="- turnosAtivos : int" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="EfeitoStatus">
+          <mxGeometry as="geometry" x="10" y="134" width="520" height="16" />
+        </mxCell>
+        <mxCell id="EfeitoStatus-separator" value="" style="shape=line;strokeColor=#e99b7f;" vertex="1" parent="EfeitoStatus">
+          <mxGeometry as="geometry" x="0" y="158" width="540" height="1" />
+        </mxCell>
+        <mxCell id="EfeitoStatus-methods-0" value="+ EfeitoStatus(tipo : Status, turnosAtivos : int)" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="EfeitoStatus">
+          <mxGeometry as="geometry" x="10" y="164" width="520" height="16" />
+        </mxCell>
+        <mxCell id="EfeitoStatus-methods-1" value="+ getTipo() : Status" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="EfeitoStatus">
+          <mxGeometry as="geometry" x="10" y="180" width="520" height="16" />
+        </mxCell>
+        <mxCell id="EfeitoStatus-methods-2" value="+ aplicarFimDoTurno(alvo : Pokesal) : void" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="EfeitoStatus">
+          <mxGeometry as="geometry" x="10" y="196" width="520" height="16" />
+        </mxCell>
+        <mxCell id="EfeitoStatus-methods-3" value="+ calcularAtaqueEfetivo(ataqueBase : int) : int" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="EfeitoStatus">
+          <mxGeometry as="geometry" x="10" y="212" width="520" height="16" />
+        </mxCell>
+        <mxCell id="EfeitoStatus-methods-4" value="+ calcularVelocidadeEfetiva(velocidadeBase : int) : int" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="EfeitoStatus">
+          <mxGeometry as="geometry" x="10" y="228" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Golpe" value="Golpe &lt;font color=&quot;#66512f&quot; style=&quot;font-size:10px&quot;&gt;(pokesal)&lt;/font&gt;" style="swimlane;html=1;startSize=48;horizontal=1;collapsible=0;rounded=0;fillColor=#f3d193;swimlaneFillColor=#ffffff;strokeColor=#e99b7f;fontFamily=Consolas;fontSize=14;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="2860" y="650" width="540" height="436" />
+        </mxCell>
+        <mxCell id="Golpe-fields-0" value="- nome : String" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Golpe">
+          <mxGeometry as="geometry" x="10" y="54" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Golpe-fields-1" value="- poder : int" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Golpe">
+          <mxGeometry as="geometry" x="10" y="70" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Golpe-fields-2" value="- precisao : double" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Golpe">
+          <mxGeometry as="geometry" x="10" y="86" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Golpe-fields-3" value="- tipoElemental : TipoElemental" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Golpe">
+          <mxGeometry as="geometry" x="10" y="102" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Golpe-fields-4" value="- maximosUsos : int" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Golpe">
+          <mxGeometry as="geometry" x="10" y="118" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Golpe-fields-5" value="- usosRestantes : int" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Golpe">
+          <mxGeometry as="geometry" x="10" y="134" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Golpe-fields-6" value="- statusAplicado : Status" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Golpe">
+          <mxGeometry as="geometry" x="10" y="150" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Golpe-fields-7" value="- chanceStatus : double" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Golpe">
+          <mxGeometry as="geometry" x="10" y="166" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Golpe-separator" value="" style="shape=line;strokeColor=#e99b7f;" vertex="1" parent="Golpe">
+          <mxGeometry as="geometry" x="0" y="190" width="540" height="1" />
+        </mxCell>
+        <mxCell id="Golpe-methods-0" value="+ Golpe(nome : String, poder : int, precisao : double, tipoElemental :" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Golpe">
+          <mxGeometry as="geometry" x="10" y="196" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Golpe-methods-1" value="  TipoElemental, maximosUsos : int, statusAplicado : Status," style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Golpe">
+          <mxGeometry as="geometry" x="10" y="212" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Golpe-methods-2" value="  chanceStatus : double)" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Golpe">
+          <mxGeometry as="geometry" x="10" y="228" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Golpe-methods-3" value="+ podeUsar() : boolean" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Golpe">
+          <mxGeometry as="geometry" x="10" y="244" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Golpe-methods-4" value="+ consumirUso() : void" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Golpe">
+          <mxGeometry as="geometry" x="10" y="260" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Golpe-methods-5" value="+ getChanceStatus() : double" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Golpe">
+          <mxGeometry as="geometry" x="10" y="276" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Golpe-methods-6" value="+ resetarUsos() : void" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Golpe">
+          <mxGeometry as="geometry" x="10" y="292" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Golpe-methods-7" value="+ getNome() : String" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Golpe">
+          <mxGeometry as="geometry" x="10" y="308" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Golpe-methods-8" value="+ getPoder() : int" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Golpe">
+          <mxGeometry as="geometry" x="10" y="324" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Golpe-methods-9" value="+ getPrecisao() : double" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Golpe">
+          <mxGeometry as="geometry" x="10" y="340" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Golpe-methods-10" value="+ getTipoElemental() : TipoElemental" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Golpe">
+          <mxGeometry as="geometry" x="10" y="356" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Golpe-methods-11" value="+ getMaximosUsos() : int" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Golpe">
+          <mxGeometry as="geometry" x="10" y="372" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Golpe-methods-12" value="+ getUsosRestantes() : int" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Golpe">
+          <mxGeometry as="geometry" x="10" y="388" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Golpe-methods-13" value="+ getStatusAplicado() : Status" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Golpe">
+          <mxGeometry as="geometry" x="10" y="404" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Pokesal" value="Pokesal &lt;font color=&quot;#66512f&quot; style=&quot;font-size:10px&quot;&gt;(pokesal)&lt;/font&gt;" style="swimlane;html=1;startSize=48;horizontal=1;collapsible=0;rounded=0;fillColor=#f3d193;swimlaneFillColor=#ffffff;strokeColor=#e99b7f;fontFamily=Consolas;fontSize=14;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="2160" y="650" width="540" height="612" />
+        </mxCell>
+        <mxCell id="Pokesal-fields-0" value="&lt;u&gt;- MAX_GOLPES : int {readOnly} = 4&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Pokesal">
+          <mxGeometry as="geometry" x="10" y="54" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Pokesal-fields-1" value="- id : int {readOnly}" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Pokesal">
+          <mxGeometry as="geometry" x="10" y="70" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Pokesal-fields-2" value="- nome : String {readOnly}" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Pokesal">
+          <mxGeometry as="geometry" x="10" y="86" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Pokesal-fields-3" value="- hpAtual : int" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Pokesal">
+          <mxGeometry as="geometry" x="10" y="102" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Pokesal-fields-4" value="- hpMaximo : int {readOnly}" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Pokesal">
+          <mxGeometry as="geometry" x="10" y="118" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Pokesal-fields-5" value="- ataque : int {readOnly}" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Pokesal">
+          <mxGeometry as="geometry" x="10" y="134" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Pokesal-fields-6" value="- defesa : int {readOnly}" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Pokesal">
+          <mxGeometry as="geometry" x="10" y="150" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Pokesal-fields-7" value="- velocidade : int {readOnly}" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Pokesal">
+          <mxGeometry as="geometry" x="10" y="166" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Pokesal-fields-8" value="- tipoElemental : TipoElemental {readOnly}" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Pokesal">
+          <mxGeometry as="geometry" x="10" y="182" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Pokesal-fields-9" value="- golpes : List&amp;lt;Golpe&amp;gt; {readOnly}" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Pokesal">
+          <mxGeometry as="geometry" x="10" y="198" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Pokesal-fields-10" value="- efeitoStatus : EfeitoStatus" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Pokesal">
+          <mxGeometry as="geometry" x="10" y="214" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Pokesal-separator" value="" style="shape=line;strokeColor=#e99b7f;" vertex="1" parent="Pokesal">
+          <mxGeometry as="geometry" x="0" y="238" width="540" height="1" />
+        </mxCell>
+        <mxCell id="Pokesal-methods-0" value="+ Pokesal(id : int, nome : String, hpMaximo : int, ataque : int, defesa" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Pokesal">
+          <mxGeometry as="geometry" x="10" y="244" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Pokesal-methods-1" value="  : int, velocidade : int, tipoElemental : TipoElemental, golpes :" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Pokesal">
+          <mxGeometry as="geometry" x="10" y="260" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Pokesal-methods-2" value="  List&amp;lt;Golpe&amp;gt;)" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Pokesal">
+          <mxGeometry as="geometry" x="10" y="276" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Pokesal-methods-3" value="+ adicionarGolpe(golpe : Golpe) : void" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Pokesal">
+          <mxGeometry as="geometry" x="10" y="292" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Pokesal-methods-4" value="+ resetarUsosDosGolpes() : void" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Pokesal">
+          <mxGeometry as="geometry" x="10" y="308" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Pokesal-methods-5" value="+ receberDano(dano : int) : void" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Pokesal">
+          <mxGeometry as="geometry" x="10" y="324" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Pokesal-methods-6" value="+ recuperarHp(quantidade : int) : void" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Pokesal">
+          <mxGeometry as="geometry" x="10" y="340" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Pokesal-methods-7" value="+ estaDerrotado() : boolean" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Pokesal">
+          <mxGeometry as="geometry" x="10" y="356" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Pokesal-methods-8" value="+ aplicarStatus(status : Status) : void" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Pokesal">
+          <mxGeometry as="geometry" x="10" y="372" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Pokesal-methods-9" value="+ removerStatus() : void" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Pokesal">
+          <mxGeometry as="geometry" x="10" y="388" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Pokesal-methods-10" value="+ obterStatus() : Status" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Pokesal">
+          <mxGeometry as="geometry" x="10" y="404" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Pokesal-methods-11" value="+ obterAtaqueEfetivo() : int" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Pokesal">
+          <mxGeometry as="geometry" x="10" y="420" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Pokesal-methods-12" value="+ obterVelocidadeEfetiva() : int" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Pokesal">
+          <mxGeometry as="geometry" x="10" y="436" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Pokesal-methods-13" value="+ getNome() : String" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Pokesal">
+          <mxGeometry as="geometry" x="10" y="452" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Pokesal-methods-14" value="+ getId() : int" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Pokesal">
+          <mxGeometry as="geometry" x="10" y="468" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Pokesal-methods-15" value="+ prepararParaBatalha() : void" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Pokesal">
+          <mxGeometry as="geometry" x="10" y="484" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Pokesal-methods-16" value="+ getHpAtual() : int" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Pokesal">
+          <mxGeometry as="geometry" x="10" y="500" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Pokesal-methods-17" value="+ getHpMaximo() : int" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Pokesal">
+          <mxGeometry as="geometry" x="10" y="516" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Pokesal-methods-18" value="+ getDefesa() : int" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Pokesal">
+          <mxGeometry as="geometry" x="10" y="532" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Pokesal-methods-19" value="+ getTipoElemental() : TipoElemental" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Pokesal">
+          <mxGeometry as="geometry" x="10" y="548" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Pokesal-methods-20" value="+ getGolpes() : List&amp;lt;Golpe&amp;gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Pokesal">
+          <mxGeometry as="geometry" x="10" y="564" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Pokesal-methods-21" value="+ getEfeitoStatus() : EfeitoStatus" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Pokesal">
+          <mxGeometry as="geometry" x="10" y="580" width="520" height="16" />
+        </mxCell>
+        <mxCell id="CarteiraPontos" value="«interface»&lt;br&gt;CarteiraPontos &lt;font color=&quot;#66512f&quot; style=&quot;font-size:10px&quot;&gt;(resultado)&lt;/font&gt;" style="swimlane;html=1;startSize=48;horizontal=1;collapsible=0;rounded=0;fillColor=#f3d193;swimlaneFillColor=#ffffff;strokeColor=#e99b7f;fontFamily=Consolas;fontSize=14;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="2160" y="2230" width="540" height="116" />
+        </mxCell>
+        <mxCell id="CarteiraPontos-separator" value="" style="shape=line;strokeColor=#e99b7f;" vertex="1" parent="CarteiraPontos">
+          <mxGeometry as="geometry" x="0" y="78" width="540" height="1" />
+        </mxCell>
+        <mxCell id="CarteiraPontos-methods-0" value="&lt;i&gt;+ creditar(idTreinador : int, pontos : int) : void {abstract}&lt;/i&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="CarteiraPontos">
+          <mxGeometry as="geometry" x="10" y="84" width="520" height="16" />
+        </mxCell>
+        <mxCell id="NotificadorResultado" value="«interface»&lt;br&gt;NotificadorResultado &lt;font color=&quot;#66512f&quot; style=&quot;font-size:10px&quot;&gt;(resultado)&lt;/font&gt;" style="swimlane;html=1;startSize=48;horizontal=1;collapsible=0;rounded=0;fillColor=#f3d193;swimlaneFillColor=#ffffff;strokeColor=#e99b7f;fontFamily=Consolas;fontSize=14;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="2860" y="2230" width="540" height="132" />
+        </mxCell>
+        <mxCell id="NotificadorResultado-separator" value="" style="shape=line;strokeColor=#e99b7f;" vertex="1" parent="NotificadorResultado">
+          <mxGeometry as="geometry" x="0" y="78" width="540" height="1" />
+        </mxCell>
+        <mxCell id="NotificadorResultado-methods-0" value="&lt;i&gt;+ notificar(idTreinador : int, resultado : ResultadoBatalha) : void&lt;/i&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="NotificadorResultado">
+          <mxGeometry as="geometry" x="10" y="84" width="520" height="16" />
+        </mxCell>
+        <mxCell id="NotificadorResultado-methods-1" value="&lt;i&gt;  {abstract}&lt;/i&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="NotificadorResultado">
+          <mxGeometry as="geometry" x="10" y="100" width="520" height="16" />
+        </mxCell>
+        <mxCell id="ParticipanteResultado" value="«record»&lt;br&gt;ParticipanteResultado &lt;font color=&quot;#66512f&quot; style=&quot;font-size:10px&quot;&gt;(resultado)&lt;/font&gt;" style="swimlane;html=1;startSize=48;horizontal=1;collapsible=0;rounded=0;fillColor=#f3d193;swimlaneFillColor=#ffffff;strokeColor=#e99b7f;fontFamily=Consolas;fontSize=14;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1460" y="3040" width="540" height="164" />
+        </mxCell>
+        <mxCell id="ParticipanteResultado-fields-0" value="- idTreinador : int {readOnly}" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="ParticipanteResultado">
+          <mxGeometry as="geometry" x="10" y="54" width="520" height="16" />
+        </mxCell>
+        <mxCell id="ParticipanteResultado-fields-1" value="- nomeTreinador : String {readOnly}" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="ParticipanteResultado">
+          <mxGeometry as="geometry" x="10" y="70" width="520" height="16" />
+        </mxCell>
+        <mxCell id="ParticipanteResultado-fields-2" value="- idPokesal : int {readOnly}" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="ParticipanteResultado">
+          <mxGeometry as="geometry" x="10" y="86" width="520" height="16" />
+        </mxCell>
+        <mxCell id="ParticipanteResultado-fields-3" value="- nomePokesal : String {readOnly}" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="ParticipanteResultado">
+          <mxGeometry as="geometry" x="10" y="102" width="520" height="16" />
+        </mxCell>
+        <mxCell id="ParticipanteResultado-separator" value="" style="shape=line;strokeColor=#e99b7f;" vertex="1" parent="ParticipanteResultado">
+          <mxGeometry as="geometry" x="0" y="126" width="540" height="1" />
+        </mxCell>
+        <mxCell id="ParticipanteResultado-methods-0" value="&lt;u&gt;+ de(treinador : Treinador) : ParticipanteResultado&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="ParticipanteResultado">
+          <mxGeometry as="geometry" x="10" y="132" width="520" height="16" />
+        </mxCell>
+        <mxCell id="PosBatalha" value="«interface»&lt;br&gt;PosBatalha &lt;font color=&quot;#66512f&quot; style=&quot;font-size:10px&quot;&gt;(resultado)&lt;/font&gt;" style="swimlane;html=1;startSize=48;horizontal=1;collapsible=0;rounded=0;fillColor=#f3d193;swimlaneFillColor=#ffffff;strokeColor=#e99b7f;fontFamily=Consolas;fontSize=14;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1460" y="2230" width="540" height="116" />
+        </mxCell>
+        <mxCell id="PosBatalha-separator" value="" style="shape=line;strokeColor=#e99b7f;" vertex="1" parent="PosBatalha">
+          <mxGeometry as="geometry" x="0" y="78" width="540" height="1" />
+        </mxCell>
+        <mxCell id="PosBatalha-methods-0" value="&lt;i&gt;+ processar(resultado : ResultadoBatalha) : void {abstract}&lt;/i&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="PosBatalha">
+          <mxGeometry as="geometry" x="10" y="84" width="520" height="16" />
+        </mxCell>
+        <mxCell id="RepositorioResultados" value="«interface»&lt;br&gt;RepositorioResultados &lt;font color=&quot;#66512f&quot; style=&quot;font-size:10px&quot;&gt;(resultado)&lt;/font&gt;" style="swimlane;html=1;startSize=48;horizontal=1;collapsible=0;rounded=0;fillColor=#f3d193;swimlaneFillColor=#ffffff;strokeColor=#e99b7f;fontFamily=Consolas;fontSize=14;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="760" y="2230" width="540" height="116" />
+        </mxCell>
+        <mxCell id="RepositorioResultados-separator" value="" style="shape=line;strokeColor=#e99b7f;" vertex="1" parent="RepositorioResultados">
+          <mxGeometry as="geometry" x="0" y="78" width="540" height="1" />
+        </mxCell>
+        <mxCell id="RepositorioResultados-methods-0" value="&lt;i&gt;+ salvar(resultado : ResultadoBatalha) : void {abstract}&lt;/i&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="RepositorioResultados">
+          <mxGeometry as="geometry" x="10" y="84" width="520" height="16" />
+        </mxCell>
+        <mxCell id="ResultadoBatalha" value="«record»&lt;br&gt;ResultadoBatalha &lt;font color=&quot;#66512f&quot; style=&quot;font-size:10px&quot;&gt;(resultado)&lt;/font&gt;" style="swimlane;html=1;startSize=48;horizontal=1;collapsible=0;rounded=0;fillColor=#f3d193;swimlaneFillColor=#ffffff;strokeColor=#e99b7f;fontFamily=Consolas;fontSize=14;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="760" y="2930" width="540" height="164" />
+        </mxCell>
+        <mxCell id="ResultadoBatalha-fields-0" value="- idBatalha : int {readOnly}" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="ResultadoBatalha">
+          <mxGeometry as="geometry" x="10" y="54" width="520" height="16" />
+        </mxCell>
+        <mxCell id="ResultadoBatalha-fields-1" value="- vencedor : ParticipanteResultado {readOnly}" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="ResultadoBatalha">
+          <mxGeometry as="geometry" x="10" y="70" width="520" height="16" />
+        </mxCell>
+        <mxCell id="ResultadoBatalha-fields-2" value="- perdedor : ParticipanteResultado {readOnly}" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="ResultadoBatalha">
+          <mxGeometry as="geometry" x="10" y="86" width="520" height="16" />
+        </mxCell>
+        <mxCell id="ResultadoBatalha-fields-3" value="- numeroTurnos : int {readOnly}" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="ResultadoBatalha">
+          <mxGeometry as="geometry" x="10" y="102" width="520" height="16" />
+        </mxCell>
+        <mxCell id="ResultadoBatalha-separator" value="" style="shape=line;strokeColor=#e99b7f;" vertex="1" parent="ResultadoBatalha">
+          <mxGeometry as="geometry" x="0" y="126" width="540" height="1" />
+        </mxCell>
+        <mxCell id="ResultadoBatalha-methods-0" value="+ pokesalUtilizados() : List&amp;lt;String&amp;gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="ResultadoBatalha">
+          <mxGeometry as="geometry" x="10" y="132" width="520" height="16" />
+        </mxCell>
+        <mxCell id="ServicoPosBatalha" value="ServicoPosBatalha &lt;font color=&quot;#66512f&quot; style=&quot;font-size:10px&quot;&gt;(resultado)&lt;/font&gt;" style="swimlane;html=1;startSize=48;horizontal=1;collapsible=0;rounded=0;fillColor=#f3d193;swimlaneFillColor=#ffffff;strokeColor=#e99b7f;fontFamily=Consolas;fontSize=14;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1460" y="2510" width="540" height="276" />
+        </mxCell>
+        <mxCell id="ServicoPosBatalha-fields-0" value="&lt;u&gt;- PONTOS_VITORIA : int {readOnly} = 100&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="ServicoPosBatalha">
+          <mxGeometry as="geometry" x="10" y="54" width="520" height="16" />
+        </mxCell>
+        <mxCell id="ServicoPosBatalha-fields-1" value="&lt;u&gt;- BONUS_VITORIA_RAPIDA : int {readOnly} = 50&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="ServicoPosBatalha">
+          <mxGeometry as="geometry" x="10" y="70" width="520" height="16" />
+        </mxCell>
+        <mxCell id="ServicoPosBatalha-fields-2" value="&lt;u&gt;- LIMITE_TURNOS_RAPIDA : int {readOnly} = 3&lt;/u&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="ServicoPosBatalha">
+          <mxGeometry as="geometry" x="10" y="86" width="520" height="16" />
+        </mxCell>
+        <mxCell id="ServicoPosBatalha-fields-3" value="- carteira : CarteiraPontos {readOnly}" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="ServicoPosBatalha">
+          <mxGeometry as="geometry" x="10" y="102" width="520" height="16" />
+        </mxCell>
+        <mxCell id="ServicoPosBatalha-fields-4" value="- notificador : NotificadorResultado {readOnly}" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="ServicoPosBatalha">
+          <mxGeometry as="geometry" x="10" y="118" width="520" height="16" />
+        </mxCell>
+        <mxCell id="ServicoPosBatalha-fields-5" value="- registro : RegistroBatalha {readOnly}" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="ServicoPosBatalha">
+          <mxGeometry as="geometry" x="10" y="134" width="520" height="16" />
+        </mxCell>
+        <mxCell id="ServicoPosBatalha-separator" value="" style="shape=line;strokeColor=#e99b7f;" vertex="1" parent="ServicoPosBatalha">
+          <mxGeometry as="geometry" x="0" y="158" width="540" height="1" />
+        </mxCell>
+        <mxCell id="ServicoPosBatalha-methods-0" value="+ ServicoPosBatalha(carteira : CarteiraPontos, notificador :" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="ServicoPosBatalha">
+          <mxGeometry as="geometry" x="10" y="164" width="520" height="16" />
+        </mxCell>
+        <mxCell id="ServicoPosBatalha-methods-1" value="  NotificadorResultado, registro : RegistroBatalha)" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="ServicoPosBatalha">
+          <mxGeometry as="geometry" x="10" y="180" width="520" height="16" />
+        </mxCell>
+        <mxCell id="ServicoPosBatalha-methods-2" value="+ processar(resultado : ResultadoBatalha) : void" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="ServicoPosBatalha">
+          <mxGeometry as="geometry" x="10" y="196" width="520" height="16" />
+        </mxCell>
+        <mxCell id="ServicoPosBatalha-methods-3" value="- notificar(idTreinador : int, resultado : ResultadoBatalha) : void" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="ServicoPosBatalha">
+          <mxGeometry as="geometry" x="10" y="212" width="520" height="16" />
+        </mxCell>
+        <mxCell id="ServicoPosBatalha-methods-4" value="- registrarFalha(resultado : ResultadoBatalha, tipo : TipoEvento, erro" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="ServicoPosBatalha">
+          <mxGeometry as="geometry" x="10" y="228" width="520" height="16" />
+        </mxCell>
+        <mxCell id="ServicoPosBatalha-methods-5" value="  : RuntimeException) : void" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="ServicoPosBatalha">
+          <mxGeometry as="geometry" x="10" y="244" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Classificacao" value="«record»&lt;br&gt;Classificacao &lt;font color=&quot;#66512f&quot; style=&quot;font-size:10px&quot;&gt;(torneio)&lt;/font&gt;" style="swimlane;html=1;startSize=48;horizontal=1;collapsible=0;rounded=0;fillColor=#f3d193;swimlaneFillColor=#ffffff;strokeColor=#e99b7f;fontFamily=Consolas;fontSize=14;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="1740" width="540" height="116" />
+        </mxCell>
+        <mxCell id="Classificacao-fields-0" value="- treinador : Treinador {readOnly}" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Classificacao">
+          <mxGeometry as="geometry" x="10" y="54" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Classificacao-fields-1" value="- vitorias : int {readOnly}" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Classificacao">
+          <mxGeometry as="geometry" x="10" y="70" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Classificacao-fields-2" value="- derrotas : int {readOnly}" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Classificacao">
+          <mxGeometry as="geometry" x="10" y="86" width="520" height="16" />
+        </mxCell>
+        <mxCell id="FabricaBatalha" value="«interface»&lt;br&gt;FabricaBatalha &lt;font color=&quot;#66512f&quot; style=&quot;font-size:10px&quot;&gt;(torneio)&lt;/font&gt;" style="swimlane;html=1;startSize=48;horizontal=1;collapsible=0;rounded=0;fillColor=#f3d193;swimlaneFillColor=#ffffff;strokeColor=#e99b7f;fontFamily=Consolas;fontSize=14;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="1490" width="540" height="132" />
+        </mxCell>
+        <mxCell id="FabricaBatalha-separator" value="" style="shape=line;strokeColor=#e99b7f;" vertex="1" parent="FabricaBatalha">
+          <mxGeometry as="geometry" x="0" y="78" width="540" height="1" />
+        </mxCell>
+        <mxCell id="FabricaBatalha-methods-0" value="&lt;i&gt;+ criar(id : int, primeiro : Treinador, segundo : Treinador) : Batalha&lt;/i&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="FabricaBatalha">
+          <mxGeometry as="geometry" x="10" y="84" width="520" height="16" />
+        </mxCell>
+        <mxCell id="FabricaBatalha-methods-1" value="&lt;i&gt;  {abstract}&lt;/i&gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="FabricaBatalha">
+          <mxGeometry as="geometry" x="10" y="100" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Torneio" value="Torneio &lt;font color=&quot;#66512f&quot; style=&quot;font-size:10px&quot;&gt;(torneio)&lt;/font&gt;" style="swimlane;html=1;startSize=48;horizontal=1;collapsible=0;rounded=0;fillColor=#f3d193;swimlaneFillColor=#ffffff;strokeColor=#e99b7f;fontFamily=Consolas;fontSize=14;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="1050" width="540" height="244" />
+        </mxCell>
+        <mxCell id="Torneio-fields-0" value="- participantes : List&amp;lt;Treinador&amp;gt; {readOnly}" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Torneio">
+          <mxGeometry as="geometry" x="10" y="54" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Torneio-fields-1" value="- fabrica : FabricaBatalha {readOnly}" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Torneio">
+          <mxGeometry as="geometry" x="10" y="70" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Torneio-fields-2" value="- resultados : List&amp;lt;ResultadoBatalha&amp;gt; {readOnly}" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Torneio">
+          <mxGeometry as="geometry" x="10" y="86" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Torneio-fields-3" value="- campeao : Treinador" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Torneio">
+          <mxGeometry as="geometry" x="10" y="102" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Torneio-fields-4" value="- iniciado : boolean" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Torneio">
+          <mxGeometry as="geometry" x="10" y="118" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Torneio-separator" value="" style="shape=line;strokeColor=#e99b7f;" vertex="1" parent="Torneio">
+          <mxGeometry as="geometry" x="0" y="142" width="540" height="1" />
+        </mxCell>
+        <mxCell id="Torneio-methods-0" value="+ Torneio(participantes : List&amp;lt;Treinador&amp;gt;, fabrica : FabricaBatalha)" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Torneio">
+          <mxGeometry as="geometry" x="10" y="148" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Torneio-methods-1" value="+ iniciar() : Treinador" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Torneio">
+          <mxGeometry as="geometry" x="10" y="164" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Torneio-methods-2" value="+ getCampeao() : Treinador" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Torneio">
+          <mxGeometry as="geometry" x="10" y="180" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Torneio-methods-3" value="+ getResultados() : List&amp;lt;ResultadoBatalha&amp;gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Torneio">
+          <mxGeometry as="geometry" x="10" y="196" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Torneio-methods-4" value="+ getRanking() : List&amp;lt;Classificacao&amp;gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Torneio">
+          <mxGeometry as="geometry" x="10" y="212" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Mochila" value="Mochila &lt;font color=&quot;#66512f&quot; style=&quot;font-size:10px&quot;&gt;(treinador)&lt;/font&gt;" style="swimlane;html=1;startSize=48;horizontal=1;collapsible=0;rounded=0;fillColor=#f3d193;swimlaneFillColor=#ffffff;strokeColor=#e99b7f;fontFamily=Consolas;fontSize=14;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="2860" y="180" width="540" height="164" />
+        </mxCell>
+        <mxCell id="Mochila-fields-0" value="- itens : List&amp;lt;Item&amp;gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Mochila">
+          <mxGeometry as="geometry" x="10" y="54" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Mochila-separator" value="" style="shape=line;strokeColor=#e99b7f;" vertex="1" parent="Mochila">
+          <mxGeometry as="geometry" x="0" y="78" width="540" height="1" />
+        </mxCell>
+        <mxCell id="Mochila-methods-0" value="+ Mochila()" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Mochila">
+          <mxGeometry as="geometry" x="10" y="84" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Mochila-methods-1" value="+ adicionarItem(item : Item) : void" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Mochila">
+          <mxGeometry as="geometry" x="10" y="100" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Mochila-methods-2" value="+ getItens() : List&amp;lt;Item&amp;gt;" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Mochila">
+          <mxGeometry as="geometry" x="10" y="116" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Mochila-methods-3" value="+ removerItem(item : Item) : boolean" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Mochila">
+          <mxGeometry as="geometry" x="10" y="132" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Treinador" value="Treinador &lt;font color=&quot;#66512f&quot; style=&quot;font-size:10px&quot;&gt;(treinador)&lt;/font&gt;" style="swimlane;html=1;startSize=48;horizontal=1;collapsible=0;rounded=0;fillColor=#f3d193;swimlaneFillColor=#ffffff;strokeColor=#e99b7f;fontFamily=Consolas;fontSize=14;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="2160" y="180" width="540" height="244" />
+        </mxCell>
+        <mxCell id="Treinador-fields-0" value="- id : int" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Treinador">
+          <mxGeometry as="geometry" x="10" y="54" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Treinador-fields-1" value="- nome : String" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Treinador">
+          <mxGeometry as="geometry" x="10" y="70" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Treinador-fields-2" value="- pokesal : Pokesal" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Treinador">
+          <mxGeometry as="geometry" x="10" y="86" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Treinador-fields-3" value="- mochila : Mochila" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Treinador">
+          <mxGeometry as="geometry" x="10" y="102" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Treinador-separator" value="" style="shape=line;strokeColor=#e99b7f;" vertex="1" parent="Treinador">
+          <mxGeometry as="geometry" x="0" y="126" width="540" height="1" />
+        </mxCell>
+        <mxCell id="Treinador-methods-0" value="+ Treinador(id : int, nome : String, pokesal : Pokesal, mochila :" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Treinador">
+          <mxGeometry as="geometry" x="10" y="132" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Treinador-methods-1" value="  Mochila)" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Treinador">
+          <mxGeometry as="geometry" x="10" y="148" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Treinador-methods-2" value="+ getNome() : String" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Treinador">
+          <mxGeometry as="geometry" x="10" y="164" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Treinador-methods-3" value="+ getId() : int" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Treinador">
+          <mxGeometry as="geometry" x="10" y="180" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Treinador-methods-4" value="+ getPokesal() : Pokesal" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Treinador">
+          <mxGeometry as="geometry" x="10" y="196" width="520" height="16" />
+        </mxCell>
+        <mxCell id="Treinador-methods-5" value="+ getMochila() : Mochila" style="text;html=1;align=left;verticalAlign=middle;spacing=0;whiteSpace=nowrap;overflow=visible;fontFamily=Consolas;fontSize=12;fontColor=#262626;" vertex="1" parent="Treinador">
+          <mxGeometry as="geometry" x="10" y="212" width="520" height="16" />
+        </mxCell>
+        <mxCell id="edge-0" value="" style="edgeStyle=none;html=1;rounded=0;strokeColor=#d18c73;strokeWidth=1;endArrow=block;endFill=0;startArrow=none;startFill=0;fontFamily=Consolas;fontSize=11;fontColor=#555555;labelBackgroundColor=#ffffff;dashed=1;dashPattern=7 5;exitX=0.25925925925925924;exitY=0.0;exitPerimeter=0;entryX=0.25925925925925924;entryY=1.0;entryPerimeter=0;" edge="1" parent="1" source="ServicoTerrenoClimatico" target="ServicoTerreno">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-1" value="" style="edgeStyle=none;html=1;rounded=0;strokeColor=#d18c73;strokeWidth=1;endArrow=block;endFill=0;startArrow=none;startFill=0;fontFamily=Consolas;fontSize=11;fontColor=#555555;labelBackgroundColor=#ffffff;dashed=1;dashPattern=7 5;exitX=0.25925925925925924;exitY=0.0;exitPerimeter=0;entryX=0.25925925925925924;entryY=1.0;entryPerimeter=0;" edge="1" parent="1" source="RegistroBatalhaConsole" target="RegistroBatalha">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-2" value="" style="edgeStyle=none;html=1;rounded=0;strokeColor=#d18c73;strokeWidth=1;endArrow=block;endFill=0;startArrow=none;startFill=0;fontFamily=Consolas;fontSize=11;fontColor=#555555;labelBackgroundColor=#ffffff;dashed=1;dashPattern=7 5;exitX=0.25925925925925924;exitY=0.0;exitPerimeter=0;entryX=0.25925925925925924;entryY=1.0;entryPerimeter=0;" edge="1" parent="1" source="RepositorioResultadosCsv" target="RepositorioResultados">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-3" value="" style="edgeStyle=none;html=1;rounded=0;strokeColor=#d18c73;strokeWidth=1;endArrow=block;endFill=0;startArrow=none;startFill=0;fontFamily=Consolas;fontSize=11;fontColor=#555555;labelBackgroundColor=#ffffff;dashed=1;dashPattern=7 5;exitX=0.25925925925925924;exitY=0.0;exitPerimeter=0;entryX=0.25925925925925924;entryY=1.0;entryPerimeter=0;" edge="1" parent="1" source="ServicoPosBatalha" target="PosBatalha">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-4" value="" style="edgeStyle=none;html=1;rounded=0;strokeColor=#d18c73;strokeWidth=1;endArrow=block;endFill=0;startArrow=none;startFill=0;fontFamily=Consolas;fontSize=11;fontColor=#555555;labelBackgroundColor=#ffffff;dashed=1;dashPattern=7 5;exitX=0.25925925925925924;exitY=0.0;exitPerimeter=0;entryX=0.25925925925925924;entryY=1.0;entryPerimeter=0;" edge="1" parent="1" source="CarteiraPontosMemoria" target="CarteiraPontos">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-5" value="" style="edgeStyle=none;html=1;rounded=0;strokeColor=#d18c73;strokeWidth=1;endArrow=block;endFill=0;startArrow=none;startFill=0;fontFamily=Consolas;fontSize=11;fontColor=#555555;labelBackgroundColor=#ffffff;dashed=1;dashPattern=7 5;exitX=0.25925925925925924;exitY=0.0;exitPerimeter=0;entryX=0.25925925925925924;entryY=1.0;entryPerimeter=0;" edge="1" parent="1" source="NotificadorResultadoConsole" target="NotificadorResultado">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-6" value="tipo : 1" style="edgeStyle=none;html=1;rounded=0;strokeColor=#d18c73;strokeWidth=1;endArrow=open;endFill=0;startArrow=none;startFill=0;fontFamily=Consolas;fontSize=11;fontColor=#555555;labelBackgroundColor=#ffffff;exitX=0.25925925925925924;exitY=1.0;exitPerimeter=0;entryX=0.25925925925925924;entryY=0.0;entryPerimeter=0;" edge="1" parent="1" source="EventoBatalha" target="TipoEvento">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+            <mxPoint as="offset" x="0.0" y="0.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-7" value="servicoTerreno : 1" style="edgeStyle=none;html=1;rounded=0;strokeColor=#d18c73;strokeWidth=1;endArrow=open;endFill=0;startArrow=none;startFill=0;fontFamily=Consolas;fontSize=11;fontColor=#555555;labelBackgroundColor=#ffffff;exitX=0.25925925925925924;exitY=1.0;exitPerimeter=0;entryX=0.25925925925925924;entryY=0.0;entryPerimeter=0;" edge="1" parent="1" source="Arena" target="ServicoTerreno">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+            <mxPoint as="offset" x="0.0" y="0.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-8" value="fabrica : 1" style="edgeStyle=none;html=1;rounded=0;strokeColor=#d18c73;strokeWidth=1;endArrow=open;endFill=0;startArrow=none;startFill=0;fontFamily=Consolas;fontSize=11;fontColor=#555555;labelBackgroundColor=#ffffff;exitX=0.25925925925925924;exitY=1.0;exitPerimeter=0;entryX=0.25925925925925924;entryY=0.0;entryPerimeter=0;" edge="1" parent="1" source="Torneio" target="FabricaBatalha">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+            <mxPoint as="offset" x="0.0" y="0.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-9" value="calcula" style="edgeStyle=none;html=1;rounded=0;strokeColor=#d18c73;strokeWidth=1;endArrow=open;endFill=0;startArrow=none;startFill=0;fontFamily=Consolas;fontSize=11;fontColor=#555555;labelBackgroundColor=#ffffff;dashed=1;dashPattern=7 5;exitX=0.25925925925925924;exitY=1.0;exitPerimeter=0;entryX=0.25925925925925924;entryY=0.0;entryPerimeter=0;" edge="1" parent="1" source="ServicoTerrenoClimatico" target="EfeitoTerreno">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+            <mxPoint as="offset" x="0.0" y="0.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-10" value="pokesal : 0..1" style="edgeStyle=none;html=1;rounded=0;strokeColor=#d18c73;strokeWidth=1;endArrow=open;endFill=0;startArrow=none;startFill=0;fontFamily=Consolas;fontSize=11;fontColor=#555555;labelBackgroundColor=#ffffff;exitX=0.25925925925925924;exitY=1.0;exitPerimeter=0;entryX=0.25925925925925924;entryY=0.0;entryPerimeter=0;" edge="1" parent="1" source="Treinador" target="Pokesal">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+            <mxPoint as="offset" x="0.0" y="0.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-11" value="" style="edgeStyle=none;html=1;rounded=0;strokeColor=#d18c73;strokeWidth=1;endArrow=block;endFill=0;startArrow=none;startFill=0;fontFamily=Consolas;fontSize=11;fontColor=#555555;labelBackgroundColor=#ffffff;exitX=0.25925925925925924;exitY=0.0;exitPerimeter=0;entryX=0.25925925925925924;entryY=1.0;entryPerimeter=0;" edge="1" parent="1" source="ItemCura" target="Item">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-12" value="registra" style="edgeStyle=none;html=1;rounded=0;strokeColor=#d18c73;strokeWidth=1;endArrow=open;endFill=0;startArrow=none;startFill=0;fontFamily=Consolas;fontSize=11;fontColor=#555555;labelBackgroundColor=#ffffff;dashed=1;dashPattern=7 5;exitX=1.0;exitY=0.7758620689655172;exitPerimeter=0;entryX=1.0;entryY=0.3048780487804878;entryPerimeter=0;" edge="1" parent="1" source="RegistroBatalha" target="EventoBatalha">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="660" y="2320" />
+              <mxPoint x="660" y="2900" />
+            </Array>
+            <mxPoint as="offset" x="0.0" y="0.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-13" value="ranking" style="edgeStyle=none;html=1;rounded=0;strokeColor=#d18c73;strokeWidth=1;endArrow=open;endFill=0;startArrow=none;startFill=0;fontFamily=Consolas;fontSize=11;fontColor=#555555;labelBackgroundColor=#ffffff;dashed=1;dashPattern=7 5;exitX=1.0;exitY=0.7786885245901639;exitPerimeter=0;entryX=1.0;entryY=0.1724137931034483;entryPerimeter=0;" edge="1" parent="1" source="Torneio" target="Classificacao">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="660" y="1240" />
+              <mxPoint x="660" y="1760" />
+            </Array>
+            <mxPoint as="offset" x="0.0" y="0.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-14" value="retorna" style="edgeStyle=none;html=1;rounded=0;strokeColor=#d18c73;strokeWidth=1;endArrow=open;endFill=0;startArrow=none;startFill=0;fontFamily=Consolas;fontSize=11;fontColor=#555555;labelBackgroundColor=#ffffff;dashed=1;dashPattern=7 5;exitX=0.0;exitY=0.6896551724137931;exitPerimeter=0;entryX=0.0;entryY=0.20270270270270271;entryPerimeter=0;" edge="1" parent="1" source="ServicoTerreno" target="EfeitoTerreno">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="700" y="640" />
+              <mxPoint x="700" y="1280" />
+            </Array>
+            <mxPoint as="offset" x="0.0" y="0.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-15" value="arena : 1" style="edgeStyle=none;html=1;rounded=0;strokeColor=#d18c73;strokeWidth=1;endArrow=open;endFill=0;startArrow=none;startFill=0;fontFamily=Consolas;fontSize=11;fontColor=#555555;labelBackgroundColor=#ffffff;exitX=0.0;exitY=0.24489795918367346;exitPerimeter=0;entryX=1.0;entryY=0.7894736842105263;entryPerimeter=0;" edge="1" parent="1" source="Batalha" target="Arena">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1360" y="420" />
+              <mxPoint x="1360" y="360" />
+            </Array>
+            <mxPoint as="offset" x="50.0" y="10.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-16" value="participantes : 2" style="edgeStyle=none;html=1;rounded=0;strokeColor=#d18c73;strokeWidth=1;endArrow=open;endFill=0;startArrow=none;startFill=0;fontFamily=Consolas;fontSize=11;fontColor=#555555;labelBackgroundColor=#ffffff;exitX=1.0;exitY=0.24489795918367346;exitPerimeter=0;entryX=0.0;entryY=0.7377049180327869;entryPerimeter=0;" edge="1" parent="1" source="Batalha" target="Treinador">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="2100" y="420" />
+              <mxPoint x="2100" y="360" />
+            </Array>
+            <mxPoint as="offset" x="-20.0" y="10.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-17" value="mochila : 1" style="edgeStyle=none;html=1;rounded=0;strokeColor=#d18c73;strokeWidth=1;endArrow=open;endFill=0;startArrow=none;startFill=0;fontFamily=Consolas;fontSize=11;fontColor=#555555;labelBackgroundColor=#ffffff;exitX=1.0;exitY=0.4918032786885246;exitPerimeter=0;entryX=0.0;entryY=0.7317073170731707;entryPerimeter=0;" edge="1" parent="1" source="Treinador" target="Mochila">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+            <mxPoint as="offset" x="0.0" y="0.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-18" value="itens : 0..*" style="edgeStyle=none;html=1;rounded=0;strokeColor=#d18c73;strokeWidth=1;endArrow=open;endFill=0;startArrow=diamond;startFill=0;fontFamily=Consolas;fontSize=11;fontColor=#555555;labelBackgroundColor=#ffffff;exitX=1.0;exitY=0.24390243902439024;exitPerimeter=0;entryX=0.0;entryY=0.2222222222222222;entryPerimeter=0;" edge="1" parent="1" source="Mochila" target="Item">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+            <mxPoint as="offset" x="0.0" y="0.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-19" value="golpes : 0..4" style="edgeStyle=none;html=1;rounded=0;strokeColor=#d18c73;strokeWidth=1;endArrow=open;endFill=0;startArrow=diamond;startFill=0;fontFamily=Consolas;fontSize=11;fontColor=#555555;labelBackgroundColor=#ffffff;exitX=1.0;exitY=0.5065359477124183;exitPerimeter=0;entryX=0.0;entryY=0.7568807339449541;entryPerimeter=0;" edge="1" parent="1" source="Pokesal" target="Golpe">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="2800" y="960" />
+              <mxPoint x="2800" y="980" />
+            </Array>
+            <mxPoint as="offset" x="-25.0" y="0.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-20" value="salva" style="edgeStyle=none;html=1;rounded=0;strokeColor=#d18c73;strokeWidth=1;endArrow=open;endFill=0;startArrow=none;startFill=0;fontFamily=Consolas;fontSize=11;fontColor=#555555;labelBackgroundColor=#ffffff;dashed=1;dashPattern=7 5;exitX=0.0;exitY=0.7758620689655172;exitPerimeter=0;entryX=0.0;entryY=0.3048780487804878;entryPerimeter=0;" edge="1" parent="1" source="RepositorioResultados" target="ResultadoBatalha">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="700" y="2320" />
+              <mxPoint x="700" y="2980" />
+            </Array>
+            <mxPoint as="offset" x="0.0" y="0.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-21" value="tipoElemental : 1" style="edgeStyle=none;html=1;rounded=0;strokeColor=#d18c73;strokeWidth=1;endArrow=open;endFill=0;startArrow=none;startFill=0;fontFamily=Consolas;fontSize=11;fontColor=#555555;labelBackgroundColor=#ffffff;exitX=0.25925925925925924;exitY=1.0;exitPerimeter=0;entryX=0.25925925925925924;entryY=0.0;entryPerimeter=0;" edge="1" parent="1" source="Golpe" target="TipoElemental">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+            <mxPoint as="offset" x="0.0" y="0.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-22" value="participantes : 2" style="edgeStyle=none;html=1;rounded=0;strokeColor=#d18c73;strokeWidth=1;endArrow=open;endFill=0;startArrow=none;startFill=0;fontFamily=Consolas;fontSize=11;fontColor=#555555;labelBackgroundColor=#ffffff;exitX=1.0;exitY=0.7926829268292683;exitPerimeter=0;entryX=0.0;entryY=0.24390243902439024;entryPerimeter=0;" edge="1" parent="1" source="ResultadoBatalha" target="ParticipanteResultado">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1400" y="3060" />
+              <mxPoint x="1400" y="3080" />
+            </Array>
+            <mxPoint as="offset" x="-10.0" y="0.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-23" value="" style="edgeStyle=none;html=1;rounded=0;strokeColor=#d18c73;strokeWidth=1;endArrow=block;endFill=0;startArrow=none;startFill=0;fontFamily=Consolas;fontSize=11;fontColor=#555555;labelBackgroundColor=#ffffff;exitX=0.0;exitY=0.2702702702702703;exitPerimeter=0;entryX=0.0;entryY=0.7777777777777778;entryPerimeter=0;" edge="1" parent="1" source="Antidoto" target="Item">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="3500" y="1080" />
+              <mxPoint x="3500" y="320" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-24" value="cria" style="edgeStyle=none;html=1;rounded=0;strokeColor=#d18c73;strokeWidth=1;endArrow=open;endFill=0;startArrow=none;startFill=0;fontFamily=Consolas;fontSize=11;fontColor=#555555;labelBackgroundColor=#ffffff;dashed=1;dashPattern=7 5;exitX=0.25925925925925924;exitY=1.0;exitPerimeter=0;entryX=0.25925925925925924;entryY=0.0;entryPerimeter=0;" edge="1" parent="1" source="Main" target="Torneio">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+            <mxPoint as="offset" x="0.0" y="0.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-25" value="tipo : 1" style="edgeStyle=none;html=1;rounded=0;strokeColor=#d18c73;strokeWidth=1;endArrow=open;endFill=0;startArrow=none;startFill=0;fontFamily=Consolas;fontSize=11;fontColor=#555555;labelBackgroundColor=#ffffff;exitX=1.0;exitY=0.7692307692307693;exitPerimeter=0;entryX=0.0;entryY=0.22727272727272727;entryPerimeter=0;" edge="1" parent="1" source="EfeitoStatus" target="Status">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="2800" y="1800" />
+              <mxPoint x="2800" y="1840" />
+            </Array>
+            <mxPoint as="offset" x="-50.0" y="0.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-26" value="efeitoStatus : 1" style="edgeStyle=none;html=1;rounded=0;strokeColor=#d18c73;strokeWidth=1;endArrow=open;endFill=0;startArrow=diamond;startFill=1;fontFamily=Consolas;fontSize=11;fontColor=#555555;labelBackgroundColor=#ffffff;exitX=0.25925925925925924;exitY=1.0;exitPerimeter=0;entryX=0.25925925925925924;entryY=0.0;entryPerimeter=0;" edge="1" parent="1" source="Pokesal" target="EfeitoStatus">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+            <mxPoint as="offset" x="0.0" y="0.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-27" value="carteira : 1" style="edgeStyle=none;html=1;rounded=0;strokeColor=#d18c73;strokeWidth=1;endArrow=open;endFill=0;startArrow=none;startFill=0;fontFamily=Consolas;fontSize=11;fontColor=#555555;labelBackgroundColor=#ffffff;exitX=1.0;exitY=0.2536231884057971;exitPerimeter=0;entryX=0.0;entryY=0.7758620689655172;entryPerimeter=0;" edge="1" parent="1" source="ServicoPosBatalha" target="CarteiraPontos">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="2100" y="2580" />
+              <mxPoint x="2100" y="2320" />
+            </Array>
+            <mxPoint as="offset" x="0.0" y="-20.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-28" value="consulta" style="edgeStyle=none;html=1;rounded=0;strokeColor=#d18c73;strokeWidth=1;endArrow=open;endFill=0;startArrow=none;startFill=0;fontFamily=Consolas;fontSize=11;fontColor=#555555;labelBackgroundColor=#ffffff;dashed=1;dashPattern=7 5;exitX=1.0;exitY=0.7307692307692307;exitPerimeter=0;entryX=1.0;entryY=0.25862068965517243;entryPerimeter=0;" edge="1" parent="1" source="ServicoTerrenoClimatico" target="Clima">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1360" y="1000" />
+              <mxPoint x="1360" y="1840" />
+            </Array>
+            <mxPoint as="offset" x="0.0" y="0.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-29" value="statusAplicado : 1" style="edgeStyle=none;html=1;rounded=0;strokeColor=#d18c73;strokeWidth=1;endArrow=open;endFill=0;startArrow=none;startFill=0;fontFamily=Consolas;fontSize=11;fontColor=#555555;labelBackgroundColor=#ffffff;exitX=1.0;exitY=0.7568807339449541;exitPerimeter=0;entryX=1.0;entryY=0.22727272727272727;entryPerimeter=0;" edge="1" parent="1" source="Golpe" target="Status">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="3460" y="980" />
+              <mxPoint x="3460" y="1840" />
+            </Array>
+            <mxPoint as="offset" x="0.0" y="-129.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-30" value="tipoTerreno : 1" style="edgeStyle=none;html=1;rounded=0;strokeColor=#d18c73;strokeWidth=1;endArrow=open;endFill=0;startArrow=none;startFill=0;fontFamily=Consolas;fontSize=11;fontColor=#555555;labelBackgroundColor=#ffffff;exitX=0.0;exitY=0.7894736842105263;exitPerimeter=0;entryX=0.0;entryY=0.25862068965517243;entryPerimeter=0;" edge="1" parent="1" source="Arena" target="TipoTerreno">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="680" y="360" />
+              <mxPoint x="680" y="1580" />
+            </Array>
+            <mxPoint as="offset" x="0.0" y="-183.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-31" value="configura" style="edgeStyle=none;html=1;rounded=0;strokeColor=#d18c73;strokeWidth=1;endArrow=open;endFill=0;startArrow=none;startFill=0;fontFamily=Consolas;fontSize=11;fontColor=#555555;labelBackgroundColor=#ffffff;dashed=1;dashPattern=7 5;exitX=1.0;exitY=0.49645390070921985;exitPerimeter=0;entryX=0.0;entryY=0.5102040816326531;entryPerimeter=0;" edge="1" parent="1" source="Main" target="Batalha">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1400" y="460" />
+              <mxPoint x="1400" y="680" />
+            </Array>
+            <mxPoint as="offset" x="-140.0" y="0.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-32" value="gerador : 1" style="edgeStyle=none;html=1;rounded=0;strokeColor=#d18c73;strokeWidth=1;endArrow=open;endFill=0;startArrow=none;startFill=0;fontFamily=Consolas;fontSize=11;fontColor=#555555;labelBackgroundColor=#ffffff;exitX=0.25925925925925924;exitY=1.0;exitPerimeter=0;entryX=0.25925925925925924;entryY=0.0;entryPerimeter=0;" edge="1" parent="1" source="Batalha" target="GeradorAleatorio">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+            <mxPoint as="offset" x="0.0" y="0.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-33" value="processa" style="edgeStyle=none;html=1;rounded=0;strokeColor=#d18c73;strokeWidth=1;endArrow=open;endFill=0;startArrow=none;startFill=0;fontFamily=Consolas;fontSize=11;fontColor=#555555;labelBackgroundColor=#ffffff;dashed=1;dashPattern=7 5;exitX=0.0;exitY=0.7758620689655172;exitPerimeter=0;entryX=1.0;entryY=0.3048780487804878;entryPerimeter=0;" edge="1" parent="1" source="PosBatalha" target="ResultadoBatalha">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1360" y="2320" />
+              <mxPoint x="1360" y="2980" />
+            </Array>
+            <mxPoint as="offset" x="0.0" y="20.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-34" value="tipoElemental : 1" style="edgeStyle=none;html=1;rounded=0;strokeColor=#d18c73;strokeWidth=1;endArrow=open;endFill=0;startArrow=none;startFill=0;fontFamily=Consolas;fontSize=11;fontColor=#555555;labelBackgroundColor=#ffffff;exitX=0.7407407407407407;exitY=1.0;exitPerimeter=0;entryX=0.0;entryY=0.20408163265306123;entryPerimeter=0;" edge="1" parent="1" source="Pokesal" target="TipoElemental">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="2560" y="1420" />
+            </Array>
+            <mxPoint as="offset" x="79.0" y="0.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-35" value="notificador : 1" style="edgeStyle=none;html=1;rounded=0;strokeColor=#d18c73;strokeWidth=1;endArrow=open;endFill=0;startArrow=none;startFill=0;fontFamily=Consolas;fontSize=11;fontColor=#555555;labelBackgroundColor=#ffffff;exitX=0.7407407407407407;exitY=0.0;exitPerimeter=0;entryX=0.0;entryY=0.6818181818181818;entryPerimeter=0;" edge="1" parent="1" source="ServicoPosBatalha" target="NotificadorResultado">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1860" y="2380" />
+              <mxPoint x="2800" y="2380" />
+              <mxPoint x="2800" y="2320" />
+            </Array>
+            <mxPoint as="offset" x="5.0" y="0.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-36" value="registro : 1" style="edgeStyle=none;html=1;rounded=0;strokeColor=#d18c73;strokeWidth=1;endArrow=open;endFill=0;startArrow=none;startFill=0;fontFamily=Consolas;fontSize=11;fontColor=#555555;labelBackgroundColor=#ffffff;exitX=0.0;exitY=0.2536231884057971;exitPerimeter=0;entryX=1.0;entryY=0.43103448275862066;entryPerimeter=0;" edge="1" parent="1" source="ServicoPosBatalha" target="RegistroBatalha">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1340" y="2580" />
+              <mxPoint x="1340" y="2380" />
+              <mxPoint x="680" y="2380" />
+              <mxPoint x="680" y="2280" />
+            </Array>
+            <mxPoint as="offset" x="-70.0" y="0.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-37" value="aplica efeito" style="edgeStyle=none;html=1;rounded=0;strokeColor=#d18c73;strokeWidth=1;endArrow=open;endFill=0;startArrow=none;startFill=0;fontFamily=Consolas;fontSize=11;fontColor=#555555;labelBackgroundColor=#ffffff;dashed=1;dashPattern=7 5;exitX=0.0;exitY=0.5555555555555556;exitPerimeter=0;entryX=0.7407407407407407;entryY=0.0;entryPerimeter=0;" edge="1" parent="1" source="Item" target="Pokesal">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="3440" y="280" />
+              <mxPoint x="3440" y="600" />
+              <mxPoint x="2560" y="600" />
+            </Array>
+            <mxPoint as="offset" x="-195.0" y="0.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-38" value="posBatalha : 1" style="edgeStyle=none;html=1;rounded=0;strokeColor=#d18c73;strokeWidth=1;endArrow=open;endFill=0;startArrow=none;startFill=0;fontFamily=Consolas;fontSize=11;fontColor=#555555;labelBackgroundColor=#ffffff;exitX=0.7407407407407407;exitY=1.0;exitPerimeter=0;entryX=1.0;entryY=0.25862068965517243;entryPerimeter=0;" edge="1" parent="1" source="Batalha" target="PosBatalha">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1860" y="1540" />
+              <mxPoint x="2060" y="1540" />
+              <mxPoint x="2060" y="2260" />
+            </Array>
+            <mxPoint as="offset" x="0.0" y="260.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-39" value="resultados : 0..*" style="edgeStyle=none;html=1;rounded=0;strokeColor=#d18c73;strokeWidth=1;endArrow=open;endFill=0;startArrow=none;startFill=0;fontFamily=Consolas;fontSize=11;fontColor=#555555;labelBackgroundColor=#ffffff;exitX=1.0;exitY=0.5327868852459017;exitPerimeter=0;entryX=0.0;entryY=0.5487804878048781;entryPerimeter=0;" edge="1" parent="1" source="Torneio" target="ResultadoBatalha">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="720" y="1180" />
+              <mxPoint x="720" y="3020" />
+            </Array>
+            <mxPoint as="offset" x="0.0" y="40.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-40" value="cria" style="edgeStyle=none;html=1;rounded=0;strokeColor=#d18c73;strokeWidth=1;endArrow=open;endFill=0;startArrow=none;startFill=0;fontFamily=Consolas;fontSize=11;fontColor=#555555;labelBackgroundColor=#ffffff;dashed=1;dashPattern=7 5;exitX=1.0;exitY=0.22727272727272727;exitPerimeter=0;entryX=0.0;entryY=0.7551020408163265;entryPerimeter=0;" edge="1" parent="1" source="FabricaBatalha" target="Batalha">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="700" y="1520" />
+              <mxPoint x="700" y="1440" />
+              <mxPoint x="1400" y="1440" />
+              <mxPoint x="1400" y="920" />
+            </Array>
+            <mxPoint as="offset" x="-200.0" y="0.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-41" value="repositorio : 1" style="edgeStyle=none;html=1;rounded=0;strokeColor=#d18c73;strokeWidth=1;endArrow=open;endFill=0;startArrow=none;startFill=0;fontFamily=Consolas;fontSize=11;fontColor=#555555;labelBackgroundColor=#ffffff;exitX=0.48148148148148145;exitY=1.0;exitPerimeter=0;entryX=1.0;entryY=0.25862068965517243;entryPerimeter=0;" edge="1" parent="1" source="Batalha" target="RepositorioResultados">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1720" y="1540" />
+              <mxPoint x="1380" y="1540" />
+              <mxPoint x="1380" y="2260" />
+            </Array>
+            <mxPoint as="offset" x="0.0" y="320.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-42" value="notifica" style="edgeStyle=none;html=1;rounded=0;strokeColor=#d18c73;strokeWidth=1;endArrow=open;endFill=0;startArrow=none;startFill=0;fontFamily=Consolas;fontSize=11;fontColor=#555555;labelBackgroundColor=#ffffff;dashed=1;dashPattern=7 5;exitX=0.0;exitY=0.5303030303030303;exitPerimeter=0;entryX=1.0;entryY=0.5487804878048781;entryPerimeter=0;" edge="1" parent="1" source="NotificadorResultado" target="ResultadoBatalha">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="2740" y="2300" />
+              <mxPoint x="2740" y="3000" />
+              <mxPoint x="1360" y="3000" />
+              <mxPoint x="1360" y="3020" />
+            </Array>
+            <mxPoint as="offset" x="-370.0" y="0.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-43" value="participantes : 4 ou 8" style="edgeStyle=none;html=1;rounded=0;strokeColor=#d18c73;strokeWidth=1;endArrow=open;endFill=0;startArrow=none;startFill=0;fontFamily=Consolas;fontSize=11;fontColor=#555555;labelBackgroundColor=#ffffff;exitX=1.0;exitY=0.28688524590163933;exitPerimeter=0;entryX=0.0;entryY=0.4918032786885246;entryPerimeter=0;" edge="1" parent="1" source="Torneio" target="Treinador">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1420" y="1120" />
+              <mxPoint x="1420" y="1200" />
+              <mxPoint x="2080" y="1200" />
+              <mxPoint x="2080" y="300" />
+            </Array>
+            <mxPoint as="offset" x="-780.0" y="-80.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-44" value="registro : 1" style="edgeStyle=none;html=1;rounded=0;strokeColor=#d18c73;strokeWidth=1;endArrow=open;endFill=0;startArrow=none;startFill=0;fontFamily=Consolas;fontSize=11;fontColor=#555555;labelBackgroundColor=#ffffff;exitX=0.25925925925925924;exitY=1.0;exitPerimeter=0;entryX=1.0;entryY=0.25862068965517243;entryPerimeter=0;" edge="1" parent="1" source="Batalha" target="RegistroBatalha">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1600" y="1220" />
+              <mxPoint x="1340" y="1220" />
+              <mxPoint x="1340" y="2180" />
+              <mxPoint x="660" y="2180" />
+              <mxPoint x="660" y="2260" />
+            </Array>
+            <mxPoint as="offset" x="0.0" y="-250.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-45" value="resultado : 0..1" style="edgeStyle=none;html=1;rounded=0;strokeColor=#d18c73;strokeWidth=1;endArrow=open;endFill=0;startArrow=none;startFill=0;fontFamily=Consolas;fontSize=11;fontColor=#555555;labelBackgroundColor=#ffffff;exitX=0.0;exitY=0.7551020408163265;exitPerimeter=0;entryX=0.7407407407407407;entryY=0.0;entryPerimeter=0;" edge="1" parent="1" source="Batalha" target="ResultadoBatalha">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1380" y="920" />
+              <mxPoint x="1380" y="1520" />
+              <mxPoint x="1400" y="1520" />
+              <mxPoint x="1400" y="2880" />
+              <mxPoint x="1160" y="2880" />
+            </Array>
+            <mxPoint as="offset" x="0.0" y="205.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-46" value="captura identidade" style="edgeStyle=none;html=1;rounded=0;strokeColor=#d18c73;strokeWidth=1;endArrow=open;endFill=0;startArrow=none;startFill=0;fontFamily=Consolas;fontSize=11;fontColor=#555555;labelBackgroundColor=#ffffff;dashed=1;dashPattern=7 5;exitX=1.0;exitY=0.24390243902439024;exitPerimeter=0;entryX=0.0;entryY=0.2459016393442623;entryPerimeter=0;" edge="1" parent="1" source="ParticipanteResultado" target="Treinador">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="2120" y="3080" />
+              <mxPoint x="2120" y="240" />
+            </Array>
+            <mxPoint as="offset" x="0.0" y="386.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-47" value="treinador : 1" style="edgeStyle=none;html=1;rounded=0;strokeColor=#d18c73;strokeWidth=1;endArrow=open;endFill=0;startArrow=none;startFill=0;fontFamily=Consolas;fontSize=11;fontColor=#555555;labelBackgroundColor=#ffffff;exitX=1.0;exitY=0.5172413793103449;exitPerimeter=0;entryX=0.0;entryY=0.7377049180327869;entryPerimeter=0;" edge="1" parent="1" source="Classificacao" target="Treinador">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="700" y="1800" />
+              <mxPoint x="700" y="1740" />
+              <mxPoint x="2040" y="1740" />
+              <mxPoint x="2040" y="360" />
+            </Array>
+            <mxPoint as="offset" x="0.0" y="-483.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-48" value="eventosDoTurno : 0..*" style="edgeStyle=none;html=1;rounded=0;strokeColor=#d18c73;strokeWidth=1;endArrow=open;endFill=0;startArrow=none;startFill=0;fontFamily=Consolas;fontSize=11;fontColor=#555555;labelBackgroundColor=#ffffff;exitX=0.48148148148148145;exitY=1.0;exitPerimeter=0;entryX=1.0;entryY=0.5487804878048781;entryPerimeter=0;" edge="1" parent="1" source="Batalha" target="EventoBatalha">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1720" y="1220" />
+              <mxPoint x="1620" y="1220" />
+              <mxPoint x="1620" y="1500" />
+              <mxPoint x="640" y="1500" />
+              <mxPoint x="640" y="2940" />
+            </Array>
+            <mxPoint as="offset" x="0.0" y="474.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend" value="+ público · − privado · # protegido · sublinhado: static · {readOnly}: final&lt;br&gt;Triângulo vazio: herança / realização (tracejada) · Losango cheio: composição · Losango vazio: agregação&lt;br&gt;Seta contínua: associação · Seta tracejada: dependência · Multiplicidades indicadas no destino&lt;br&gt;Records: componentes explícitos; construtor e acessores gerados pelo Java são implícitos.&lt;br&gt;Relações estruturais e dependências principais; tipos da biblioteca Java aparecem nas assinaturas." style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontFamily=Arial;fontSize=14;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="2860" y="2910" width="1220" height="200" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
