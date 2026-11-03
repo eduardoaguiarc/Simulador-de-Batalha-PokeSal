@@ -135,7 +135,7 @@ Os diagramas originais abaixo foram preservados. A evolução para a Fase 03 est
 
 ### Classes
 
-![Diagrama de classes do Pokésal](Simulador-de-Batalha-PokeSal-main/docs/diagramas/diagrama-de-classes.png)
+![Diagrama de classes do Pokésal](Simulador-de-Batalha-PokeSal-main/docs/diagramas/diagrama-de-classes-atualizado.png)
 
 ## Qualidade do código
 
