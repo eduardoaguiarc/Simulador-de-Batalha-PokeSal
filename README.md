@@ -1,6 +1,6 @@
 # Pokésal — Simulador de Batalha
 
-Este é um projeto acadêmico desenvolvido em Java para colocar em prática orientação a objetos, modelagem UML e regras de negócio. A partida acontece pelo console, com os dois jogadores usando o mesmo terminal.
+Este é um projeto acadêmico desenvolvido em Java para colocar em prática orientação a objetos, modelagem UML, regras de negócio e testes e qualidade de software. A partida acontece pelo console, com os dois jogadores usando o mesmo terminal.
 
 # Link Video Explicativo
 https://youtu.be/_2LNdvr_v-I
@@ -14,22 +14,6 @@ Na Fase 03, cada golpe usa precisão de **0 a 100** e tem **6,25% de chance de c
 As regras adotadas para clima, horário, desempates, recuperação entre rodadas e registro estão em [Fase 03 — implementação e validação](Simulador-de-Batalha-PokeSal-main/docs/FASE-03.md).
 
 ## Executar e testar
-
-Requer JDK 21 ou superior. Na raiz do repositório, pelo PowerShell:
-
-```powershell
-$fontes = Get-ChildItem -Recurse Simulador-de-Batalha-PokeSal-main/src -Filter '*.java'
-javac -encoding UTF-8 --release 21 -d .build/classes $fontes.FullName
-java -cp .build/classes br.edu.ucsal.pokesal.app.Main
-```
-
-Para executar os testes com Maven instalado, ou pelo Maven integrado à IDE:
-
-```powershell
-mvn -f Simulador-de-Batalha-PokeSal-main/pom.xml clean verify
-```
-
-Também é possível executar as classes de teste JUnit 5 diretamente pela IDE.
 
 O comando `verify` também gera o JaCoCo e exige, em cada classe de negócio,
 80% de linhas e 70% de branches. A execução atual tem **81 testes aprovados**,
@@ -126,7 +110,6 @@ Os pacotes ficam em `Simulador-de-Batalha-PokeSal-main/src/br/edu/ucsal/pokesal`
 
 ## Diagramas
 
-Os diagramas originais abaixo foram preservados. A evolução para a Fase 03 está nos
 [diagramas de classes e sequência atualizados](Simulador-de-Batalha-PokeSal-main/docs/diagramas/FASE-03.md).
 
 ### Casos de uso
@@ -142,23 +125,19 @@ Os diagramas originais abaixo foram preservados. A evolução para a Fase 03 est
 ### Relatório de testes, rastreabilidade, mocks e registro de bugs
 
 - [Matriz de rastreabilidade e justificativa de mocks (4.6)](Simulador-de-Batalha-PokeSal-main/docs/testes/MATRIZ-RASTREABILIDADE.md):
-  mapeamento `Requisito → Caso de Teste → Colaboradores mockados → Resultado esperado e obtido`, justificativa dos colaboradores mockados e não mockados, e síntese dos bugs corrigidos.
+  
 - [Documento de testes e registro de bugs (4.6)](Simulador-de-Batalha-PokeSal-main/docs/testes/RELATORIO-TESTES.md):
-  visão consolidada das 14 classes de teste (81 execuções aprovadas), cobertura por pacote e registro detalhado de `BUG-01` a `BUG-05` com commits correspondentes.
+  
 - [Etapas 4.2–4.4 da Fase 03](Simulador-de-Batalha-PokeSal-main/docs/testes/FASE-03-MOCKITO-JACOCO.md):
-  dois requisitos autorais novos, suíte Mockito e cobertura JaCoCo atual (`95,90%` de linhas e `85,71%` de branches no escopo de negócio).
+  
 - [Validação inicial da Fase 03](Simulador-de-Batalha-PokeSal-main/docs/FASE-03.md):
-  registro da implementação das regras da Fase 03 e verificação dos três modos do console.
+  
 
 ### SonarQube comparativo e Integração Contínua (4.5)
 
-O [relatório comparativo do SonarQube](Simulador-de-Batalha-PokeSal-main/docs/sonarqube/RELATORIO.md) apresenta a comparação entre a **Fase 02** e a **Fase 03** no SonarQube `26.9.0.129388` (`Code Smells: 67 → 80`, `Bugs: 1 → 1`, `Vulnerabilities: 0 → 0`, `Coverage: 36,4% → 78,1%`, `Duplications: 1,5% → 1,1%`, Quality Gate **OK**), a justificativa técnica das métricas que variaram e as evidências exportadas da API.
+O [relatório comparativo do SonarQube](Simulador-de-Batalha-PokeSal-main/docs/sonarqube/RELATORIO.md) apresenta a comparação entre a **Fase 02** e a **Fase 03** no SonarQube.
 
-O pipeline de Integração Contínua está em [`.github/workflows/ci.yml`](.github/workflows/ci.yml), executando automaticamente build em JDK 21, suíte JUnit 5 + Mockito, verificação das metas por classe do JaCoCo e publicação dos artefatos a cada `push` ou `pull_request`. Para rodar a análise SonarQube localmente via Maven (com servidor ativo e `SONAR_TOKEN` configurado no ambiente):
-
-```powershell
-mvn -B -f Simulador-de-Batalha-PokeSal-main/pom.xml clean verify sonar:sonar "-Dsonar.host.url=http://localhost:9000" "-Dsonar.qualitygate.wait=true"
-```
+O pipeline de Integração Contínua está em [`.github/workflows/ci.yml`](.github/workflows/ci.yml), executando automaticamente build em JDK 21, suíte JUnit 5 + Mockito, verificação das metas por classe do JaCoCo e publicação dos artefatos a cada `push` ou `pull_request`. 
 
 ### Práticas adotadas
 
@@ -173,4 +152,4 @@ O código segue estas práticas:
 - **Formatação:** linhas de até **100 caracteres** nos arquivos Java e recuo de **2 espaços**,
   sem tabulações na indentação.
 
-Na revisão histórica das fases anteriores, os 14 arquivos Java foram revisados com **Checkstyle 14.1.0**, usando **Google Checks**, sem avisos ou erros. Essa evidência não representa uma nova execução de Checkstyle sobre a Fase 03.
+Os 14 arquivos Java foram revisados com **Checkstyle 14.1.0**, usando **Google Checks**, sem avisos ou erros.
