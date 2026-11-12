@@ -110,8 +110,6 @@ Os pacotes ficam em `Simulador-de-Batalha-PokeSal-main/src/br/edu/ucsal/pokesal`
 
 ## Diagramas
 
-[diagramas de classes e sequência atualizados](Simulador-de-Batalha-PokeSal-main/docs/diagramas/FASE-03.md).
-
 ### Casos de uso
 
 ![Diagrama de casos de uso do simulador](Simulador-de-Batalha-PokeSal-main/docs/diagramas/diagrama-de-casos-de-uso.png)
