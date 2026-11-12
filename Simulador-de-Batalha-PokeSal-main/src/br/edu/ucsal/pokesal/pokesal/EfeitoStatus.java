@@ -2,9 +2,7 @@ package br.edu.ucsal.pokesal.pokesal;
 
 import br.edu.ucsal.pokesal.enums.Status;
 
-/**
- * Representa um status e seus efeitos sobre os atributos e o fim de turno.
- */
+/** Representa um status e seus efeitos sobre os atributos e o fim de turno. */
 public class EfeitoStatus {
 
   private static final double REDUCAO_ATAQUE_QUEIMADO = 0.5;
@@ -14,13 +12,13 @@ public class EfeitoStatus {
 
   private Status tipo;
   private int turnosAtivos;
+  private int turnosEnvenenado;
 
   /**
    * Cria um efeito com o status e a duração informados.
    *
-   * @param tipo         status aplicado
-   * @param turnosAtivos duração em turnos; zero mantém o efeito sem expiração
-   *                     automática
+   * @param tipo status aplicado
+   * @param turnosAtivos duração em turnos; zero mantém o efeito sem expiração automática
    */
   public EfeitoStatus(Status tipo, int turnosAtivos) {
     this.tipo = tipo;
@@ -52,7 +50,12 @@ public class EfeitoStatus {
         alvo.receberDano(danoQueimadura);
       }
       case ENVENENADO -> {
-        int danoVeneno = (int) Math.round(alvo.getHpMaximo() * DANO_VENENO_PERCENTUAL);
+        turnosEnvenenado++;
+        int danoVeneno =
+            (int)
+                Math.min(
+                    alvo.getHpMaximo(),
+                    Math.round(alvo.getHpMaximo() * DANO_VENENO_PERCENTUAL * turnosEnvenenado));
         alvo.receberDano(danoVeneno);
       }
       default -> {

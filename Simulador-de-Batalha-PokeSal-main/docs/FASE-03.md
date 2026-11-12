@@ -1,5 +1,7 @@
 # Fase 03 — implementação e validação
 
+> **Suíte reduzida:** consulte a [suíte mínima atual](testes/SUITE-MINIMA.md). As contagens, resultados e coberturas abaixo descrevem a execução histórica de 81 testes, anterior à suíte atual de 19 testes. Referências a testes removidos são históricas.
+
 > Atualização das etapas 4.2–4.6:
 > - Requisitos autorais, suíte Mockito e JaCoCo: [Requisitos autorais, Mockito e JaCoCo](testes/FASE-03-MOCKITO-JACOCO.md) (81 testes aprovados, 95,90% de linhas e 85,71% de branches no escopo de negócio).
 > - SonarQube comparativo (Fase 02 vs. Fase 03) e CI: [Relatório Comparativo SonarQube](sonarqube/RELATORIO.md) (`Coverage: 36,4% → 78,1%`, `Duplications: 1,5% → 1,1%`, Quality Gate **OK**).

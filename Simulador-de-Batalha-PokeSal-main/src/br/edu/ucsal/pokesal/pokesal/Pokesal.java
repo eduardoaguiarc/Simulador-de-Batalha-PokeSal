@@ -6,9 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * Representa um Pokésal com seus atributos, golpes e status de batalha.
- */
+/** Representa um Pokésal com seus atributos, golpes e status de batalha. */
 public class Pokesal {
 
   private static final int MAX_GOLPES = 4;
@@ -27,16 +25,15 @@ public class Pokesal {
   /**
    * Cria um Pokésal com HP completo e os golpes informados.
    *
-   * @param id            identificador do Pokésal
-   * @param nome          nome do Pokésal
-   * @param hpMaximo      quantidade máxima de HP, maior que zero
-   * @param ataque        atributo de ataque, maior ou igual a zero
-   * @param defesa        atributo de defesa, maior ou igual a zero
-   * @param velocidade    atributo de velocidade, maior ou igual a zero
+   * @param id identificador do Pokésal
+   * @param nome nome do Pokésal
+   * @param hpMaximo quantidade máxima de HP, maior que zero
+   * @param ataque atributo de ataque, maior ou igual a zero
+   * @param defesa atributo de defesa, maior ou igual a zero
+   * @param velocidade atributo de velocidade, maior ou igual a zero
    * @param tipoElemental tipo elemental do Pokésal
-   * @param golpes        lista inicial com até quatro golpes
-   * @throws IllegalArgumentException se os atributos ou a lista de golpes forem
-   *                                  inválidos
+   * @param golpes lista inicial com até quatro golpes
+   * @throws IllegalArgumentException se os atributos ou a lista de golpes forem inválidos
    */
   public Pokesal(
       int id,
@@ -89,7 +86,7 @@ public class Pokesal {
    *
    * @param golpe golpe a adicionar
    * @throws IllegalArgumentException se o golpe for nulo
-   * @throws IllegalStateException    se a lista já possuir quatro golpes
+   * @throws IllegalStateException se a lista já possuir quatro golpes
    */
   public void adicionarGolpe(Golpe golpe) {
     if (golpe == null) {
@@ -103,9 +100,7 @@ public class Pokesal {
     golpes.add(golpe);
   }
 
-  /**
-   * Restaura a quantidade de usos de todos os golpes do Pokésal.
-   */
+  /** Restaura a quantidade de usos de todos os golpes do Pokésal. */
   public void resetarUsosDosGolpes() {
     for (Golpe golpe : golpes) {
       golpe.resetarUsos();
@@ -171,9 +166,7 @@ public class Pokesal {
     efeitoStatus = new EfeitoStatus(status, 0);
   }
 
-  /**
-   * Remove o status atual do Pokésal.
-   */
+  /** Remove o status atual do Pokésal. */
   public void removerStatus() {
     efeitoStatus = new EfeitoStatus(Status.NENHUM, 0);
   }
@@ -263,8 +256,7 @@ public class Pokesal {
   }
 
   /**
-   * Retorna uma visão da lista de golpes que impede adicionar ou remover
-   * elementos.
+   * Retorna uma visão da lista de golpes que impede adicionar ou remover elementos.
    *
    * @return lista não modificável que acompanha os golpes adicionados ao Pokésal
    */

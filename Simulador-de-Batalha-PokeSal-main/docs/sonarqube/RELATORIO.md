@@ -1,5 +1,7 @@
 # Relatório Comparativo SonarQube (Fase 02 vs. Fase 03) e Integração Contínua
 
+> **Suíte reduzida:** consulte a [suíte mínima atual](../testes/SUITE-MINIMA.md). As contagens, resultados e coberturas abaixo descrevem a execução histórica de 81 testes, anterior à suíte atual de 19 testes. Referências a testes removidos são históricas.
+
 ## 1. Identificação da Execução (Fase 03)
 
 - **Servidor:** SonarQube Community Build `26.9.0.129388` (`http://localhost:9000`)

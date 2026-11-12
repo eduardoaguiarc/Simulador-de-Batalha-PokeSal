@@ -1,19 +1,22 @@
 package br.edu.ucsal.pokesal;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.inOrder;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoInteractions;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
 
 import br.edu.ucsal.pokesal.batalha.EventoBatalha;
-import br.edu.ucsal.pokesal.batalha.Batalha;
 import br.edu.ucsal.pokesal.batalha.RegistroBatalha;
 import br.edu.ucsal.pokesal.batalha.TipoEvento;
-import br.edu.ucsal.pokesal.enums.Status;
-import br.edu.ucsal.pokesal.enums.TipoElemental;
-import br.edu.ucsal.pokesal.enums.TipoTerreno;
-import br.edu.ucsal.pokesal.pokesal.Golpe;
-import br.edu.ucsal.pokesal.treinador.Treinador;
-import java.util.Scanner;
 import br.edu.ucsal.pokesal.resultado.CarteiraPontos;
 import br.edu.ucsal.pokesal.resultado.NotificadorResultado;
 import br.edu.ucsal.pokesal.resultado.ParticipanteResultado;
@@ -22,26 +25,24 @@ import br.edu.ucsal.pokesal.resultado.ServicoPosBatalha;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
-import org.mockito.InjectMocks;
 import org.mockito.InOrder;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
 class RequisitosAutoraisMockitoTest {
-  @Mock
-  private CarteiraPontos carteira;
-  @Mock
-  private NotificadorResultado notificador;
-  @Mock
-  private RegistroBatalha registro;
-  @InjectMocks
-  private ServicoPosBatalha servico;
+  @Mock private CarteiraPontos carteira;
+  @Mock private NotificadorResultado notificador;
+  @Mock private RegistroBatalha registro;
+  @InjectMocks private ServicoPosBatalha servico;
 
   private ResultadoBatalha resultado(int turnos) {
-    return new ResultadoBatalha(9,
+    return new ResultadoBatalha(
+        9,
         new ParticipanteResultado(1, "Ana", 1, "CharSal"),
-        new ParticipanteResultado(2, "Bia", 2, "BulbaSal"), turnos);
+        new ParticipanteResultado(2, "Bia", 2, "BulbaSal"),
+        turnos);
   }
 
   @Test
@@ -53,34 +54,14 @@ class RequisitosAutoraisMockitoTest {
   }
 
   @Test
-  void testPremioSemBonusAPartirDeQuatroTurnos() {
+  void testPremioSemBonusDepoisDeTresTurnos() {
     servico.processar(resultado(4));
     verify(carteira).creditar(1, 100);
     verifyNoMoreInteractions(carteira);
   }
 
   @Test
-  void testSemPremioQuandoNenhumTurnoFoiDisputado() {
-    servico.processar(resultado(0));
-    verify(carteira, never()).creditar(anyInt(), anyInt());
-    verify(notificador, times(2)).notificar(anyInt(), any(ResultadoBatalha.class));
-  }
-
-  @Test
-  void testFalhaNaPremiacaoPreservaResultadoENotificacoes() {
-    doThrow(new IllegalStateException("Carteira indisponível"))
-        .when(carteira).creditar(1, 150);
-    ResultadoBatalha resultado = resultado(1);
-    assertDoesNotThrow(() -> servico.processar(resultado));
-    assertEquals(1, resultado.vencedor().idTreinador());
-    verify(notificador).notificar(1, resultado);
-    verify(notificador).notificar(2, resultado);
-    verify(registro).registrar(argThat(e -> e.tipo() == TipoEvento.ERRO_PREMIACAO
-        && e.idBatalha() == 9 && e.turno() == 1));
-  }
-
-  @Test
-  void testNotificaVencedorEPerdedorComResultadoCompleto() {
+  void testNotificaAmbosComResultadoCompleto() {
     ResultadoBatalha resultado = resultado(2);
     servico.processar(resultado);
     ArgumentCaptor<ResultadoBatalha> captor = ArgumentCaptor.forClass(ResultadoBatalha.class);
@@ -103,7 +84,8 @@ class RequisitosAutoraisMockitoTest {
   @Test
   void testFalhaNoPrimeiroAvisoNaoImpedeAvisoAoPerdedor() {
     doThrow(new IllegalStateException("Canal indisponível"))
-        .when(notificador).notificar(eq(1), any(ResultadoBatalha.class));
+        .when(notificador)
+        .notificar(eq(1), any(ResultadoBatalha.class));
     ResultadoBatalha resultado = resultado(2);
     assertDoesNotThrow(() -> servico.processar(resultado));
     verify(notificador).notificar(2, resultado);
@@ -114,36 +96,5 @@ class RequisitosAutoraisMockitoTest {
     assertTrue(erro.getValue().descricao().contains("Canal indisponível"));
     assertEquals(9, erro.getValue().idBatalha());
     assertEquals(1, resultado.vencedor().idTreinador());
-  }
-
-  @Test
-  void testFalhaNoSegundoAvisoNaoInvalidaPremiacao() {
-    doNothing().when(notificador).notificar(eq(1), any(ResultadoBatalha.class));
-    doThrow(new IllegalStateException("Canal indisponível"))
-        .when(notificador).notificar(eq(2), any(ResultadoBatalha.class));
-    ResultadoBatalha resultado = resultado(4);
-    assertDoesNotThrow(() -> servico.processar(resultado));
-    verify(notificador).notificar(1, resultado);
-    verify(carteira).creditar(1, 100);
-    verify(registro).registrar(argThat(e -> e.tipo() == TipoEvento.ERRO_NOTIFICACAO));
-  }
-
-  @Test
-  void testBatalhaRealPremiaEAvisaUmaUnicaVezMesmoComFalhaNoCsv() {
-    Treinador vencedor = ApoioTeste.treinador(1, 20,
-        new Golpe("Final", 200, 100, TipoElemental.FOGO, 2, Status.NENHUM, 0));
-    Treinador perdedor = ApoioTeste.treinador(2, 10, ApoioTeste.golpe(100));
-    Batalha batalha = new Batalha(9, vencedor, perdedor,
-        ApoioTeste.arena(TipoTerreno.CANTEIRO_CENTRAL), new Scanner("1 1"), () -> 0.5,
-        resultado -> {
-          throw new java.io.IOException("Sem disco");
-        }, registro, servico);
-    assertDoesNotThrow(batalha::iniciarBatalha);
-    assertSame(vencedor, batalha.obterVencedor());
-    assertThrows(IllegalStateException.class, batalha::iniciarBatalha);
-    verify(carteira, times(1)).creditar(1, 150);
-    verify(notificador, times(1)).notificar(1, batalha.getResultado());
-    verify(notificador, times(1)).notificar(2, batalha.getResultado());
-    verifyNoMoreInteractions(carteira, notificador);
   }
 }

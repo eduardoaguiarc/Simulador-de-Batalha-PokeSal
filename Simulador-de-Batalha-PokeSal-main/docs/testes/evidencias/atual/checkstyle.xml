@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="14.1.0">
+<file name="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\src\br\edu\ucsal\pokesal\aleatorio\GeradorAleatorio.java">
+</file>
+<file name="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\src\br\edu\ucsal\pokesal\app\Main.java">
+</file>
+<file name="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\src\br\edu\ucsal\pokesal\arena\Arena.java">
+</file>
+<file name="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\src\br\edu\ucsal\pokesal\arena\EfeitoTerreno.java">
+</file>
+<file name="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\src\br\edu\ucsal\pokesal\arena\ServicoTerreno.java">
+</file>
+<file name="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\src\br\edu\ucsal\pokesal\arena\ServicoTerrenoClimatico.java">
+</file>
+<file name="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\src\br\edu\ucsal\pokesal\batalha\Batalha.java">
+</file>
+<file name="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\src\br\edu\ucsal\pokesal\batalha\EventoBatalha.java">
+</file>
+<file name="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\src\br\edu\ucsal\pokesal\batalha\RegistroBatalha.java">
+</file>
+<file name="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\src\br\edu\ucsal\pokesal\batalha\TipoEvento.java">
+</file>
+<file name="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\src\br\edu\ucsal\pokesal\enums\Clima.java">
+</file>
+<file name="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\src\br\edu\ucsal\pokesal\enums\Status.java">
+</file>
+<file name="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\src\br\edu\ucsal\pokesal\enums\TipoElemental.java">
+</file>
+<file name="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\src\br\edu\ucsal\pokesal\enums\TipoTerreno.java">
+</file>
+<file name="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\src\br\edu\ucsal\pokesal\infraestrutura\CarteiraPontosMemoria.java">
+</file>
+<file name="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\src\br\edu\ucsal\pokesal\infraestrutura\NotificadorResultadoConsole.java">
+</file>
+<file name="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\src\br\edu\ucsal\pokesal\infraestrutura\RegistroBatalhaConsole.java">
+</file>
+<file name="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\src\br\edu\ucsal\pokesal\infraestrutura\RepositorioResultadosCsv.java">
+</file>
+<file name="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\src\br\edu\ucsal\pokesal\item\Antidoto.java">
+</file>
+<file name="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\src\br\edu\ucsal\pokesal\item\Item.java">
+</file>
+<file name="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\src\br\edu\ucsal\pokesal\item\ItemCura.java">
+</file>
+<file name="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\src\br\edu\ucsal\pokesal\pokesal\EfeitoStatus.java">
+</file>
+<file name="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\src\br\edu\ucsal\pokesal\pokesal\Golpe.java">
+</file>
+<file name="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\src\br\edu\ucsal\pokesal\pokesal\Pokesal.java">
+</file>
+<file name="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\src\br\edu\ucsal\pokesal\resultado\CarteiraPontos.java">
+</file>
+<file name="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\src\br\edu\ucsal\pokesal\resultado\NotificadorResultado.java">
+</file>
+<file name="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\src\br\edu\ucsal\pokesal\resultado\ParticipanteResultado.java">
+</file>
+<file name="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\src\br\edu\ucsal\pokesal\resultado\PosBatalha.java">
+</file>
+<file name="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\src\br\edu\ucsal\pokesal\resultado\RepositorioResultados.java">
+</file>
+<file name="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\src\br\edu\ucsal\pokesal\resultado\ResultadoBatalha.java">
+</file>
+<file name="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\src\br\edu\ucsal\pokesal\resultado\ServicoPosBatalha.java">
+</file>
+<file name="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\src\br\edu\ucsal\pokesal\torneio\Classificacao.java">
+</file>
+<file name="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\src\br\edu\ucsal\pokesal\torneio\FabricaBatalha.java">
+</file>
+<file name="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\src\br\edu\ucsal\pokesal\torneio\Torneio.java">
+</file>
+<file name="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\src\br\edu\ucsal\pokesal\treinador\Mochila.java">
+</file>
+<file name="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\src\br\edu\ucsal\pokesal\treinador\Treinador.java">
+</file>
+<file name="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\test\br\edu\ucsal\pokesal\ApoioTeste.java">
+</file>
+<file name="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\test\br\edu\ucsal\pokesal\ArenaTest.java">
+</file>
+<file name="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\test\br\edu\ucsal\pokesal\BatalhaMockitoTest.java">
+</file>
+<file name="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\test\br\edu\ucsal\pokesal\BatalhaTest.java">
+</file>
+<file name="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\test\br\edu\ucsal\pokesal\GolpeTest.java">
+</file>
+<file name="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\test\br\edu\ucsal\pokesal\PokesalTest.java">
+</file>
+<file name="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\test\br\edu\ucsal\pokesal\RequisitosAutoraisMockitoTest.java">
+</file>
+<file name="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\test\br\edu\ucsal\pokesal\TerrenoMockitoTest.java">
+</file>
+<file name="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\test\br\edu\ucsal\pokesal\TipoElementalTest.java">
+</file>
+<file name="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\test\br\edu\ucsal\pokesal\TorneioMockitoTest.java">
+</file>
+</checkstyle>

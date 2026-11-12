@@ -1,5 +1,7 @@
 # Fase 03 — requisitos autorais, Mockito e JaCoCo
 
+> **Suíte reduzida:** consulte a [suíte mínima atual](SUITE-MINIMA.md). As contagens, resultados e coberturas abaixo descrevem a execução histórica de 81 testes, anterior à suíte atual de 19 testes. Referências a testes removidos são históricas.
+
 ## 4.2 — Dois requisitos autorais novos
 
 Os três requisitos das fases anteriores (quatro golpes, precisão e usos limitados)
@@ -19,7 +21,7 @@ e os avisos aos jogadores.
   O console mostra os saldos ao encerrar a batalha avulsa ou o torneio. Os pontos
   não persistem entre execuções nem alteram o ranking por vitórias do torneio.
 - Testes Mockito: `testPremioComBonusAteTresTurnos`,
-  `testPremioSemBonusAPartirDeQuatroTurnos`,
+  `testPremioSemBonusDepoisDeTresTurnos`,
   `testSemPremioQuandoNenhumTurnoFoiDisputado` e
   `testFalhaNaPremiacaoPreservaResultadoENotificacoes`.
 
@@ -35,7 +37,7 @@ desfazer o resultado nem a premiação. Não há repetição automática dos env
 - Colaborador externo mockável: `NotificadorResultado`, injetado pelo construtor.
 - Adaptador: `NotificadorResultadoConsole`, que apresenta um aviso individual no
   terminal compartilhado dos jogadores. Nenhuma integração de e-mail é necessária.
-- Testes Mockito: `testNotificaVencedorEPerdedorComResultadoCompleto`,
+- Testes Mockito: `testNotificaAmbosComResultadoCompleto`,
   `testFalhaNoPrimeiroAvisoNaoImpedeAvisoAoPerdedor` e
   `testFalhaNoSegundoAvisoNaoInvalidaPremiacao`.
 

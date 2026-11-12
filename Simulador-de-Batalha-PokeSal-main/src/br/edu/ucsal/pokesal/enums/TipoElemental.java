@@ -23,29 +23,32 @@ public enum TipoElemental {
     }
 
     return switch (this) {
-      case FOGO -> switch (defensor) {
-        case PLANTA -> MULTIPLICADOR_SUPER_EFETIVO;
+      case FOGO ->
+          switch (defensor) {
+            case PLANTA -> MULTIPLICADOR_SUPER_EFETIVO;
 
-        case AGUA -> MULTIPLICADOR_POUCO_EFETIVO;
+            case AGUA -> MULTIPLICADOR_POUCO_EFETIVO;
 
-        case FOGO -> MULTIPLICADOR_NEUTRO;
-      };
+            case FOGO -> MULTIPLICADOR_NEUTRO;
+          };
 
-      case AGUA -> switch (defensor) {
-        case FOGO -> MULTIPLICADOR_SUPER_EFETIVO;
+      case AGUA ->
+          switch (defensor) {
+            case FOGO -> MULTIPLICADOR_SUPER_EFETIVO;
 
-        case PLANTA -> MULTIPLICADOR_POUCO_EFETIVO;
+            case PLANTA -> MULTIPLICADOR_POUCO_EFETIVO;
 
-        case AGUA -> MULTIPLICADOR_NEUTRO;
-      };
+            case AGUA -> MULTIPLICADOR_NEUTRO;
+          };
 
-      case PLANTA -> switch (defensor) {
-        case AGUA -> MULTIPLICADOR_SUPER_EFETIVO;
+      case PLANTA ->
+          switch (defensor) {
+            case AGUA -> MULTIPLICADOR_SUPER_EFETIVO;
 
-        case FOGO -> MULTIPLICADOR_POUCO_EFETIVO;
+            case FOGO -> MULTIPLICADOR_POUCO_EFETIVO;
 
-        case PLANTA -> MULTIPLICADOR_NEUTRO;
-      };
+            case PLANTA -> MULTIPLICADOR_NEUTRO;
+          };
     };
   }
 }

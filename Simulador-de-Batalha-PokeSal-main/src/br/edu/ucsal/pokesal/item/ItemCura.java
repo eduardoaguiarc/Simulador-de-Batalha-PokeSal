@@ -9,8 +9,8 @@ public class ItemCura extends Item {
   /**
    * Cria um item de cura com a quantidade de pontos de vida a recuperar.
    *
-   * @param id             identificador do item
-   * @param nome           nome de exibição do item
+   * @param id identificador do item
+   * @param nome nome de exibição do item
    * @param quantidadeCura quantidade de pontos de vida recuperados pelo item
    */
   public ItemCura(int id, String nome, int quantidadeCura) {
@@ -33,9 +33,8 @@ public class ItemCura extends Item {
   /**
    * Recupera HP de um Pokésal apto a batalhar, respeitando seu HP máximo.
    *
-   * @param pokesal Pokésal que receberá a cura; alvos derrotados geram uma
-   *                mensagem de falha
-   * @throws NullPointerException     se o Pokésal for nulo
+   * @param pokesal Pokésal que receberá a cura; alvos derrotados geram uma mensagem de falha
+   * @throws NullPointerException se o Pokésal for nulo
    * @throws IllegalArgumentException se a cura aplicada tiver quantidade negativa
    */
   @Override

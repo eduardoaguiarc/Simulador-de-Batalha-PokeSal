@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Torneio.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">pokesal</a> &gt; <a href="index.source.html" class="el_package">br.edu.ucsal.pokesal.torneio</a> &gt; <span class="el_source">Torneio.java</span></div><h1>Torneio.java</h1><pre class="source lang-java linenums">package br.edu.ucsal.pokesal.torneio;
+
+import br.edu.ucsal.pokesal.batalha.Batalha;
+import br.edu.ucsal.pokesal.resultado.ResultadoBatalha;
+import br.edu.ucsal.pokesal.treinador.Treinador;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+
+/** Torneio eliminatório; participantes são pareados pela ordem de inscrição. */
+public final class Torneio {
+  private final List&lt;Treinador&gt; participantes;
+  private final FabricaBatalha fabrica;
+<span class="fc" id="L17">  private final List&lt;ResultadoBatalha&gt; resultados = new ArrayList&lt;&gt;();</span>
+  private Treinador campeao;
+  private boolean iniciado;
+
+  /** Recebe quatro ou oito treinadores distintos e a fábrica de batalhas injetada. */
+<span class="fc" id="L22">  public Torneio(List&lt;Treinador&gt; participantes, FabricaBatalha fabrica) {</span>
+<span class="fc" id="L23">    Objects.requireNonNull(participantes);</span>
+<span class="pc bpc" id="L24" title="1 of 4 branches missed.">    if (participantes.size() != 4 &amp;&amp; participantes.size() != 8) {</span>
+<span class="fc" id="L25">      throw new IllegalArgumentException(&quot;O torneio exige 4 ou 8 treinadores.&quot;);</span>
+    }
+<span class="fc" id="L27">    Set&lt;Integer&gt; ids = new HashSet&lt;&gt;();</span>
+<span class="fc" id="L28">    Set&lt;Object&gt; pokesal = new HashSet&lt;&gt;();</span>
+<span class="fc" id="L29">    Set&lt;Object&gt; mochilas = new HashSet&lt;&gt;();</span>
+<span class="fc bfc" id="L30" title="All 2 branches covered.">    for (Treinador treinador : participantes) {</span>
+<span class="pc bpc" id="L31" title="1 of 2 branches missed.">      if (treinador == null</span>
+<span class="pc bpc" id="L32" title="1 of 2 branches missed.">          || treinador.getPokesal() == null</span>
+<span class="pc bpc" id="L33" title="1 of 2 branches missed.">          || treinador.getMochila() == null</span>
+<span class="fc bfc" id="L34" title="All 2 branches covered.">          || !ids.add(treinador.getId())</span>
+<span class="pc bpc" id="L35" title="1 of 2 branches missed.">          || !pokesal.add(treinador.getPokesal())</span>
+<span class="pc bpc" id="L36" title="1 of 2 branches missed.">          || !mochilas.add(treinador.getMochila())) {</span>
+<span class="fc" id="L37">        throw new IllegalArgumentException(</span>
+            &quot;Os treinadores precisam de identidades,&quot; + &quot; Pokésal e mochilas próprios.&quot;);
+      }
+<span class="fc" id="L40">    }</span>
+<span class="fc" id="L41">    this.participantes = List.copyOf(participantes);</span>
+<span class="fc" id="L42">    this.fabrica = Objects.requireNonNull(fabrica);</span>
+<span class="fc" id="L43">  }</span>
+
+  /** Executa as rodadas até restar o campeão; cada instância representa um único torneio. */
+  public Treinador iniciar() {
+<span class="pc bpc" id="L47" title="1 of 2 branches missed.">    if (iniciado) {</span>
+<span class="nc" id="L48">      throw new IllegalStateException(&quot;Este torneio já foi iniciado.&quot;);</span>
+    }
+<span class="fc" id="L50">    iniciado = true;</span>
+<span class="fc" id="L51">    List&lt;Treinador&gt; rodada = participantes;</span>
+<span class="fc" id="L52">    int idBatalha = 1;</span>
+<span class="fc bfc" id="L53" title="All 2 branches covered.">    while (rodada.size() &gt; 1) {</span>
+<span class="fc" id="L54">      List&lt;Treinador&gt; classificados = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L55" title="All 2 branches covered.">      for (int i = 0; i &lt; rodada.size(); i += 2) {</span>
+<span class="fc" id="L56">        Treinador primeiro = rodada.get(i);</span>
+<span class="fc" id="L57">        Treinador segundo = rodada.get(i + 1);</span>
+<span class="fc" id="L58">        primeiro.getPokesal().prepararParaBatalha();</span>
+<span class="fc" id="L59">        segundo.getPokesal().prepararParaBatalha();</span>
+<span class="fc" id="L60">        Batalha batalha = fabrica.criar(idBatalha++, primeiro, segundo);</span>
+<span class="fc" id="L61">        batalha.iniciarBatalha();</span>
+<span class="fc" id="L62">        resultados.add(Objects.requireNonNull(batalha.getResultado()));</span>
+<span class="fc" id="L63">        classificados.add(Objects.requireNonNull(batalha.obterVencedor()));</span>
+      }
+<span class="fc" id="L65">      rodada = classificados;</span>
+<span class="fc" id="L66">    }</span>
+<span class="fc" id="L67">    campeao = rodada.getFirst();</span>
+<span class="fc" id="L68">    return campeao;</span>
+  }
+
+  /** Retorna o campeão, ou null enquanto o torneio não terminou. */
+  public Treinador getCampeao() {
+<span class="fc" id="L73">    return campeao;</span>
+  }
+
+  /** Retorna os resultados definitivos, inclusive os que falharam ao persistir. */
+  public List&lt;ResultadoBatalha&gt; getResultados() {
+<span class="fc" id="L78">    return List.copyOf(resultados);</span>
+  }
+
+  /** Ordena por vitórias; empates mantêm a ordem de inscrição e compartilham posição. */
+  public List&lt;Classificacao&gt; getRanking() {
+<span class="fc" id="L83">    List&lt;Classificacao&gt; ranking = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L84" title="All 2 branches covered.">    for (Treinador treinador : participantes) {</span>
+<span class="fc" id="L85">      int vitorias = 0;</span>
+<span class="fc" id="L86">      int derrotas = 0;</span>
+<span class="fc bfc" id="L87" title="All 2 branches covered.">      for (ResultadoBatalha resultado : resultados) {</span>
+<span class="fc bfc" id="L88" title="All 2 branches covered.">        if (resultado.vencedor().idTreinador() == treinador.getId()) {</span>
+<span class="fc" id="L89">          vitorias++;</span>
+        }
+<span class="fc bfc" id="L91" title="All 2 branches covered.">        if (resultado.perdedor().idTreinador() == treinador.getId()) {</span>
+<span class="fc" id="L92">          derrotas++;</span>
+        }
+<span class="fc" id="L94">      }</span>
+<span class="fc" id="L95">      ranking.add(new Classificacao(treinador, vitorias, derrotas));</span>
+<span class="fc" id="L96">    }</span>
+<span class="fc" id="L97">    ranking.sort(Comparator.comparingInt(Classificacao::vitorias).reversed());</span>
+<span class="fc" id="L98">    return List.copyOf(ranking);</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.16.202610240946</span></div></body></html>

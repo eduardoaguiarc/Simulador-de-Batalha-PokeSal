@@ -21,18 +21,35 @@ public final class RepositorioResultadosCsv implements RepositorioResultados {
 
   @Override
   public void salvar(ResultadoBatalha resultado) throws IOException {
-    String cabecalho = "batalha,turnos,vencedor_id,vencedor,pokesal_vencedor_id,"
-        + "pokesal_vencedor,perdedor_id,perdedor,pokesal_perdedor_id,pokesal_perdedor\n";
+    String cabecalho =
+        "batalha,turnos,vencedor_id,vencedor,pokesal_vencedor_id,"
+            + "pokesal_vencedor,perdedor_id,perdedor,pokesal_perdedor_id,pokesal_perdedor\n";
     boolean vazio = !Files.exists(arquivo) || Files.size(arquivo) == 0;
-    String linha = resultado.idBatalha() + "," + resultado.numeroTurnos() + ","
-        + participante(resultado.vencedor()) + "," + participante(resultado.perdedor()) + "\n";
-    Files.writeString(arquivo, (vazio ? cabecalho : "") + linha, StandardCharsets.UTF_8,
-        StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+    String linha =
+        resultado.idBatalha()
+            + ","
+            + resultado.numeroTurnos()
+            + ","
+            + participante(resultado.vencedor())
+            + ","
+            + participante(resultado.perdedor())
+            + "\n";
+    Files.writeString(
+        arquivo,
+        (vazio ? cabecalho : "") + linha,
+        StandardCharsets.UTF_8,
+        StandardOpenOption.CREATE,
+        StandardOpenOption.APPEND);
   }
 
   private String participante(ParticipanteResultado participante) {
-    return participante.idTreinador() + "," + campo(participante.nomeTreinador()) + ","
-        + participante.idPokesal() + "," + campo(participante.nomePokesal());
+    return participante.idTreinador()
+        + ","
+        + campo(participante.nomeTreinador())
+        + ","
+        + participante.idPokesal()
+        + ","
+        + campo(participante.nomePokesal());
   }
 
   private String campo(String texto) {

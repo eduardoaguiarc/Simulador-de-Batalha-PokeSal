@@ -18,9 +18,7 @@ public final class Torneio {
   private Treinador campeao;
   private boolean iniciado;
 
-  /**
-   * Recebe quatro ou oito treinadores distintos e a fábrica de batalhas injetada.
-   */
+  /** Recebe quatro ou oito treinadores distintos e a fábrica de batalhas injetada. */
   public Torneio(List<Treinador> participantes, FabricaBatalha fabrica) {
     Objects.requireNonNull(participantes);
     if (participantes.size() != 4 && participantes.size() != 8) {
@@ -30,21 +28,21 @@ public final class Torneio {
     Set<Object> pokesal = new HashSet<>();
     Set<Object> mochilas = new HashSet<>();
     for (Treinador treinador : participantes) {
-      if (treinador == null || treinador.getPokesal() == null || treinador.getMochila() == null
-          || !ids.add(treinador.getId()) || !pokesal.add(treinador.getPokesal())
+      if (treinador == null
+          || treinador.getPokesal() == null
+          || treinador.getMochila() == null
+          || !ids.add(treinador.getId())
+          || !pokesal.add(treinador.getPokesal())
           || !mochilas.add(treinador.getMochila())) {
-        throw new IllegalArgumentException("Os treinadores precisam de identidades,"
-            + " Pokésal e mochilas próprios.");
+        throw new IllegalArgumentException(
+            "Os treinadores precisam de identidades," + " Pokésal e mochilas próprios.");
       }
     }
     this.participantes = List.copyOf(participantes);
     this.fabrica = Objects.requireNonNull(fabrica);
   }
 
-  /**
-   * Executa as rodadas até restar o campeão; cada instância representa um único
-   * torneio.
-   */
+  /** Executa as rodadas até restar o campeão; cada instância representa um único torneio. */
   public Treinador iniciar() {
     if (iniciado) {
       throw new IllegalStateException("Este torneio já foi iniciado.");
@@ -75,17 +73,12 @@ public final class Torneio {
     return campeao;
   }
 
-  /**
-   * Retorna os resultados definitivos, inclusive os que falharam ao persistir.
-   */
+  /** Retorna os resultados definitivos, inclusive os que falharam ao persistir. */
   public List<ResultadoBatalha> getResultados() {
     return List.copyOf(resultados);
   }
 
-  /**
-   * Ordena por vitórias; empates mantêm a ordem de inscrição e compartilham
-   * posição.
-   */
+  /** Ordena por vitórias; empates mantêm a ordem de inscrição e compartilham posição. */
   public List<Classificacao> getRanking() {
     List<Classificacao> ranking = new ArrayList<>();
     for (Treinador treinador : participantes) {

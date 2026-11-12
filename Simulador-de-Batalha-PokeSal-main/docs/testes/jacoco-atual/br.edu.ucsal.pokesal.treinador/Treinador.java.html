@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Treinador.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">pokesal</a> &gt; <a href="index.source.html" class="el_package">br.edu.ucsal.pokesal.treinador</a> &gt; <span class="el_source">Treinador.java</span></div><h1>Treinador.java</h1><pre class="source lang-java linenums">package br.edu.ucsal.pokesal.treinador;
+
+import br.edu.ucsal.pokesal.pokesal.Pokesal;
+
+/** Representa um treinador, seu Pokésal e a mochila de itens. */
+public class Treinador {
+  private int id;
+  private String nome;
+  private Pokesal pokesal;
+  private Mochila mochila;
+
+  /**
+   * Cria um treinador com o Pokésal e a mochila informados.
+   *
+   * @param id identificador do treinador
+   * @param nome nome do treinador
+   * @param pokesal Pokésal inicial, ou {@code null} se ainda não foi escolhido
+   * @param mochila mochila que armazena os itens do treinador
+   */
+<span class="fc" id="L20">  public Treinador(int id, String nome, Pokesal pokesal, Mochila mochila) {</span>
+<span class="fc" id="L21">    this.id = id;</span>
+<span class="fc" id="L22">    this.nome = nome;</span>
+<span class="fc" id="L23">    this.pokesal = pokesal;</span>
+<span class="fc" id="L24">    this.mochila = mochila;</span>
+<span class="fc" id="L25">  }</span>
+
+  /**
+   * Retorna o nome usado para identificar o treinador na batalha.
+   *
+   * @return nome de exibição do treinador
+   */
+  public String getNome() {
+<span class="fc" id="L33">    return nome;</span>
+  }
+
+  /** Retorna o identificador estável do treinador no torneio. */
+  public int getId() {
+<span class="fc" id="L38">    return id;</span>
+  }
+
+  /**
+   * Retorna o Pokésal escolhido para participar da batalha.
+   *
+   * @return Pokésal do treinador, ou {@code null} se ainda não foi escolhido
+   */
+  public Pokesal getPokesal() {
+<span class="fc" id="L47">    return pokesal;</span>
+  }
+
+  /**
+   * Retorna a mochila usada para armazenar e consumir os itens do treinador.
+   *
+   * @return mochila associada ao treinador
+   */
+  public Mochila getMochila() {
+<span class="fc" id="L56">    return mochila;</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.16.202610240946</span></div></body></html>

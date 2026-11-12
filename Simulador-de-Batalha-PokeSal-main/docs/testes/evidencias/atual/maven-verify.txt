@@ -1,0 +1,152 @@
+[INFO] Scanning for projects...
+[INFO] Loaded 24466 auto-discovered prefixes for remote repository central (prefixes-central.txt)
+[INFO] 
+[INFO] ------------------------< br.edu.ucsal:pokesal >------------------------
+[INFO] Building pokesal 3.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] Loaded 64 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[INFO] 
+[INFO] --- clean:3.5.0:clean (default-clean) @ pokesal ---
+[INFO] 
+[INFO] --- checkstyle:3.6.0:check (estilo-google) @ pokesal ---
+[INFO] Iniciando a auditoria...
+Auditoria completa.
+[INFO] You have 0 Checkstyle violations.
+[INFO] 
+[INFO] --- jacoco:0.8.16:prepare-agent (instrumentar) @ pokesal ---
+[INFO] argLine set to "-javaagent:C:\\Users\\Eduardo\\OneDrive\\Documentos\\Testes e Qualidade de Software\\Simulador-de-Batalha-PokeSal\\.build\\m2\\org\\jacoco\\org.jacoco.agent\\0.8.16\\org.jacoco.agent-0.8.16-runtime.jar=destfile=C:\\Users\\Eduardo\\OneDrive\\Documentos\\Testes e Qualidade de Software\\Simulador-de-Batalha-PokeSal\\Simulador-de-Batalha-PokeSal-main\\target\\jacoco.exec,excludes=br/edu/ucsal/pokesal/app/**:br/edu/ucsal/pokesal/infraestrutura/**"
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ pokesal ---
+[INFO] skip non existing resourceDirectory C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ pokesal ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 36 source files with javac [debug release 21] to target\classes
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ pokesal ---
+[INFO] skip non existing resourceDirectory C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ pokesal ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 10 source files with javac [debug release 21] to target\test-classes
+[INFO] 
+[INFO] --- surefire:3.5.4:test (default-test) @ pokesal ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running br.edu.ucsal.pokesal.ArenaTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.173 s -- in br.edu.ucsal.pokesal.ArenaTest
+[INFO] Running br.edu.ucsal.pokesal.BatalhaMockitoTest
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+
+--- Turno 1 ---
+
+Treinador 1 - Pokésal 1 | HP: 100/100 | Status: NENHUM
+1 - Atacar
+2 - Usar Item (indisponível)
+Escolha uma opção (1-2): Escolha o golpe de Pokésal 1:
+1 - Golpe [Poder: 20, Precisão: 100.0%, Usos: 10/10]
+Escolha uma opção (1-1): Pokésal 1 usou Golpe e causou 20 de dano em Pokésal 2! (HP restante: 80/100)
+
+Treinador 2 - Pokésal 2 | HP: 80/100 | Status: NENHUM
+1 - Atacar
+2 - Usar Item (indisponível)
+Escolha uma opção (1-2): Escolha o golpe de Pokésal 2:
+1 - Golpe [Poder: 20, Precisão: 100.0%, Usos: 10/10]
+Escolha uma opção (1-1): Pokésal 2 usou Golpe e causou 20 de dano em Pokésal 1! (HP restante: 80/100)
+
+--- Turno 1 ---
+
+Treinador 1 - Pokésal 1 | HP: 70/100 | Status: NENHUM
+1 - Atacar
+2 - Usar Item
+Escolha uma opção (1-2): Escolha o item de Treinador 1:
+1 - Potion
+Escolha uma opção (1-1): Treinador 1 usou Potion em Pokésal 1!
+
+Planta - Planta | HP: 80/100 | Status: NENHUM
+1 - Atacar
+2 - Usar Item (indisponível)
+Escolha uma opção (1-2): Escolha o golpe de Planta:
+1 - Veneno [Poder: 0, Precisão: 100.0%, Usos: 5/5]
+Escolha uma opção (1-1): Planta usou Veneno e causou 1 de dano em Pokésal 1! (HP restante: 89/100)
+Pokésal 1 foi afetado por ENVENENADO!
+Pokésal 1 usou Golpe, mas o golpe errou!
+Pokésal 1 usou Golpe e causou 30 de dano em Pokésal 2! (HP restante: 70/100)
+Pokésal 1 usou Golpe e causou 20 de dano em Pokésal 2! (HP restante: 50/100)
+=== BATALHA INICIADA: Treinador 1 vs Treinador 2 ===
+Arena: Teste (CANTEIRO_CENTRAL)
+
+--- Turno 1 ---
+
+Treinador 1 - Pokésal 1 | HP: 100/100 | Status: NENHUM
+1 - Atacar
+2 - Usar Item (indisponível)
+Escolha uma opção (1-2): Escolha o golpe de Pokésal 1:
+1 - Golpe [Poder: 20, Precisão: 100.0%, Usos: 10/10]
+2 - Final [Poder: 200, Precisão: 100.0%, Usos: 2/2]
+Escolha uma opção (1-2): Pokésal 1 usou Final e causou 200 de dano em Pokésal 2! (HP restante: 0/100)
+
+=== BATALHA ENCERRADA ===
+Vencedor: Treinador 1!
+=== BATALHA INICIADA: Treinador 1 vs Treinador 2 ===
+Arena: Teste (CANTEIRO_CENTRAL)
+
+--- Turno 1 ---
+
+Treinador 1 - Pokésal 1 | HP: 100/100 | Status: NENHUM
+1 - Atacar
+2 - Usar Item (indisponível)
+Escolha uma opção (1-2): Escolha o golpe de Pokésal 1:
+1 - Golpe [Poder: 20, Precisão: 100.0%, Usos: 10/10]
+2 - Final [Poder: 200, Precisão: 100.0%, Usos: 2/2]
+Escolha uma opção (1-2): Pokésal 1 usou Final e causou 200 de dano em Pokésal 2! (HP restante: 0/100)
+
+=== BATALHA ENCERRADA ===
+Vencedor: Treinador 1!
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 12.28 s -- in br.edu.ucsal.pokesal.BatalhaMockitoTest
+[INFO] Running br.edu.ucsal.pokesal.BatalhaTest
+Treinador 1 usou Antidoto em PokéSal Teste!
+Treinador 1 usou Cura em PokéSal Teste!
+Não foi possível aplicar efeito.
+Não foi possível aplicar efeito.
+Treinador 1 não possui itens na mochila.
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.108 s -- in br.edu.ucsal.pokesal.BatalhaTest
+[INFO] Running br.edu.ucsal.pokesal.GolpeTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.023 s -- in br.edu.ucsal.pokesal.GolpeTest
+[INFO] Running br.edu.ucsal.pokesal.PokesalTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.040 s -- in br.edu.ucsal.pokesal.PokesalTest
+[INFO] Running br.edu.ucsal.pokesal.RequisitosAutoraisMockitoTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.497 s -- in br.edu.ucsal.pokesal.RequisitosAutoraisMockitoTest
+[INFO] Running br.edu.ucsal.pokesal.TerrenoMockitoTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.030 s -- in br.edu.ucsal.pokesal.TerrenoMockitoTest
+[INFO] Running br.edu.ucsal.pokesal.TipoElementalTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.016 s -- in br.edu.ucsal.pokesal.TipoElementalTest
+[INFO] Running br.edu.ucsal.pokesal.TorneioMockitoTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.697 s -- in br.edu.ucsal.pokesal.TorneioMockitoTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 19, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jar:3.5.1:jar (default-jar) @ pokesal ---
+[INFO] Building jar: C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\target\pokesal-3.0.0.jar
+[INFO] 
+[INFO] --- jacoco:0.8.16:report (relatorio) @ pokesal ---
+[INFO] Loading execution data file C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\target\jacoco.exec
+[INFO] Analyzed bundle 'pokesal' with 23 classes
+[INFO] 
+[INFO] --- jacoco:0.8.16:check (metas-por-classe) @ pokesal ---
+[INFO] Loading execution data file C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\target\jacoco.exec
+[INFO] Analyzed bundle 'pokesal' with 23 classes
+[INFO] All coverage checks have been met.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  47.754 s
+[INFO] Finished at: 2026-11-12T19:25:36-03:00
+[INFO] ------------------------------------------------------------------------

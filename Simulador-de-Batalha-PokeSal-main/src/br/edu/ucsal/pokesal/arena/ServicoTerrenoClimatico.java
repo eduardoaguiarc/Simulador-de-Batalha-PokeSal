@@ -7,10 +7,7 @@ import java.time.LocalTime;
 import java.util.Objects;
 import java.util.function.Supplier;
 
-/**
- * Calcula os efeitos usando o relógio e a fonte de clima recebidos pelo
- * construtor.
- */
+/** Calcula os efeitos usando o relógio e a fonte de clima recebidos pelo construtor. */
 public final class ServicoTerrenoClimatico implements ServicoTerreno {
   private static final int INICIO_DIA = 6;
   private static final int FIM_DIA = 18;
@@ -33,12 +30,12 @@ public final class ServicoTerrenoClimatico implements ServicoTerreno {
     int hora = LocalTime.now(relogio).getHour();
     boolean dia = hora >= INICIO_DIA && hora < FIM_DIA;
     return switch (Objects.requireNonNull(terreno)) {
-      case ASFALTO_QUENTE -> dia && clima == Clima.ENSOLARADO
-          ? new EfeitoTerreno(MULTIPLICADOR_FOGO, 1.0, 0.0)
-          : NEUTRO;
-      case POCA_DE_CHUVA -> clima == Clima.CHUVOSO
-          ? new EfeitoTerreno(1.0, MULTIPLICADOR_AGUA, 0.0)
-          : NEUTRO;
+      case ASFALTO_QUENTE ->
+          dia && clima == Clima.ENSOLARADO
+              ? new EfeitoTerreno(MULTIPLICADOR_FOGO, 1.0, 0.0)
+              : NEUTRO;
+      case POCA_DE_CHUVA ->
+          clima == Clima.CHUVOSO ? new EfeitoTerreno(1.0, MULTIPLICADOR_AGUA, 0.0) : NEUTRO;
       case CANTEIRO_CENTRAL -> new EfeitoTerreno(1.0, 1.0, TAXA_CURA_PLANTA);
     };
   }

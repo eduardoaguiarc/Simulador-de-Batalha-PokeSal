@@ -50,30 +50,54 @@ classDiagram
   RegistroBatalhaConsole ..|> RegistroBatalha
 ```
 
-## Turno, registro e persistência
+## Sequência 1 — turno completo de batalha
+
+```mermaid
+sequenceDiagram
+  participant B as Batalha
+  participant G as GeradorAleatorio
+  participant P as Pokésal
+  participant A as Arena / ServicoTerreno
+  participant L as RegistroBatalha
+  B->>P: consultar velocidade efetiva dos participantes
+  opt Velocidades iguais
+    B->>G: sortear primeiro atacante
+  end
+  loop Ações por velocidade, enquanto não houver derrota
+    alt Usar item
+      B->>P: aplicar item e consumir ação
+    else Atacar
+      B->>G: sortear acerto e, se acertar, crítico
+      B->>A: consultar multiplicador com clima e Clock
+      B->>P: aplicar dano e possível status
+    end
+  end
+  opt Batalha continua
+    B->>A: aplicar cura do terreno
+    B->>P: aplicar dano de status
+  end
+  Note over B,L: Somente eventos ocorridos, ordenados por categoria
+  B->>L: ataques
+  B->>L: danos
+  B->>L: efeitos de status
+  B->>L: efeitos de terreno
+  B->>L: usos de item
+```
+
+## Sequência 2 — registro do resultado no torneio
 
 ```mermaid
 sequenceDiagram
   participant T as Torneio
   participant F as Fábrica injetada
   participant B as Batalha
-  participant G as GeradorAleatorio
-  participant A as Arena / ServicoTerreno
   participant L as RegistroBatalha
   participant R as RepositorioResultados
+  participant P as PosBatalha
   T->>F: criar participantes da chave
   F-->>T: batalha configurada
   T->>B: iniciarBatalha()
-  loop Até a derrota de um Pokésal
-    B->>G: sorteios de desempate/acerto/crítico/status
-    B->>A: consultar efeito com clima e Clock
-    B->>B: aplicar ações e efeitos; acumular eventos
-    B->>L: ataques
-    B->>L: danos
-    B->>L: efeitos de status
-    B->>L: efeitos de terreno
-    B->>L: usos de item
-  end
+  B->>B: executar turnos até a derrota
   B->>B: fixar resultado imutável
   B->>R: salvar(resultado)
   alt Falha de persistência
@@ -82,6 +106,7 @@ sequenceDiagram
   else Gravação concluída
     R-->>B: sucesso
   end
+  B->>P: processar premiação e avisos
   B-->>T: resultado e vencedor preservados
   T->>T: atualizar ranking e avançar vencedor
 ```

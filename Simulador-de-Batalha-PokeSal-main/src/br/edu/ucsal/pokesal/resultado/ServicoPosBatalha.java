@@ -15,8 +15,8 @@ public final class ServicoPosBatalha implements PosBatalha {
   private final RegistroBatalha registro;
 
   /** Recebe carteira, canal de aviso e registro de erros substituíveis em testes. */
-  public ServicoPosBatalha(CarteiraPontos carteira, NotificadorResultado notificador,
-      RegistroBatalha registro) {
+  public ServicoPosBatalha(
+      CarteiraPontos carteira, NotificadorResultado notificador, RegistroBatalha registro) {
     this.carteira = Objects.requireNonNull(carteira);
     this.notificador = Objects.requireNonNull(notificador);
     this.registro = Objects.requireNonNull(registro);
@@ -27,8 +27,9 @@ public final class ServicoPosBatalha implements PosBatalha {
     Objects.requireNonNull(resultado);
     // Sem turno disputado não há premiação; ainda se comunica o resultado.
     if (resultado.numeroTurnos() > 0) {
-      int pontos = PONTOS_VITORIA
-          + (resultado.numeroTurnos() <= LIMITE_TURNOS_RAPIDA ? BONUS_VITORIA_RAPIDA : 0);
+      int pontos =
+          PONTOS_VITORIA
+              + (resultado.numeroTurnos() <= LIMITE_TURNOS_RAPIDA ? BONUS_VITORIA_RAPIDA : 0);
       try {
         carteira.creditar(resultado.vencedor().idTreinador(), pontos);
       } catch (RuntimeException erro) {
@@ -48,7 +49,13 @@ public final class ServicoPosBatalha implements PosBatalha {
   }
 
   private void registrarFalha(ResultadoBatalha resultado, TipoEvento tipo, RuntimeException erro) {
-    registro.registrar(new EventoBatalha(resultado.idBatalha(), resultado.numeroTurnos(), tipo,
-        erro.getClass().getSimpleName() + ": " + erro.getMessage(), 0, false));
+    registro.registrar(
+        new EventoBatalha(
+            resultado.idBatalha(),
+            resultado.numeroTurnos(),
+            tipo,
+            erro.getClass().getSimpleName() + ": " + erro.getMessage(),
+            0,
+            false));
   }
 }

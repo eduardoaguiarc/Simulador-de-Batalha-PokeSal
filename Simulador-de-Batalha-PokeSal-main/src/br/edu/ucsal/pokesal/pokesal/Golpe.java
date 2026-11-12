@@ -3,37 +3,50 @@ package br.edu.ucsal.pokesal.pokesal;
 import br.edu.ucsal.pokesal.enums.Status;
 import br.edu.ucsal.pokesal.enums.TipoElemental;
 
-/**
- * Representa um golpe com poder, precisão, usos e aplicação de status.
- */
+/** Representa um golpe com poder, precisão, usos e aplicação de status. */
 public class Golpe {
-  private String nome;
-  private int poder;
-  private double precisao;
-  private TipoElemental tipoElemental;
-  private int maximosUsos;
+  private static final int PRECISAO_MAXIMA = 100;
+  private final String nome;
+  private final int poder;
+  private final double precisao;
+  private final TipoElemental tipoElemental;
+  private final int maximosUsos;
   private int usosRestantes;
-  private Status statusAplicado;
-  private double chanceStatus;
+  private final Status statusAplicado;
+  private final double chanceStatus;
 
   /**
    * Cria um golpe e valida seus atributos.
    *
-   * @param nome           nome do golpe
-   * @param poder          poder de ataque, maior ou igual a zero
-   * @param precisao       porcentagem de acerto, entre zero e cem
-   * @param tipoElemental  tipo elemental do golpe
-   * @param maximosUsos    quantidade máxima de usos, maior que zero
+   * @param nome nome do golpe
+   * @param poder poder de ataque, maior ou igual a zero
+   * @param precisao porcentagem de acerto, entre zero e cem
+   * @param tipoElemental tipo elemental do golpe
+   * @param maximosUsos quantidade máxima de usos, maior que zero
    * @param statusAplicado status que o golpe pode aplicar
-   * @param chanceStatus   probabilidade de aplicar o status, entre zero e um
+   * @param chanceStatus probabilidade de aplicar o status, entre zero e um
    * @throws IllegalArgumentException se algum atributo obrigatório for inválido
    */
-  public Golpe(String nome, int poder, double precisao, TipoElemental tipoElemental,
-      int maximosUsos, Status statusAplicado, double chanceStatus) {
-    if (nome == null || nome.isBlank() || poder < 0 || maximosUsos <= 0
-        || tipoElemental == null || statusAplicado == null
-        || !Double.isFinite(precisao) || precisao < 0 || precisao > 100
-        || !Double.isFinite(chanceStatus) || chanceStatus < 0 || chanceStatus > 1) {
+  public Golpe(
+      String nome,
+      int poder,
+      double precisao,
+      TipoElemental tipoElemental,
+      int maximosUsos,
+      Status statusAplicado,
+      double chanceStatus) {
+    if (nome == null
+        || nome.isBlank()
+        || poder < 0
+        || maximosUsos <= 0
+        || tipoElemental == null
+        || statusAplicado == null
+        || !Double.isFinite(precisao)
+        || precisao < 0
+        || precisao > PRECISAO_MAXIMA
+        || !Double.isFinite(chanceStatus)
+        || chanceStatus < 0
+        || chanceStatus > 1) {
       throw new IllegalArgumentException("Atributos inválidos para o golpe.");
     }
     this.nome = nome;
@@ -78,10 +91,7 @@ public class Golpe {
     return chanceStatus;
   }
 
-  /**
-   * Restaura a quantidade de usos restantes do golpe para o valor máximo
-   * permitido.
-   */
+  /** Restaura a quantidade de usos restantes do golpe para o valor máximo permitido. */
   public void resetarUsos() {
     usosRestantes = maximosUsos;
   }
@@ -114,8 +124,7 @@ public class Golpe {
   }
 
   /**
-   * Retorna o tipo usado para calcular a efetividade e os bônus de terreno do
-   * golpe.
+   * Retorna o tipo usado para calcular a efetividade e os bônus de terreno do golpe.
    *
    * @return tipo elemental do golpe
    */

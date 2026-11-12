@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="br.edu.ucsal.pokesal.TerrenoMockitoTest" time="1.03" tests="1" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="25"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\target\test-classes;C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\target\classes;C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\.build\m2\org\junit\platform\junit-platform-launcher\1.14.0\junit-platform-launcher-1.14.0.jar;C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\.build\m2\org\junit\platform\junit-platform-engine\1.14.0\junit-platform-engine-1.14.0.jar;C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\.build\m2\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\.build\m2\org\junit\platform\junit-platform-commons\1.14.0\junit-platform-commons-1.14.0.jar;C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\.build\m2\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\.build\m2\org\mockito\mockito-junit-jupiter\5.23.0\mockito-junit-jupiter-5.23.0.jar;C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\.build\m2\org\mockito\mockito-core\5.23.0\mockito-core-5.23.0.jar;C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\.build\m2\net\bytebuddy\byte-buddy\1.17.7\byte-buddy-1.17.7.jar;C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\.build\m2\net\bytebuddy\byte-buddy-agent\1.17.7\byte-buddy-agent-1.17.7.jar;C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\.build\m2\org\objenesis\objenesis\3.3\objenesis-3.3.jar;C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\.build\m2\org\junit\jupiter\junit-jupiter-api\5.14.0\junit-jupiter-api-5.14.0.jar;C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\.build\m2\org\junit\jupiter\junit-jupiter\5.14.0\junit-jupiter-5.14.0.jar;C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\.build\m2\org\junit\jupiter\junit-jupiter-params\5.14.0\junit-jupiter-params-5.14.0.jar;C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\.build\m2\org\junit\jupiter\junit-jupiter-engine\5.14.0\junit-jupiter-engine-5.14.0.jar;"/>
+    <property name="java.vm.vendor" value="Azul Systems, Inc."/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="http://www.azul.com/"/>
+    <property name="user.timezone" value="America/Bahia"/>
+    <property name="os.name" value="Windows 11"/>
+    <property name="java.vm.specification.version" value="25"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="BR"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\zulu25.36.205-ca-jdk25.0.4.1-win_x64\bin"/>
+    <property name="sun.java.command" value="C:\Users\Eduardo\AppData\Local\Temp\surefire18092459749119336216\surefirebooter-20261112192516264_3.jar C:\Users\Eduardo\AppData\Local\Temp\surefire18092459749119336216 2026-11-12T19-25-07_892-jvmRun1 surefire-20261112192516264_1tmp surefire_0-20261112192516264_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\target\test-classes;C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main\target\classes;C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\.build\m2\org\junit\platform\junit-platform-launcher\1.14.0\junit-platform-launcher-1.14.0.jar;C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\.build\m2\org\junit\platform\junit-platform-engine\1.14.0\junit-platform-engine-1.14.0.jar;C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\.build\m2\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\.build\m2\org\junit\platform\junit-platform-commons\1.14.0\junit-platform-commons-1.14.0.jar;C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\.build\m2\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\.build\m2\org\mockito\mockito-junit-jupiter\5.23.0\mockito-junit-jupiter-5.23.0.jar;C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\.build\m2\org\mockito\mockito-core\5.23.0\mockito-core-5.23.0.jar;C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\.build\m2\net\bytebuddy\byte-buddy\1.17.7\byte-buddy-1.17.7.jar;C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\.build\m2\net\bytebuddy\byte-buddy-agent\1.17.7\byte-buddy-agent-1.17.7.jar;C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\.build\m2\org\objenesis\objenesis\3.3\objenesis-3.3.jar;C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\.build\m2\org\junit\jupiter\junit-jupiter-api\5.14.0\junit-jupiter-api-5.14.0.jar;C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\.build\m2\org\junit\jupiter\junit-jupiter\5.14.0\junit-jupiter-5.14.0.jar;C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\.build\m2\org\junit\jupiter\junit-jupiter-params\5.14.0\junit-jupiter-params-5.14.0.jar;C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\.build\m2\org\junit\jupiter\junit-jupiter-engine\5.14.0\junit-jupiter-engine-5.14.0.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\"/>
+    <property name="user.language" value="pt"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2026-08-18"/>
+    <property name="java.home" value="C:\Program Files\Java\zulu25.36.205-ca-jdk25.0.4.1-win_x64"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="C:\Users\Eduardo\AppData\Local\Temp\surefire18092459749119336216\surefirebooter-20261112192516264_3.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="25.0.4.1+1-LTS"/>
+    <property name="user.name" value="Eduardo"/>
+    <property name="stdout.encoding" value="Cp1252"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="Zulu25.36+205-CA"/>
+    <property name="localRepository" value="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\.build\m2"/>
+    <property name="java.vendor.url.bug" value="http://www.azul.com/support/"/>
+    <property name="java.io.tmpdir" value="C:\Users\Eduardo\AppData\Local\Temp\"/>
+    <property name="java.version" value="25.0.4.1"/>
+    <property name="user.dir" value="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal\Simulador-de-Batalha-PokeSal-main"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="native.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files\Java\zulu25.36.205-ca-jdk25.0.4.1-win_x64\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Users\Eduardo\.codex\tmp\arg0-windows\codex-arg01XkL0T;C:\Users\Eduardo\AppData\Local\JetBrains\IntelliJIdea2026.3\acp-agents\codex-acp\2.6.0\node_modules\@openai\codex-win32-x64\vendor\x86_64-pc-windows-msvc\codex-path;C:\Users\Eduardo\AppData\Local\JetBrains\IntelliJIdea2026.3\acp-agents\codex-acp\2.6.0\node_modules\.bin;C:\Users\Eduardo\AppData\Local\JetBrains\IntelliJIdea2026.3\acp-agents\codex-acp\node_modules\.bin;C:\Users\Eduardo\AppData\Local\JetBrains\IntelliJIdea2026.3\acp-agents\node_modules\.bin;C:\Users\Eduardo\AppData\Local\JetBrains\IntelliJIdea2026.3\node_modules\.bin;C:\Users\Eduardo\AppData\Local\JetBrains\node_modules\.bin;C:\Users\Eduardo\AppData\Local\node_modules\.bin;C:\Users\Eduardo\AppData\node_modules\.bin;C:\Users\Eduardo\node_modules\.bin;C:\Users\node_modules\.bin;C:\node_modules\.bin;C:\Users\Eduardo\AppData\Local\JetBrains\IntelliJIdea2026.3\acp-agents\.runtimes\node\24.22.1\node_modules\npm\node_modules\@npmcli\run-script\lib\node-gyp-bin;C:\Users\Eduardo\AppData\Local\JetBrains\IntelliJIdea2026.3\acp-agents\.runtimes\node\24.22.1;C:\Python314\Scripts\;C:\Python314\;C:\Program Files\Java\zulu25.36.205-ca-jdk25.0.4.1-win_x64\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Users\Eduardo\.local\bin;C:\Users\Eduardo\AppData\Local\agy\bin;C:\Users\Eduardo\AppData\Local\Programs\OpenAI\Codex\bin;C:\Users\Eduardo\Downloads\sonar-scanner-8.1.0.6389-windows-x64\bin;C:\Users\Eduardo\AppData\Local\Microsoft\WindowsApps;C:\Users\Eduardo\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Eduardo\AppData\Roaming\npm;C:\Users\Eduardo\AppData\Local\Programs\Microsoft VS Code\bin\copilot-shim;C:\Users\Eduardo\AppData\Local\Programs\apache-maven-3.10.0\bin;C:\Users\Eduardo\AppData\Local\Programs\Gradle\gradle-9.8.2\bin;C:\Program Files\JetBrains\IntelliJ IDEA 2026.3\bin;."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="Cp1252"/>
+    <property name="java.vendor" value="Azul Systems, Inc."/>
+    <property name="java.vm.version" value="25.0.4.1+1-LTS"/>
+    <property name="stdin.encoding" value="Cp1252"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="maven.repo.local" value="C:\Users\Eduardo\OneDrive\Documentos\Testes e Qualidade de Software\Simulador-de-Batalha-PokeSal/.build/m2"/>
+    <property name="java.class.version" value="69.0"/>
+  </properties>
+  <testcase name="testAsfaltoQuenteApenasDuranteODia" classname="br.edu.ucsal.pokesal.TerrenoMockitoTest" time="1.01"/>
+</testsuite>

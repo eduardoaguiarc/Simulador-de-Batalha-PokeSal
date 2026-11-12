@@ -1,0 +1,23 @@
+[
+  {
+    "modo": 1,
+    "treinadores": 2,
+    "resultadosCSV": 1,
+    "avisos": 2,
+    "resultado": "aprovado"
+  },
+  {
+    "modo": 2,
+    "treinadores": 4,
+    "resultadosCSV": 3,
+    "avisos": 6,
+    "resultado": "aprovado"
+  },
+  {
+    "modo": 3,
+    "treinadores": 8,
+    "resultadosCSV": 7,
+    "avisos": 14,
+    "resultado": "aprovado"
+  }
+]

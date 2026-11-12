@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>EfeitoStatus.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">pokesal</a> &gt; <a href="index.source.html" class="el_package">br.edu.ucsal.pokesal.pokesal</a> &gt; <span class="el_source">EfeitoStatus.java</span></div><h1>EfeitoStatus.java</h1><pre class="source lang-java linenums">package br.edu.ucsal.pokesal.pokesal;
+
+import br.edu.ucsal.pokesal.enums.Status;
+
+/** Representa um status e seus efeitos sobre os atributos e o fim de turno. */
+public class EfeitoStatus {
+
+  private static final double REDUCAO_ATAQUE_QUEIMADO = 0.5;
+  private static final double REDUCAO_VELOCIDADE_PARALISADO = 0.5;
+  private static final double DANO_QUEIMADO_PERCENTUAL = 0.065;
+  private static final double DANO_VENENO_PERCENTUAL = 0.125;
+
+  private Status tipo;
+  private int turnosAtivos;
+  private int turnosEnvenenado;
+
+  /**
+   * Cria um efeito com o status e a duração informados.
+   *
+   * @param tipo status aplicado
+   * @param turnosAtivos duração em turnos; zero mantém o efeito sem expiração automática
+   */
+<span class="fc" id="L23">  public EfeitoStatus(Status tipo, int turnosAtivos) {</span>
+<span class="fc" id="L24">    this.tipo = tipo;</span>
+<span class="fc" id="L25">    this.turnosAtivos = turnosAtivos;</span>
+<span class="fc" id="L26">  }</span>
+
+  /**
+   * Retorna o status atual, que passa a nenhum quando sua duração expira.
+   *
+   * @return status representado por este efeito
+   */
+  public Status getTipo() {
+<span class="fc" id="L34">    return tipo;</span>
+  }
+
+  /**
+   * Aplica o dano do status e atualiza sua duração ao encerrar o turno.
+   *
+   * @param alvo Pokésal que recebe os efeitos do status
+   */
+  public void aplicarFimDoTurno(Pokesal alvo) {
+<span class="fc bfc" id="L43" title="All 8 branches covered.">    if (alvo == null || tipo == null || tipo == Status.NENHUM || alvo.estaDerrotado()) {</span>
+<span class="fc" id="L44">      return;</span>
+    }
+
+<span class="fc bfc" id="L47" title="All 3 branches covered.">    switch (tipo) {</span>
+      case QUEIMADO -&gt; {
+<span class="fc" id="L49">        int danoQueimadura = (int) Math.round(alvo.getHpMaximo() * DANO_QUEIMADO_PERCENTUAL);</span>
+<span class="fc" id="L50">        alvo.receberDano(danoQueimadura);</span>
+<span class="fc" id="L51">      }</span>
+      case ENVENENADO -&gt; {
+<span class="fc" id="L53">        turnosEnvenenado++;</span>
+<span class="fc" id="L54">        int danoVeneno =</span>
+            (int)
+<span class="fc" id="L56">                Math.min(</span>
+<span class="fc" id="L57">                    alvo.getHpMaximo(),</span>
+<span class="fc" id="L58">                    Math.round(alvo.getHpMaximo() * DANO_VENENO_PERCENTUAL * turnosEnvenenado));</span>
+<span class="fc" id="L59">        alvo.receberDano(danoVeneno);</span>
+<span class="fc" id="L60">      }</span>
+      default -&gt; {
+        // Os demais status não causam dano ao final do turno.
+      }
+    }
+
+<span class="fc bfc" id="L66" title="All 2 branches covered.">    if (turnosAtivos &gt; 0) {</span>
+<span class="fc" id="L67">      turnosAtivos--;</span>
+<span class="pc bpc" id="L68" title="1 of 2 branches missed.">      if (turnosAtivos == 0) {</span>
+<span class="fc" id="L69">        tipo = Status.NENHUM;</span>
+      }
+    }
+<span class="fc" id="L72">  }</span>
+
+  /**
+   * Calcula o ataque considerando a redução causada por queimadura.
+   *
+   * @param ataqueBase ataque sem modificadores de status
+   * @return ataque após a aplicação do status
+   */
+  public int calcularAtaqueEfetivo(int ataqueBase) {
+<span class="fc bfc" id="L81" title="All 2 branches covered.">    if (tipo == Status.QUEIMADO) {</span>
+<span class="fc" id="L82">      return (int) Math.round(ataqueBase * REDUCAO_ATAQUE_QUEIMADO);</span>
+    }
+<span class="fc" id="L84">    return ataqueBase;</span>
+  }
+
+  /**
+   * Calcula a velocidade considerando a redução causada por paralisia.
+   *
+   * @param velocidadeBase velocidade sem modificadores de status
+   * @return velocidade após a aplicação do status
+   */
+  public int calcularVelocidadeEfetiva(int velocidadeBase) {
+<span class="fc bfc" id="L94" title="All 2 branches covered.">    if (tipo == Status.PARALISADO) {</span>
+<span class="fc" id="L95">      return (int) Math.round(velocidadeBase * REDUCAO_VELOCIDADE_PARALISADO);</span>
+    }
+<span class="fc" id="L97">    return velocidadeBase;</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.16.202610240946</span></div></body></html>

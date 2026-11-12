@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Pokesal.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">pokesal</a> &gt; <a href="index.source.html" class="el_package">br.edu.ucsal.pokesal.pokesal</a> &gt; <span class="el_source">Pokesal.java</span></div><h1>Pokesal.java</h1><pre class="source lang-java linenums">package br.edu.ucsal.pokesal.pokesal;
+
+import br.edu.ucsal.pokesal.enums.Status;
+import br.edu.ucsal.pokesal.enums.TipoElemental;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+/** Representa um Pokésal com seus atributos, golpes e status de batalha. */
+public class Pokesal {
+
+  private static final int MAX_GOLPES = 4;
+
+  private final int id;
+  private final String nome;
+  private int hpAtual;
+  private final int hpMaximo;
+  private final int ataque;
+  private final int defesa;
+  private final int velocidade;
+  private final TipoElemental tipoElemental;
+  private final List&lt;Golpe&gt; golpes;
+  private EfeitoStatus efeitoStatus;
+
+  /**
+   * Cria um Pokésal com HP completo e os golpes informados.
+   *
+   * @param id identificador do Pokésal
+   * @param nome nome do Pokésal
+   * @param hpMaximo quantidade máxima de HP, maior que zero
+   * @param ataque atributo de ataque, maior ou igual a zero
+   * @param defesa atributo de defesa, maior ou igual a zero
+   * @param velocidade atributo de velocidade, maior ou igual a zero
+   * @param tipoElemental tipo elemental do Pokésal
+   * @param golpes lista inicial com até quatro golpes
+   * @throws IllegalArgumentException se os atributos ou a lista de golpes forem inválidos
+   */
+  public Pokesal(
+      int id,
+      String nome,
+      int hpMaximo,
+      int ataque,
+      int defesa,
+      int velocidade,
+      TipoElemental tipoElemental,
+<span class="fc" id="L46">      List&lt;Golpe&gt; golpes) {</span>
+<span class="fc bfc" id="L47" title="All 4 branches covered.">    if (nome == null || nome.isBlank()) {</span>
+<span class="fc" id="L48">      throw new IllegalArgumentException(&quot;O nome do Pokésal é obrigatório!&quot;);</span>
+    }
+
+<span class="fc bfc" id="L51" title="All 2 branches covered.">    if (hpMaximo &lt;= 0) {</span>
+<span class="fc" id="L52">      throw new IllegalArgumentException(&quot;O HP máximo deve ser positivo!&quot;);</span>
+    }
+
+<span class="fc bfc" id="L55" title="All 6 branches covered.">    if (ataque &lt; 0 || defesa &lt; 0 || velocidade &lt; 0) {</span>
+<span class="fc" id="L56">      throw new IllegalArgumentException(&quot;Os atributos não podem ser negativos!&quot;);</span>
+    }
+
+<span class="fc bfc" id="L59" title="All 2 branches covered.">    if (tipoElemental == null) {</span>
+<span class="fc" id="L60">      throw new IllegalArgumentException(&quot;O tipo elemental é obrigatório!&quot;);</span>
+    }
+
+<span class="pc bpc" id="L63" title="1 of 4 branches missed.">    if (golpes == null || golpes.size() &gt; MAX_GOLPES) {</span>
+<span class="fc" id="L64">      throw new IllegalArgumentException(&quot;Informe uma lista com até quatro golpes!&quot;);</span>
+    }
+
+<span class="fc" id="L67">    this.id = id;</span>
+<span class="fc" id="L68">    this.nome = nome;</span>
+<span class="fc" id="L69">    this.hpMaximo = hpMaximo;</span>
+<span class="fc" id="L70">    this.hpAtual = hpMaximo;</span>
+<span class="fc" id="L71">    this.ataque = ataque;</span>
+<span class="fc" id="L72">    this.defesa = defesa;</span>
+<span class="fc" id="L73">    this.velocidade = velocidade;</span>
+<span class="fc" id="L74">    this.tipoElemental = tipoElemental;</span>
+<span class="fc" id="L75">    this.golpes = new ArrayList&lt;&gt;();</span>
+
+<span class="fc bfc" id="L77" title="All 2 branches covered.">    for (Golpe golpe : golpes) {</span>
+<span class="fc" id="L78">      adicionarGolpe(golpe);</span>
+<span class="fc" id="L79">    }</span>
+
+<span class="fc" id="L81">    this.efeitoStatus = new EfeitoStatus(Status.NENHUM, 0);</span>
+<span class="fc" id="L82">  }</span>
+
+  /**
+   * Adiciona um golpe à lista, respeitando o limite de quatro golpes.
+   *
+   * @param golpe golpe a adicionar
+   * @throws IllegalArgumentException se o golpe for nulo
+   * @throws IllegalStateException se a lista já possuir quatro golpes
+   */
+  public void adicionarGolpe(Golpe golpe) {
+<span class="fc bfc" id="L92" title="All 2 branches covered.">    if (golpe == null) {</span>
+<span class="fc" id="L93">      throw new IllegalArgumentException(&quot;O golpe não pode ser nulo!&quot;);</span>
+    }
+
+<span class="fc bfc" id="L96" title="All 2 branches covered.">    if (golpes.size() &gt;= MAX_GOLPES) {</span>
+<span class="fc" id="L97">      throw new IllegalStateException(&quot;O Pokésal já possui quatro golpes!&quot;);</span>
+    }
+
+<span class="fc" id="L100">    golpes.add(golpe);</span>
+<span class="fc" id="L101">  }</span>
+
+  /** Restaura a quantidade de usos de todos os golpes do Pokésal. */
+  public void resetarUsosDosGolpes() {
+<span class="fc bfc" id="L105" title="All 2 branches covered.">    for (Golpe golpe : golpes) {</span>
+<span class="fc" id="L106">      golpe.resetarUsos();</span>
+<span class="fc" id="L107">    }</span>
+<span class="fc" id="L108">  }</span>
+
+  /**
+   * Reduz o HP atual sem permitir valores abaixo de zero.
+   *
+   * @param dano quantidade de HP a remover
+   * @throws IllegalArgumentException se o dano for negativo
+   */
+  public void receberDano(int dano) {
+<span class="fc bfc" id="L117" title="All 2 branches covered.">    if (dano &lt; 0) {</span>
+<span class="fc" id="L118">      throw new IllegalArgumentException(&quot;O dano não pode ser negativo!&quot;);</span>
+    }
+
+<span class="fc" id="L121">    hpAtual = Math.max(0, hpAtual - dano);</span>
+<span class="fc" id="L122">  }</span>
+
+  /**
+   * Recupera HP sem ultrapassar o HP máximo.
+   *
+   * @param quantidade quantidade de HP a recuperar
+   * @throws IllegalArgumentException se a quantidade for negativa
+   */
+  public void recuperarHp(int quantidade) {
+<span class="fc bfc" id="L131" title="All 2 branches covered.">    if (quantidade &lt; 0) {</span>
+<span class="fc" id="L132">      throw new IllegalArgumentException(&quot;A quantidade de cura não pode ser negativa!&quot;);</span>
+    }
+
+<span class="fc" id="L135">    int hpFaltando = hpMaximo - hpAtual;</span>
+<span class="fc" id="L136">    int curaAplicada = Math.min(quantidade, hpFaltando);</span>
+
+<span class="fc" id="L138">    hpAtual += curaAplicada;</span>
+<span class="fc" id="L139">  }</span>
+
+  /**
+   * Verifica se o Pokésal está sem HP.
+   *
+   * @return verdadeiro quando o HP atual é zero
+   */
+  public boolean estaDerrotado() {
+<span class="fc bfc" id="L147" title="All 2 branches covered.">    return hpAtual == 0;</span>
+  }
+
+  /**
+   * Substitui o status atual ou o remove quando o novo status é nenhum.
+   *
+   * @param status status a aplicar
+   * @throws IllegalArgumentException se o status for nulo
+   */
+  public void aplicarStatus(Status status) {
+<span class="fc bfc" id="L157" title="All 2 branches covered.">    if (status == null) {</span>
+<span class="fc" id="L158">      throw new IllegalArgumentException(&quot;O status não pode ser nulo!&quot;);</span>
+    }
+
+<span class="fc bfc" id="L161" title="All 2 branches covered.">    if (status == Status.NENHUM) {</span>
+<span class="fc" id="L162">      removerStatus();</span>
+<span class="fc" id="L163">      return;</span>
+    }
+
+<span class="fc" id="L166">    efeitoStatus = new EfeitoStatus(status, 0);</span>
+<span class="fc" id="L167">  }</span>
+
+  /** Remove o status atual do Pokésal. */
+  public void removerStatus() {
+<span class="fc" id="L171">    efeitoStatus = new EfeitoStatus(Status.NENHUM, 0);</span>
+<span class="fc" id="L172">  }</span>
+
+  /**
+   * Retorna o status atual do Pokésal.
+   *
+   * @return status aplicado
+   */
+  public Status obterStatus() {
+<span class="fc" id="L180">    return efeitoStatus.getTipo();</span>
+  }
+
+  /**
+   * Retorna o ataque considerando o status atual.
+   *
+   * @return ataque após os modificadores de status
+   */
+  public int obterAtaqueEfetivo() {
+<span class="fc" id="L189">    return efeitoStatus.calcularAtaqueEfetivo(ataque);</span>
+  }
+
+  /**
+   * Retorna a velocidade considerando o status atual.
+   *
+   * @return velocidade após os modificadores de status
+   */
+  public int obterVelocidadeEfetiva() {
+<span class="fc" id="L198">    return efeitoStatus.calcularVelocidadeEfetiva(velocidade);</span>
+  }
+
+  /**
+   * Retorna o nome usado para identificar o Pokésal na batalha.
+   *
+   * @return nome de exibição do Pokésal
+   */
+  public String getNome() {
+<span class="fc" id="L207">    return nome;</span>
+  }
+
+  /** Retorna o identificador do Pokésal para o histórico de resultados. */
+  public int getId() {
+<span class="fc" id="L212">    return id;</span>
+  }
+
+  /** Prepara uma nova batalha do torneio com HP, status e usos restaurados. */
+  public void prepararParaBatalha() {
+<span class="fc" id="L217">    hpAtual = hpMaximo;</span>
+<span class="fc" id="L218">    removerStatus();</span>
+<span class="fc" id="L219">    resetarUsosDosGolpes();</span>
+<span class="fc" id="L220">  }</span>
+
+  /**
+   * Retorna os pontos de vida restantes após danos e curas.
+   *
+   * @return HP atual do Pokésal
+   */
+  public int getHpAtual() {
+<span class="fc" id="L228">    return hpAtual;</span>
+  }
+
+  /**
+   * Retorna o limite de pontos de vida usado na recuperação de HP.
+   *
+   * @return HP máximo do Pokésal
+   */
+  public int getHpMaximo() {
+<span class="fc" id="L237">    return hpMaximo;</span>
+  }
+
+  /**
+   * Retorna o atributo de defesa usado para reduzir o dano recebido.
+   *
+   * @return defesa do Pokésal
+   */
+  public int getDefesa() {
+<span class="fc" id="L246">    return defesa;</span>
+  }
+
+  /**
+   * Retorna o tipo usado para determinar a efetividade dos golpes recebidos.
+   *
+   * @return tipo elemental do Pokésal
+   */
+  public TipoElemental getTipoElemental() {
+<span class="fc" id="L255">    return tipoElemental;</span>
+  }
+
+  /**
+   * Retorna uma visão da lista de golpes que impede adicionar ou remover elementos.
+   *
+   * @return lista não modificável que acompanha os golpes adicionados ao Pokésal
+   */
+  public List&lt;Golpe&gt; getGolpes() {
+<span class="fc" id="L264">    return Collections.unmodifiableList(golpes);</span>
+  }
+
+  /**
+   * Retorna o efeito responsável pelo status atual e por sua duração.
+   *
+   * @return efeito de status associado ao Pokésal
+   */
+  public EfeitoStatus getEfeitoStatus() {
+<span class="fc" id="L273">    return efeitoStatus;</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.16.202610240946</span></div></body></html>

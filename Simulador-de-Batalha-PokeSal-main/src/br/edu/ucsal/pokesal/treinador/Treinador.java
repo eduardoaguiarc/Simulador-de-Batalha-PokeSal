@@ -12,8 +12,8 @@ public class Treinador {
   /**
    * Cria um treinador com o Pokésal e a mochila informados.
    *
-   * @param id      identificador do treinador
-   * @param nome    nome do treinador
+   * @param id identificador do treinador
+   * @param nome nome do treinador
    * @param pokesal Pokésal inicial, ou {@code null} se ainda não foi escolhido
    * @param mochila mochila que armazena os itens do treinador
    */

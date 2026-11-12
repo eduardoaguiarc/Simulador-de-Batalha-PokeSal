@@ -8,8 +8,8 @@ import java.util.Objects;
 /** Arena cujo terreno modifica o dano dos golpes e a recuperação de HP. */
 public class Arena {
 
-  private String nome;
-  private TipoTerreno tipoTerreno;
+  private final String nome;
+  private final TipoTerreno tipoTerreno;
   private final ServicoTerreno servicoTerreno;
 
   /**

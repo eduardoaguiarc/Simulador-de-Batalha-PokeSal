@@ -1,5 +1,7 @@
 # Documento de Testes, Cobertura e Registro de Bugs — Fase 03
 
+> **Suíte reduzida:** consulte a [suíte mínima atual](SUITE-MINIMA.md). As contagens, resultados e coberturas abaixo descrevem a execução histórica de 81 testes, anterior à suíte atual de 19 testes. Referências a testes removidos são históricas.
+
 Este documento consolida a evolução da suíte de testes do **PokéSal** entre a Fase 02 e a Fase 03, apresenta o registro detalhado dos bugs revelados pelos novos testes (com as respectivas correções e commits) e preserva o catálogo histórico dos testes originais da Fase 02.
 
 - **Matriz de rastreabilidade completa e justificativa dos mocks:** [`MATRIZ-RASTREABILIDADE.md`](MATRIZ-RASTREABILIDADE.md)

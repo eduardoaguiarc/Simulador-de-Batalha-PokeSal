@@ -1,7 +1,11 @@
 package br.edu.ucsal.pokesal;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.inOrder;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
+import static org.mockito.Mockito.when;
 
 import br.edu.ucsal.pokesal.batalha.Batalha;
 import br.edu.ucsal.pokesal.resultado.ParticipanteResultado;
@@ -18,19 +22,16 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
 class TorneioMockitoTest {
-  @Mock
-  private FabricaBatalha fabrica;
-  @Mock
-  private Batalha semifinal1;
-  @Mock
-  private Batalha semifinal2;
-  @Mock
-  private Batalha finalTorneio;
+  @Mock private FabricaBatalha fabrica;
+  @Mock private Batalha semifinal1;
+  @Mock private Batalha semifinal2;
+  @Mock private Batalha finalTorneio;
 
-  private ResultadoBatalha configurar(Batalha batalha, int id, Treinador vencedor,
-      Treinador perdedor) {
-    ResultadoBatalha resultado = new ResultadoBatalha(id, ParticipanteResultado.de(vencedor),
-        ParticipanteResultado.de(perdedor), 2);
+  private ResultadoBatalha configurar(
+      Batalha batalha, int id, Treinador vencedor, Treinador perdedor) {
+    ResultadoBatalha resultado =
+        new ResultadoBatalha(
+            id, ParticipanteResultado.de(vencedor), ParticipanteResultado.de(perdedor), 2);
     when(batalha.getResultado()).thenReturn(resultado);
     when(batalha.obterVencedor()).thenReturn(vencedor);
     return resultado;
@@ -62,5 +63,11 @@ class TorneioMockitoTest {
     ordem.verify(fabrica).criar(3, t2, t3);
     ordem.verify(finalTorneio).iniciarBatalha();
     verifyNoMoreInteractions(fabrica);
+
+    Treinador treinador = ApoioTeste.treinador(1, 10, ApoioTeste.golpe(100));
+    assertThrows(
+        IllegalArgumentException.class, () -> new Torneio(List.of(treinador), (id, a, b) -> null));
+    List<Treinador> repetidos = List.of(treinador, treinador, treinador, treinador);
+    assertThrows(IllegalArgumentException.class, () -> new Torneio(repetidos, (id, a, b) -> null));
   }
 }

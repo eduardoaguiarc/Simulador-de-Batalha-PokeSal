@@ -1,35 +1,34 @@
 package br.edu.ucsal.pokesal.batalha;
 
-import br.edu.ucsal.pokesal.arena.Arena;
 import br.edu.ucsal.pokesal.aleatorio.GeradorAleatorio;
+import br.edu.ucsal.pokesal.arena.Arena;
 import br.edu.ucsal.pokesal.enums.Status;
 import br.edu.ucsal.pokesal.item.Item;
 import br.edu.ucsal.pokesal.pokesal.Golpe;
 import br.edu.ucsal.pokesal.pokesal.Pokesal;
-import br.edu.ucsal.pokesal.treinador.Mochila;
-import br.edu.ucsal.pokesal.treinador.Treinador;
 import br.edu.ucsal.pokesal.resultado.ParticipanteResultado;
+import br.edu.ucsal.pokesal.resultado.PosBatalha;
 import br.edu.ucsal.pokesal.resultado.RepositorioResultados;
 import br.edu.ucsal.pokesal.resultado.ResultadoBatalha;
-import br.edu.ucsal.pokesal.resultado.PosBatalha;
+import br.edu.ucsal.pokesal.treinador.Mochila;
+import br.edu.ucsal.pokesal.treinador.Treinador;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
-/**
- * Coordena os turnos, as ações e os efeitos de uma batalha entre dois
- * treinadores.
- */
+/** Coordena os turnos, as ações e os efeitos de uma batalha entre dois treinadores. */
 public class Batalha {
 
   /** Quantidade máxima de itens que cada treinador pode usar em uma batalha. */
   public static final int MAX_ITENS_POR_BATALHA = 2;
+
   private static final int DANO_BASE_MINIMO = 1;
   private static final int FATOR_PORCENTAGEM = 100;
   private static final double CHANCE_CRITICO = 0.0625;
   private static final double MULTIPLICADOR_CRITICO = 1.5;
+  private static final double CHANCE_DESEMPATE = 0.5;
   private final GeradorAleatorio gerador;
   private final RepositorioResultados repositorio;
   private final RegistroBatalha registro;
@@ -39,11 +38,11 @@ public class Batalha {
   private ResultadoBatalha resultado;
   private Treinador vencedor;
 
-  private int id;
-  private Treinador treinador1;
-  private Treinador treinador2;
-  private Arena arena;
-  private Scanner scanner;
+  private final int id;
+  private final Treinador treinador1;
+  private final Treinador treinador2;
+  private final Arena arena;
+  private final Scanner scanner;
   private int numeroTurno;
   private int itensUsadosTreinador1;
   private int itensUsadosTreinador2;
@@ -52,26 +51,47 @@ public class Batalha {
   /**
    * Prepara uma batalha entre dois treinadores.
    *
-   * @param id          identificador da batalha
-   * @param treinador1  primeiro participante
-   * @param treinador2  segundo participante
-   * @param arena       arena que define os efeitos do terreno
-   * @param scanner     leitor das escolhas feitas no console
-   * @param gerador     fonte de sorteios de acerto, crítico, status e desempate
+   * @param id identificador da batalha
+   * @param treinador1 primeiro participante
+   * @param treinador2 segundo participante
+   * @param arena arena que define os efeitos do terreno
+   * @param scanner leitor das escolhas feitas no console
+   * @param gerador fonte de sorteios de acerto, crítico, status e desempate
    * @param repositorio destino dos resultados
-   * @param registro    destino dos eventos e erros
+   * @param registro destino dos eventos e erros
    */
-  public Batalha(int id, Treinador treinador1, Treinador treinador2, Arena arena,
-      Scanner scanner, GeradorAleatorio gerador, RepositorioResultados repositorio,
+  public Batalha(
+      int id,
+      Treinador treinador1,
+      Treinador treinador2,
+      Arena arena,
+      Scanner scanner,
+      GeradorAleatorio gerador,
+      RepositorioResultados repositorio,
       RegistroBatalha registro) {
-    this(id, treinador1, treinador2, arena, scanner, gerador, repositorio, registro,
-        resultado -> { });
+    this(
+        id,
+        treinador1,
+        treinador2,
+        arena,
+        scanner,
+        gerador,
+        repositorio,
+        registro,
+        resultado -> {});
   }
 
   /** Prepara uma batalha com as ações autorais de premiação e notificação. */
-  public Batalha(int id, Treinador treinador1, Treinador treinador2, Arena arena,
-      Scanner scanner, GeradorAleatorio gerador, RepositorioResultados repositorio,
-      RegistroBatalha registro, PosBatalha posBatalha) {
+  public Batalha(
+      int id,
+      Treinador treinador1,
+      Treinador treinador2,
+      Arena arena,
+      Scanner scanner,
+      GeradorAleatorio gerador,
+      RepositorioResultados repositorio,
+      RegistroBatalha registro,
+      PosBatalha posBatalha) {
     if (treinador1 == treinador2) {
       throw new IllegalArgumentException("A batalha exige dois treinadores distintos.");
     }
@@ -101,8 +121,8 @@ public class Batalha {
     treinador1.getPokesal().resetarUsosDosGolpes();
     treinador2.getPokesal().resetarUsosDosGolpes();
 
-    System.out.println("=== BATALHA INICIADA: " + treinador1.getNome()
-        + " vs " + treinador2.getNome() + " ===");
+    System.out.println(
+        "=== BATALHA INICIADA: " + treinador1.getNome() + " vs " + treinador2.getNome() + " ===");
     System.out.println("Arena: " + arena.getNome() + " (" + arena.getTipoTerreno() + ")");
 
     while (!verificarFimDaBatalha()) {
@@ -114,10 +134,7 @@ public class Batalha {
     System.out.println("Vencedor: " + vencedor.getNome() + "!");
   }
 
-  /**
-   * Executa as ações na ordem de velocidade e aplica os efeitos se a batalha
-   * continuar.
-   */
+  /** Executa as ações na ordem de velocidade e aplica os efeitos se a batalha continuar. */
   public void executarTurno() {
     if (resultado != null || verificarFimDaBatalha()) {
       throw new IllegalStateException("A batalha já terminou.");
@@ -139,12 +156,16 @@ public class Batalha {
       aplicarEfeitosFimDoTurno();
     }
     executandoTurno = false;
-    eventosDoTurno.sort(Comparator.comparing(EventoBatalha::tipo));
-    eventosDoTurno.forEach(registro::registrar);
-    eventosDoTurno.clear();
+    enviarEventosDoTurno();
     if (verificarFimDaBatalha()) {
       finalizarBatalha();
     }
+  }
+
+  private void enviarEventosDoTurno() {
+    eventosDoTurno.sort(Comparator.comparing(EventoBatalha::tipo));
+    eventosDoTurno.forEach(registro::registrar);
+    eventosDoTurno.clear();
   }
 
   /**
@@ -164,8 +185,12 @@ public class Batalha {
     } else if (velocidade2 > velocidade1) {
       return treinador2;
     } else {
-      return gerador.proximoDouble() < 0.5 ? treinador1 : treinador2;
+      return sortearTreinador();
     }
+  }
+
+  private Treinador sortearTreinador() {
+    return gerador.proximoDouble() < CHANCE_DESEMPATE ? treinador1 : treinador2;
   }
 
   /**
@@ -180,8 +205,9 @@ public class Batalha {
 
     exibirPokesal(treinador);
 
-    boolean podeUsarItem = quantidadeItensUsados(treinador) < MAX_ITENS_POR_BATALHA
-        && !treinador.getMochila().getItens().isEmpty();
+    boolean podeUsarItem =
+        quantidadeItensUsados(treinador) < MAX_ITENS_POR_BATALHA
+            && !treinador.getMochila().getItens().isEmpty();
 
     System.out.println("1 - Atacar");
     if (podeUsarItem) {
@@ -193,18 +219,21 @@ public class Batalha {
 
     if (opcao == 1) {
       executarAtaque(treinador);
-    } else if (podeUsarItem) {
-      Item item = escolherItem(treinador);
-      if (item != null) {
-        executarUsoItem(treinador, item);
-      } else {
-        System.out.println(treinador.getNome() + " cancelou o uso de item. Atacando...");
-        executarAtaque(treinador);
-      }
-    } else {
+      return;
+    }
+    if (!podeUsarItem) {
       System.out.println("Ação indisponível. " + treinador.getNome() + " atacará.");
       executarAtaque(treinador);
+      return;
     }
+
+    Item item = escolherItem(treinador);
+    if (item == null) {
+      System.out.println(treinador.getNome() + " cancelou o uso de item. Atacando...");
+      executarAtaque(treinador);
+      return;
+    }
+    executarUsoItem(treinador, item);
   }
 
   /**
@@ -220,11 +249,21 @@ public class Batalha {
     System.out.println("Escolha o golpe de " + pokesal.getNome() + ":");
     for (int i = 0; i < golpes.size(); i++) {
       Golpe golpe = golpes.get(i);
-      System.out.println((i + 1) + " - " + golpe.getNome()
-          + " [Poder: " + golpe.getPoder()
-          + ", Precisão: " + golpe.getPrecisao() + "%"
-          + ", Usos: " + golpe.getUsosRestantes() + "/" + golpe.getMaximosUsos() + "]"
-          + (golpe.podeUsar() ? "" : " (sem usos restantes)"));
+      System.out.println(
+          (i + 1)
+              + " - "
+              + golpe.getNome()
+              + " [Poder: "
+              + golpe.getPoder()
+              + ", Precisão: "
+              + golpe.getPrecisao()
+              + "%"
+              + ", Usos: "
+              + golpe.getUsosRestantes()
+              + "/"
+              + golpe.getMaximosUsos()
+              + "]"
+              + (golpe.podeUsar() ? "" : " (sem usos restantes)"));
     }
 
     while (true) {
@@ -243,8 +282,7 @@ public class Batalha {
    * Solicita um item da mochila se o limite de usos ainda não foi atingido.
    *
    * @param treinador participante que escolhe o item
-   * @return item escolhido, ou {@code null} se não houver itens disponíveis para
-   *         uso
+   * @return item escolhido, ou {@code null} se não houver itens disponíveis para uso
    */
   public Item escolherItem(Treinador treinador) {
     if (quantidadeItensUsados(treinador) >= MAX_ITENS_POR_BATALHA) {
@@ -270,8 +308,7 @@ public class Batalha {
   }
 
   /**
-   * Consome um uso do golpe escolhido e, se ele acertar, aplica o dano e o
-   * possível status.
+   * Consome um uso do golpe escolhido e, se ele acertar, aplica o dano e o possível status.
    *
    * @param treinador participante que ataca
    */
@@ -281,22 +318,22 @@ public class Batalha {
       Pokesal pokesal = treinador.getPokesal();
       int hp = pokesal.getHpAtual();
       pokesal.receberDano(hp);
-      registrarEvento(TipoEvento.ATAQUE, treinador.getNome()
-          + " perdeu por não possuir golpes disponíveis.", 0, false);
+      registrarEvento(
+          TipoEvento.ATAQUE,
+          treinador.getNome() + " perdeu por não possuir golpes disponíveis.",
+          0,
+          false);
       registrarEvento(TipoEvento.DANO, pokesal.getNome() + " ficou sem HP.", hp, false);
       return;
     }
     executarAtaque(treinador, escolherGolpe(treinador));
   }
 
-  /**
-   * Executa um golpe escolhido, permitindo entradas diferentes do console e
-   * testes.
-   */
+  /** Executa um golpe escolhido, permitindo entradas diferentes do console e testes. */
   public void executarAtaque(Treinador treinador, Golpe golpe) {
     Treinador adversario = obterAdversario(treinador);
     Pokesal atacante = treinador.getPokesal();
-    Pokesal defensor = adversario.getPokesal();
+    final Pokesal defensor = adversario.getPokesal();
     if (verificarFimDaBatalha() || !atacante.getGolpes().contains(golpe)) {
       throw new IllegalStateException("Ataque indisponível.");
     }
@@ -304,8 +341,15 @@ public class Batalha {
     golpe.consumirUso();
     boolean acertou = gerador.proximoDouble() < golpe.getPrecisao() / FATOR_PORCENTAGEM;
     boolean critico = acertou && gerador.proximoDouble() < CHANCE_CRITICO;
-    registrarEvento(TipoEvento.ATAQUE, atacante.getNome() + " usou " + golpe.getNome()
-        + (acertou ? (critico ? " (crítico)." : ".") : ", mas errou!"), 0, critico);
+    String descricao = atacante.getNome() + " usou " + golpe.getNome();
+    if (!acertou) {
+      descricao += ", mas errou!";
+    } else if (critico) {
+      descricao += " (crítico).";
+    } else {
+      descricao += ".";
+    }
+    registrarEvento(TipoEvento.ATAQUE, descricao, 0, critico);
 
     if (!acertou) {
       registrarEvento(TipoEvento.DANO, defensor.getNome() + " não recebeu dano.", 0, false);
@@ -316,54 +360,85 @@ public class Batalha {
     double multiplicadorTerreno = arena.calcularMultiplicadorDano(golpe.getTipoElemental());
     int dano = calcularDano(atacante, defensor, golpe, multiplicadorTerreno, critico);
     defensor.receberDano(dano);
-    registrarEvento(TipoEvento.DANO, defensor.getNome() + " recebeu " + dano + " de dano.",
-        dano, critico);
+    registrarEvento(
+        TipoEvento.DANO, defensor.getNome() + " recebeu " + dano + " de dano.", dano, critico);
 
-    System.out.println(atacante.getNome() + " usou " + golpe.getNome() + " e causou " + dano
-        + " de dano em " + defensor.getNome() + "! (HP restante: "
-        + Math.max(defensor.getHpAtual(), 0) + "/" + defensor.getHpMaximo() + ")");
+    System.out.println(
+        atacante.getNome()
+            + " usou "
+            + golpe.getNome()
+            + " e causou "
+            + dano
+            + " de dano em "
+            + defensor.getNome()
+            + "! (HP restante: "
+            + Math.max(defensor.getHpAtual(), 0)
+            + "/"
+            + defensor.getHpMaximo()
+            + ")");
 
+    aplicarStatusDoGolpe(defensor, golpe);
+    if (multiplicadorTerreno != 1.0) {
+      registrarEvento(
+          TipoEvento.EFEITO_TERRENO,
+          arena.getNome() + ": multiplicador de dano " + multiplicadorTerreno,
+          0,
+          false);
+    }
+  }
+
+  private void aplicarStatusDoGolpe(Pokesal defensor, Golpe golpe) {
     if (!defensor.estaDerrotado()
         && golpe.getStatusAplicado() != null
         && golpe.getStatusAplicado() != Status.NENHUM
         && gerador.proximoDouble() < golpe.getChanceStatus()) {
       defensor.aplicarStatus(golpe.getStatusAplicado());
-      registrarEvento(TipoEvento.EFEITO_STATUS,
-          defensor.getNome() + ": " + golpe.getStatusAplicado(), 0, false);
-      System.out.println(defensor.getNome()
-          + " foi afetado por " + golpe.getStatusAplicado() + "!");
-    }
-    if (multiplicadorTerreno != 1.0) {
-      registrarEvento(TipoEvento.EFEITO_TERRENO,
-          arena.getNome() + ": multiplicador de dano " + multiplicadorTerreno, 0, false);
+      registrarEvento(
+          TipoEvento.EFEITO_STATUS,
+          defensor.getNome() + ": " + golpe.getStatusAplicado(),
+          0,
+          false);
+      System.out.println(
+          defensor.getNome() + " foi afetado por " + golpe.getStatusAplicado() + "!");
     }
   }
 
   private int calcularDano(Pokesal atacante, Pokesal defensor, Golpe golpe) {
-    return calcularDano(atacante, defensor, golpe,
-        arena.calcularMultiplicadorDano(golpe.getTipoElemental()), false);
+    return calcularDano(
+        atacante,
+        defensor,
+        golpe,
+        arena.calcularMultiplicadorDano(golpe.getTipoElemental()),
+        false);
   }
 
-  private int calcularDano(Pokesal atacante, Pokesal defensor, Golpe golpe,
-      double multiplicadorTerreno, boolean critico) {
+  private int calcularDano(
+      Pokesal atacante,
+      Pokesal defensor,
+      Golpe golpe,
+      double multiplicadorTerreno,
+      boolean critico) {
     int ataqueEfetivo = atacante.obterAtaqueEfetivo();
-    double multiplicadorTipo = golpe.getTipoElemental().calcularMultiplicadorContra(defensor.getTipoElemental());
+    double multiplicadorTipo =
+        golpe.getTipoElemental().calcularMultiplicadorContra(defensor.getTipoElemental());
 
-    double danoBase = (ataqueEfetivo + golpe.getPoder()) - defensor.getDefesa();
-    if (danoBase < DANO_BASE_MINIMO) {
-      danoBase = DANO_BASE_MINIMO;
-    }
+    double danoBase =
+        Math.max(
+            DANO_BASE_MINIMO, (double) ataqueEfetivo + golpe.getPoder() - defensor.getDefesa());
 
-    double danoFinal = danoBase * multiplicadorTipo * multiplicadorTerreno
-        * (critico ? MULTIPLICADOR_CRITICO : 1.0);
-    return (int) Math.round(danoFinal);
+    double danoFinal =
+        danoBase
+            * multiplicadorTipo
+            * multiplicadorTerreno
+            * (critico ? MULTIPLICADOR_CRITICO : 1.0);
+    return (int) Math.min(Integer.MAX_VALUE, Math.round(danoFinal));
   }
 
   /**
    * Aplica um item permitido, remove-o da mochila e registra seu uso na batalha.
    *
    * @param treinador participante que usa o item
-   * @param item      item a aplicar ao Pokésal do treinador
+   * @param item item a aplicar ao Pokésal do treinador
    */
   public void executarUsoItem(Treinador treinador, Item item) {
     obterAdversario(treinador);
@@ -371,7 +446,8 @@ public class Batalha {
       throw new IllegalArgumentException("O item não está na mochila deste treinador.");
     }
     if (quantidadeItensUsados(treinador) >= MAX_ITENS_POR_BATALHA) {
-      throw new IllegalStateException(treinador.getNome() + " já atingiu o limite de itens por batalha.");
+      throw new IllegalStateException(
+          treinador.getNome() + " já atingiu o limite de itens por batalha.");
     }
 
     Pokesal pokesal = treinador.getPokesal();
@@ -384,11 +460,14 @@ public class Batalha {
     item.aplicarEfeito(pokesal);
     treinador.getMochila().removerItem(item);
     registrarUsoItem(treinador);
-    registrarEvento(TipoEvento.USO_ITEM,
-        treinador.getNome() + " usou " + item.getNome() + " em " + pokesal.getNome(), 0, false);
+    registrarEvento(
+        TipoEvento.USO_ITEM,
+        treinador.getNome() + " usou " + item.getNome() + " em " + pokesal.getNome(),
+        0,
+        false);
 
-    System.out.println(treinador.getNome() + " usou " + item.getNome()
-        + " em " + pokesal.getNome() + "!");
+    System.out.println(
+        treinador.getNome() + " usou " + item.getNome() + " em " + pokesal.getNome() + "!");
   }
 
   private void registrarUsoItem(Treinador treinador) {
@@ -399,9 +478,7 @@ public class Batalha {
     }
   }
 
-  /**
-   * Aplica os efeitos de terreno e de status aos Pokésal dos dois participantes.
-   */
+  /** Aplica os efeitos de terreno e de status aos Pokésal dos dois participantes. */
   public void aplicarEfeitosFimDoTurno() {
     // Preserva a mecânica anterior: terreno antes do status para cada Pokésal.
     // O envio ao RegistroBatalha é ordenado separadamente ao encerrar o turno.
@@ -416,8 +493,11 @@ public class Batalha {
       int hpAntes = pokesal.getHpAtual();
       Status status = pokesal.obterStatus();
       pokesal.getEfeitoStatus().aplicarFimDoTurno(pokesal);
-      registrarEvento(TipoEvento.EFEITO_STATUS, pokesal.getNome() + ": " + status,
-          hpAntes - pokesal.getHpAtual(), false);
+      registrarEvento(
+          TipoEvento.EFEITO_STATUS,
+          pokesal.getNome() + ": " + status,
+          hpAntes - pokesal.getHpAtual(),
+          false);
     }
   }
 
@@ -429,8 +509,11 @@ public class Batalha {
     arena.aplicarEfeitoFimDoTurno(pokesal);
     int cura = pokesal.getHpAtual() - hpAntes;
     if (cura > 0) {
-      registrarEvento(TipoEvento.EFEITO_TERRENO,
-          pokesal.getNome() + " recuperou " + cura + " HP no terreno.", cura, false);
+      registrarEvento(
+          TipoEvento.EFEITO_TERRENO,
+          pokesal.getNome() + " recuperou " + cura + " HP no terreno.",
+          cura,
+          false);
     }
   }
 
@@ -482,9 +565,17 @@ public class Batalha {
    */
   public void exibirPokesal(Treinador treinador) {
     Pokesal pokesal = treinador.getPokesal();
-    System.out.println("\n" + treinador.getNome() + " - " + pokesal.getNome()
-        + " | HP: " + Math.max(pokesal.getHpAtual(), 0) + "/" + pokesal.getHpMaximo()
-        + " | Status: " + pokesal.obterStatus());
+    System.out.println(
+        "\n"
+            + treinador.getNome()
+            + " - "
+            + pokesal.getNome()
+            + " | HP: "
+            + Math.max(pokesal.getHpAtual(), 0)
+            + "/"
+            + pokesal.getHpMaximo()
+            + " | Status: "
+            + pokesal.obterStatus());
   }
 
   /**
@@ -510,9 +601,7 @@ public class Batalha {
     }
   }
 
-  /**
-   * Retorna o vencedor conhecido, ou null enquanto não houver resultado decidido.
-   */
+  /** Retorna o vencedor conhecido, ou null enquanto não houver resultado decidido. */
   public Treinador obterVencedor() {
     if (vencedor != null) {
       return vencedor;
@@ -549,17 +638,25 @@ public class Batalha {
     vencedor = obterVencedor();
     if (vencedor == null) {
       // Derrota simultânea por status: sorteio injetado decide quem avança.
-      vencedor = gerador.proximoDouble() < 0.5 ? treinador1 : treinador2;
+      vencedor = sortearTreinador();
     }
-    resultado = new ResultadoBatalha(id, ParticipanteResultado.de(vencedor),
-        ParticipanteResultado.de(obterAdversario(vencedor)), numeroTurno);
+    resultado =
+        new ResultadoBatalha(
+            id,
+            ParticipanteResultado.de(vencedor),
+            ParticipanteResultado.de(obterAdversario(vencedor)),
+            numeroTurno);
     try {
       repositorio.salvar(resultado);
     } catch (Exception erro) {
-      registrarEvento(TipoEvento.ERRO_REPOSITORIO,
-          "Falha ao salvar resultado: " + erro.getClass().getSimpleName()
-              + ": " + erro.getMessage(),
-          0, false);
+      registrarEvento(
+          TipoEvento.ERRO_REPOSITORIO,
+          "Falha ao salvar resultado: "
+              + erro.getClass().getSimpleName()
+              + ": "
+              + erro.getMessage(),
+          0,
+          false);
     }
     posBatalha.processar(resultado);
   }

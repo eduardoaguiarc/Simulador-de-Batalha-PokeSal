@@ -1,6 +1,5 @@
 package br.edu.ucsal.pokesal;
 
-import br.edu.ucsal.pokesal.aleatorio.GeradorAleatorio;
 import br.edu.ucsal.pokesal.arena.Arena;
 import br.edu.ucsal.pokesal.arena.ServicoTerrenoClimatico;
 import br.edu.ucsal.pokesal.batalha.Batalha;
@@ -25,8 +24,10 @@ final class ApoioTeste {
 
   static Arena arena(TipoTerreno terreno) {
     Clima clima = terreno == TipoTerreno.POCA_DE_CHUVA ? Clima.CHUVOSO : Clima.ENSOLARADO;
-    return new Arena("Teste", terreno, new ServicoTerrenoClimatico(
-        relogio("2026-11-02T15:00:00Z"), () -> clima));
+    return new Arena(
+        "Teste",
+        terreno,
+        new ServicoTerrenoClimatico(relogio("2026-11-02T15:00:00Z"), () -> clima));
   }
 
   static Golpe golpe(double precisao) {
@@ -34,30 +35,16 @@ final class ApoioTeste {
   }
 
   static Treinador treinador(int id, int velocidade, Golpe golpe) {
-    return new Treinador(id, "Treinador " + id,
-        new Pokesal(id, "Pokésal " + id, 100, 50, 50, velocidade,
-            TipoElemental.FOGO, List.of(golpe)),
+    return new Treinador(
+        id,
+        "Treinador " + id,
+        new Pokesal(
+            id, "Pokésal " + id, 100, 50, 50, velocidade, TipoElemental.FOGO, List.of(golpe)),
         new Mochila());
   }
 
   static Batalha batalha(Treinador primeiro, Treinador segundo, Arena arena, Scanner scanner) {
-    return new Batalha(1, primeiro, segundo, arena, scanner, () -> 0.5,
-        resultado -> {
-        }, evento -> {
-        });
-  }
-
-  static GeradorAleatorio sequencia(double... valores) {
-    return new GeradorAleatorio() {
-      private int indice;
-
-      @Override
-      public double proximoDouble() {
-        if (indice == valores.length) {
-          throw new AssertionError("Sorteio inesperado: " + indice);
-        }
-        return valores[indice++];
-      }
-    };
+    return new Batalha(
+        1, primeiro, segundo, arena, scanner, () -> 0.5, resultado -> {}, evento -> {});
   }
 }

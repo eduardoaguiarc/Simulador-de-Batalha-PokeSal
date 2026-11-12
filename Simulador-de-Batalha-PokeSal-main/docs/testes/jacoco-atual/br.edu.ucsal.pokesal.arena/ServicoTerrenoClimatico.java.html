@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ServicoTerrenoClimatico.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">pokesal</a> &gt; <a href="index.source.html" class="el_package">br.edu.ucsal.pokesal.arena</a> &gt; <span class="el_source">ServicoTerrenoClimatico.java</span></div><h1>ServicoTerrenoClimatico.java</h1><pre class="source lang-java linenums">package br.edu.ucsal.pokesal.arena;
+
+import br.edu.ucsal.pokesal.enums.Clima;
+import br.edu.ucsal.pokesal.enums.TipoTerreno;
+import java.time.Clock;
+import java.time.LocalTime;
+import java.util.Objects;
+import java.util.function.Supplier;
+
+/** Calcula os efeitos usando o relógio e a fonte de clima recebidos pelo construtor. */
+public final class ServicoTerrenoClimatico implements ServicoTerreno {
+  private static final int INICIO_DIA = 6;
+  private static final int FIM_DIA = 18;
+  private static final double MULTIPLICADOR_FOGO = 1.15;
+  private static final double MULTIPLICADOR_AGUA = 1.10;
+  private static final double TAXA_CURA_PLANTA = 0.05;
+<span class="fc" id="L17">  private static final EfeitoTerreno NEUTRO = new EfeitoTerreno(1.0, 1.0, 0.0);</span>
+  private final Clock relogio;
+  private final Supplier&lt;Clima&gt; fonteClima;
+
+  /** Recebe o relógio (incluindo seu fuso) e a fonte consultada a cada efeito. */
+<span class="fc" id="L22">  public ServicoTerrenoClimatico(Clock relogio, Supplier&lt;Clima&gt; fonteClima) {</span>
+<span class="fc" id="L23">    this.relogio = Objects.requireNonNull(relogio);</span>
+<span class="fc" id="L24">    this.fonteClima = Objects.requireNonNull(fonteClima);</span>
+<span class="fc" id="L25">  }</span>
+
+  @Override
+  public EfeitoTerreno obterEfeito(TipoTerreno terreno) {
+<span class="fc" id="L29">    Clima clima = Objects.requireNonNull(fonteClima.get());</span>
+<span class="fc" id="L30">    int hora = LocalTime.now(relogio).getHour();</span>
+<span class="fc bfc" id="L31" title="All 4 branches covered.">    boolean dia = hora &gt;= INICIO_DIA &amp;&amp; hora &lt; FIM_DIA;</span>
+<span class="fc bfc" id="L32" title="All 3 branches covered.">    return switch (Objects.requireNonNull(terreno)) {</span>
+      case ASFALTO_QUENTE -&gt;
+<span class="pc bpc" id="L34" title="1 of 4 branches missed.">          dia &amp;&amp; clima == Clima.ENSOLARADO</span>
+<span class="fc" id="L35">              ? new EfeitoTerreno(MULTIPLICADOR_FOGO, 1.0, 0.0)</span>
+<span class="fc" id="L36">              : NEUTRO;</span>
+      case POCA_DE_CHUVA -&gt;
+<span class="pc bpc" id="L38" title="1 of 2 branches missed.">          clima == Clima.CHUVOSO ? new EfeitoTerreno(1.0, MULTIPLICADOR_AGUA, 0.0) : NEUTRO;</span>
+<span class="fc" id="L39">      case CANTEIRO_CENTRAL -&gt; new EfeitoTerreno(1.0, 1.0, TAXA_CURA_PLANTA);</span>
+    };
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.16.202610240946</span></div></body></html>

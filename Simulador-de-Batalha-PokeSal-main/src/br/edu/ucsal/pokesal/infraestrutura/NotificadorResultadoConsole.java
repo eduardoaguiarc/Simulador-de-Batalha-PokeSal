@@ -16,10 +16,15 @@ public final class NotificadorResultadoConsole implements NotificadorResultado {
 
   @Override
   public void notificar(int idTreinador, ResultadoBatalha resultado) {
-    saida.printf("Aviso ao treinador %d: batalha %d encerrada em %d turno(s). "
-        + "Vencedor: %s (%s). Perdedor: %s (%s).%n",
-        idTreinador, resultado.idBatalha(), resultado.numeroTurnos(),
-        resultado.vencedor().nomeTreinador(), resultado.vencedor().nomePokesal(),
-        resultado.perdedor().nomeTreinador(), resultado.perdedor().nomePokesal());
+    saida.printf(
+        "Aviso ao treinador %d: batalha %d encerrada em %d turno(s). "
+            + "Vencedor: %s (%s). Perdedor: %s (%s).%n",
+        idTreinador,
+        resultado.idBatalha(),
+        resultado.numeroTurnos(),
+        resultado.vencedor().nomeTreinador(),
+        resultado.vencedor().nomePokesal(),
+        resultado.perdedor().nomeTreinador(),
+        resultado.perdedor().nomePokesal());
   }
 }

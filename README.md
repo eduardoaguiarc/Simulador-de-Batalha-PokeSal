@@ -15,11 +15,35 @@ As regras adotadas para clima, horário, desempates, recuperação entre rodadas
 
 ## Executar e testar
 
-O comando `verify` também gera o JaCoCo e exige, em cada classe de negócio,
-80% de linhas e 70% de branches. A execução atual tem **81 testes aprovados**,
-**95,90% de linhas** e **85,71% de branches** no conjunto das regras de negócio.
-O [relatório JaCoCo incluído no repositório](Simulador-de-Batalha-PokeSal-main/docs/testes/jacoco-fase03/index.html)
-permite consultar cada classe.
+Requer JDK 21 ou superior e Maven 3.9 ou superior. No Windows, na raiz do projeto:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/testar.ps1
+java -cp Simulador-de-Batalha-PokeSal-main/target/classes br.edu.ucsal.pokesal.app.Main
+```
+
+O script encontra o Maven no PATH ou no cache do IntelliJ. As dependências são
+baixadas na primeira execução para `.build/m2`, uma pasta local ignorada pelo Git.
+Depois, é possível executar sem rede acrescentando `-Offline` ao comando do script.
+O script também trata a limpeza de `target` quando o OneDrive marca os diretórios
+gerados como somente leitura.
+Com Maven no PATH, também funciona o comando convencional:
+
+```powershell
+mvn -f Simulador-de-Batalha-PokeSal-main/pom.xml clean verify
+```
+
+O `verify` executa Checkstyle, JUnit/Mockito e JaCoCo, exigindo **80% de linhas e
+70% de branches em cada classe de negócio**. São **19 testes**, o mínimo dos requisitos enviados: cinco obrigatórios e dois
+autorais da parte 1, mais oito obrigatórios e quatro autorais da parte 2.
+As verificações de limites foram integradas aos testes correspondentes.
+Consulte a [suíte e a cobertura atuais](Simulador-de-Batalha-PokeSal-main/docs/testes/SUITE-MINIMA.md)
+e o [relatório de refatoração](Simulador-de-Batalha-PokeSal-main/docs/REFATORACAO.md).
+Na execução atual, os 19 testes passaram, o Checkstyle não registrou violações e
+o JaCoCo mediu **94,46% de linhas e 83,55% de branches**. As metas por classe passaram.
+O [relatório JaCoCo atual](Simulador-de-Batalha-PokeSal-main/docs/testes/jacoco-atual/index.html)
+está incluído no repositório.
+Os relatórios anteriores de 81 testes ficam preservados como histórico.
 
 Os seis iniciais estão divididos em dois grupos:
 
@@ -59,7 +83,9 @@ Quem tiver a maior velocidade efetiva age primeiro. Se as velocidades forem igua
 Os golpes também podem aplicar efeitos de status:
 
 - **Queimado:** reduz o ataque pela metade e causa dano ao final do turno.
-- **Envenenado:** causa dano ao final do turno. 
+- **Envenenado:** causa dano progressivo ao final do turno: 12,5%, 25%, 37,5%
+  do HP máximo e assim por diante, limitado ao HP máximo. Remover ou reaplicar
+  o status reinicia a progressão.
 - **Paralisado:** reduz a velocidade pela metade, influenciando a ordem das ações.
 
 Enquanto a batalha continuar, os efeitos de terreno e o dano de status são aplicados ao final de cada turno.
@@ -88,7 +114,7 @@ Além das regras propostas para o trabalho, acrescentamos:
 As regras dependem de `CarteiraPontos` e `NotificadorResultado`, respectivamente,
 ambos injetados e mockados nos testes. Veja as condições, os oito testes obrigatórios,
 os testes autorais e todos os recursos Mockito na
-[validação das etapas 4.2–4.4](Simulador-de-Batalha-PokeSal-main/docs/testes/FASE-03-MOCKITO-JACOCO.md).
+[suíte atual](Simulador-de-Batalha-PokeSal-main/docs/testes/SUITE-MINIMA.md).
 
 ## Organização do código
 
@@ -118,6 +144,9 @@ Os pacotes ficam em `Simulador-de-Batalha-PokeSal-main/src/br/edu/ucsal/pokesal`
 
 ![Diagrama de classes do Pokésal](Simulador-de-Batalha-PokeSal-main/docs/diagramas/diagrama-de-classes-atualizado.png)
 
+Os [dois diagramas de sequência](Simulador-de-Batalha-PokeSal-main/docs/diagramas/FASE-03.md)
+mostram um turno completo e o registro do resultado no torneio.
+
 ## Qualidade do código
 
 ### Relatório de testes, rastreabilidade, mocks e registro de bugs
@@ -134,6 +163,8 @@ Os pacotes ficam em `Simulador-de-Batalha-PokeSal-main/src/br/edu/ucsal/pokesal`
 ### SonarQube comparativo e Integração Contínua (4.5)
 
 O [relatório comparativo do SonarQube](Simulador-de-Batalha-PokeSal-main/docs/sonarqube/RELATORIO.md) apresenta a comparação entre a **Fase 02** e a **Fase 03** no SonarQube.
+Essa análise é histórica: o SonarQube precisa ser executado novamente para medir
+o código após esta refatoração.
 
 O pipeline de Integração Contínua está em [`.github/workflows/ci.yml`](.github/workflows/ci.yml), executando automaticamente build em JDK 21, suíte JUnit 5 + Mockito, verificação das metas por classe do JaCoCo e publicação dos artefatos a cada `push` ou `pull_request`. 
 
@@ -150,4 +181,6 @@ O código segue estas práticas:
 - **Formatação:** linhas de até **100 caracteres** nos arquivos Java e recuo de **2 espaços**,
   sem tabulações na indentação.
 
-Os 14 arquivos Java foram revisados com **Checkstyle 14.1.0**, usando **Google Checks**, sem avisos ou erros.
+O Maven verifica produção e testes com **Checkstyle 14.1.0 / Google Checks**.
+Há duas exceções pontuais para abreviações nos nomes de testes exigidos literalmente
+pelo enunciado (`UCSal` e `ODia`), documentadas na configuração do Checkstyle.

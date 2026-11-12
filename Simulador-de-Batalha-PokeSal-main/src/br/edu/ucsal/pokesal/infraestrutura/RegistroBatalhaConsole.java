@@ -16,7 +16,8 @@ public final class RegistroBatalhaConsole implements RegistroBatalha {
 
   @Override
   public void registrar(EventoBatalha evento) {
-    saida.printf("[Batalha %d | Turno %d | %s] %s%n", evento.idBatalha(),
-        evento.turno(), evento.tipo(), evento.descricao());
+    saida.printf(
+        "[Batalha %d | Turno %d | %s] %s%n",
+        evento.idBatalha(), evento.turno(), evento.tipo(), evento.descricao());
   }
 }
