@@ -11,7 +11,7 @@ O menu permite jogar uma **batalha avulsa** ou um **torneio eliminatório com 4 
 
 Na Fase 03, cada golpe usa precisão de **0 a 100** e tem **6,25% de chance de crítico**, que multiplica o dano por **1,5**. Um erro causa dano zero e continua consumindo um uso. Os resultados são acrescentados a `resultados.csv`; se a gravação falhar, o erro é registrado e o torneio continua. Ao final, o console mostra o campeão e o ranking por vitórias.
 
-As regras adotadas para clima, horário, desempates, recuperação entre rodadas e registro estão em [Fase 03 — implementação e validação](Simulador-de-Batalha-PokeSal-main/docs/FASE-03.md).
+As regras adotadas para clima, horário, desempates, recuperação entre rodadas e registro estão em [Fase 03 — implementação e validação](Simulador-de-Batalha-PokeSal-main/docs/sonarqube/FASE-03.md).
 
 Os seis iniciais estão divididos em dois grupos:
 
@@ -123,7 +123,7 @@ mostram um turno completo e o registro do resultado no torneio.
   
 - [Etapas 4.2–4.4 da Fase 03](Simulador-de-Batalha-PokeSal-main/docs/testes/FASE-03-MOCKITO-JACOCO.md):
   
-- [Validação inicial da Fase 03](Simulador-de-Batalha-PokeSal-main/docs/FASE-03.md):
+- [Validação inicial da Fase 03](Simulador-de-Batalha-PokeSal-main/docs/sonarqube/FASE-03.md):
   
 
 ### SonarQube comparativo e Integração Contínua (4.5)

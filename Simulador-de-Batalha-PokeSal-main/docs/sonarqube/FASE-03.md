@@ -1,11 +1,11 @@
 # Fase 03 — implementação e validação
 
-> **Suíte reduzida:** consulte a [suíte mínima atual](testes/SUITE-MINIMA.md). As contagens, resultados e coberturas abaixo descrevem a execução histórica de 81 testes, anterior à suíte atual de 19 testes. Referências a testes removidos são históricas.
+> **Suíte reduzida:** consulte a [suíte mínima atual](../testes/SUITE-MINIMA.md). As contagens, resultados e coberturas abaixo descrevem a execução histórica de 81 testes, anterior à suíte atual de 19 testes. Referências a testes removidos são históricas.
 
 > Atualização das etapas 4.2–4.6:
-> - Requisitos autorais, suíte Mockito e JaCoCo: [Requisitos autorais, Mockito e JaCoCo](testes/FASE-03-MOCKITO-JACOCO.md) (81 testes aprovados, 95,90% de linhas e 85,71% de branches no escopo de negócio).
-> - SonarQube comparativo (Fase 02 vs. Fase 03) e CI: [Relatório Comparativo SonarQube](sonarqube/RELATORIO.md) (`Coverage: 36,4% → 78,1%`, `Duplications: 1,5% → 1,1%`, Quality Gate **OK**).
-> - Rastreabilidade, justificativa de mocks e registro de bugs: [Matriz de Rastreabilidade](testes/MATRIZ-RASTREABILIDADE.md) e [Documento de Testes e Registro de Bugs](testes/RELATORIO-TESTES.md).
+> - Requisitos autorais, suíte Mockito e JaCoCo: [Requisitos autorais, Mockito e JaCoCo](../testes/FASE-03-MOCKITO-JACOCO.md) (81 testes aprovados, 95,90% de linhas e 85,71% de branches no escopo de negócio).
+> - SonarQube comparativo (Fase 02 vs. Fase 03) e CI: [Relatório Comparativo SonarQube](RELATORIO.md) (`Coverage: 36,4% → 78,1%`, `Duplications: 1,5% → 1,1%`, Quality Gate **OK**).
+> - Rastreabilidade, justificativa de mocks e registro de bugs: [Matriz de Rastreabilidade](../testes/MATRIZ-RASTREABILIDADE.md) e [Documento de Testes e Registro de Bugs](../testes/RELATORIO-TESTES.md).
 > A execução de 48 testes descrita abaixo permanece como histórico da etapa inicial.
 
 As regras de tipos elementais, dano-base mínimo, HP, status, quatro golpes por
