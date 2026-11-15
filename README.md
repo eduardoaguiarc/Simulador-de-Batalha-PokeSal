@@ -13,38 +13,6 @@ Na Fase 03, cada golpe usa precisão de **0 a 100** e tem **6,25% de chance de c
 
 As regras adotadas para clima, horário, desempates, recuperação entre rodadas e registro estão em [Fase 03 — implementação e validação](Simulador-de-Batalha-PokeSal-main/docs/FASE-03.md).
 
-## Executar e testar
-
-Requer JDK 21 ou superior e Maven 3.9 ou superior. No Windows, na raiz do projeto:
-
-```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File scripts/testar.ps1
-java -cp Simulador-de-Batalha-PokeSal-main/target/classes br.edu.ucsal.pokesal.app.Main
-```
-
-O script encontra o Maven no PATH ou no cache do IntelliJ. As dependências são
-baixadas na primeira execução para `.build/m2`, uma pasta local ignorada pelo Git.
-Depois, é possível executar sem rede acrescentando `-Offline` ao comando do script.
-O script também trata a limpeza de `target` quando o OneDrive marca os diretórios
-gerados como somente leitura.
-Com Maven no PATH, também funciona o comando convencional:
-
-```powershell
-mvn -f Simulador-de-Batalha-PokeSal-main/pom.xml clean verify
-```
-
-O `verify` executa Checkstyle, JUnit/Mockito e JaCoCo, exigindo **80% de linhas e
-70% de branches em cada classe de negócio**. São **19 testes**, o mínimo dos requisitos enviados: cinco obrigatórios e dois
-autorais da parte 1, mais oito obrigatórios e quatro autorais da parte 2.
-As verificações de limites foram integradas aos testes correspondentes.
-Consulte a [suíte e a cobertura atuais](Simulador-de-Batalha-PokeSal-main/docs/testes/SUITE-MINIMA.md)
-e o [relatório de refatoração](Simulador-de-Batalha-PokeSal-main/docs/REFATORACAO.md).
-Na execução atual, os 19 testes passaram, o Checkstyle não registrou violações e
-o JaCoCo mediu **94,46% de linhas e 83,55% de branches**. As metas por classe passaram.
-O [relatório JaCoCo atual](Simulador-de-Batalha-PokeSal-main/docs/testes/jacoco-atual/index.html)
-está incluído no repositório.
-Os relatórios anteriores de 81 testes ficam preservados como histórico.
-
 Os seis iniciais estão divididos em dois grupos:
 
 | Grupo | Planta | Fogo | Água |
@@ -112,9 +80,7 @@ Além das regras propostas para o trabalho, acrescentamos:
    A falha em um envio não impede o outro nem invalida a batalha.
 
 As regras dependem de `CarteiraPontos` e `NotificadorResultado`, respectivamente,
-ambos injetados e mockados nos testes. Veja as condições, os oito testes obrigatórios,
-os testes autorais e todos os recursos Mockito na
-[suíte atual](Simulador-de-Batalha-PokeSal-main/docs/testes/SUITE-MINIMA.md).
+ambos injetados e mockados nos testes.
 
 ## Organização do código
 
@@ -182,5 +148,3 @@ O código segue estas práticas:
   sem tabulações na indentação.
 
 O Maven verifica produção e testes com **Checkstyle 14.1.0 / Google Checks**.
-Há duas exceções pontuais para abreviações nos nomes de testes exigidos literalmente
-pelo enunciado (`UCSal` e `ODia`), documentadas na configuração do Checkstyle.

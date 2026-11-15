@@ -47,7 +47,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
-class BatalhaMockitoTest {
+class  BatalhaMockitoTest {
   @Mock private GeradorAleatorio gerador;
   @Mock private RepositorioResultados repositorio;
   @Mock private RegistroBatalha registro;
