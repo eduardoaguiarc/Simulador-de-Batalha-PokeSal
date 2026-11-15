@@ -18,12 +18,17 @@ Os artefatos anteriores permanecem como histórico; este documento registra a ev
 
 - `Golpe.precisao` aceita valores finitos de 0 a 100. A configuração dos golpes
   iniciais passou de 1,0/0,9/0,85/0,75 para 100/90/85/75.
+- 
 - Acerta quando `GeradorAleatorio.proximoDouble() < precisao / 100`.
+- 
 - A tentativa consome um uso mesmo se errar. Um erro gera evento de dano zero,
   sem sortear crítico ou aplicar status.
+- 
 - Depois do acerto, um novo sorteio abaixo de 0,0625 indica crítico.
+- 
 - O cálculo é `round(max(1, ATK efetivo + poder - DEF) × tipo × terreno × crítico)`;
   crítico vale 1,5, e o arredondamento acontece apenas no final.
+- 
 - Acerto, crítico, aplicação de status e desempates usam a mesma interface injetada.
   A única instanciação de `Random` está em `Main`, que monta a aplicação.
 
@@ -104,18 +109,4 @@ e a arena recebe o serviço. Não há instanciação desses colaboradores nas re
 | 2.5 Construtores | Interfaces e `Main` | Fakes injetados nos testes e inspeção das fontes de tempo/aleatoriedade |
 | Regressão das fases anteriores | Tipos, status, HP, golpes, itens | Testes existentes adaptados; cura antes do veneno e encerramento por nocaute |
 
-Em 02/11/2026, a compilação com JDK 25.0.4.1, `--release 21`, e a execução pelo
-JUnit Platform Launcher 1.14.0/Jupiter 5.14.0 resultaram em **48 testes aprovados,
-zero falhas e zero testes ignorados**. O antigo teste vazio de usos foi preenchido
-com verificação de consumo e restauração.
 
-[Resumo produzido pelo executor JUnit](testes/evidencias/fase-03-junit.txt).
-
-Também foi executado `Main` como processo Java com entradas pelo console nos três
-modos: batalha avulsa (1 resultado), torneio de 4 (3 resultados) e torneio de 8
-(7 resultados). Todos encerraram com sucesso; os torneios exibiram campeão e
-ranking, e os CSVs tiveram os registros esperados.
-
-O `pom.xml` permite reproduzir a suíte com `mvn test` dentro da pasta do projeto.
-Nesta execução inicial de 48 testes, os testes foram compilados com `javac` e executados pelo launcher
-com as bibliotecas JUnit locais. A execução posterior com Maven, JaCoCo e SonarQube (81 testes) está documentada nos relatórios das etapas 4.2–4.6.

@@ -27,24 +27,6 @@ Os valores da **Fase 02** provêm da análise histórica registrada em [`evidenc
 | **Coverage %** | 36,4% | **78,1%** | +41,7 p.p. | **Melhorou** expressivamente (+114,6% relativo) |
 | **Duplications (%)** | 1,5% | **1,1%** | -0,4 p.p. | **Melhorou** em densidade (mesmas 24 linhas em 2 blocos) |
 
-### Métricas Complementares de Contexto e Escala
-
-| Indicador Complementar | Fase 02 | Fase 03 | Evolução |
-| --- | ---: | ---: | --- |
-| Linhas de código não comentadas (`ncloc`) | 901 | **1.400** | +499 linhas (+55,4%) |
-| Linhas físicas totais analisadas (`lines`) | 1.563 | **2.242** | +679 linhas (+43,4%) |
-| Arquivos Java de produção / classes de teste | 14 / 5 | **28 / 14** *(+1 apoio)* | Dobrou o número de tipos de produção |
-| Testes executados (`tests`) | 8 *(1 vazio)* | **81** *(0 vazios)* | +73 testes reais; 0 falhas e 0 erros |
-| Cobertura de linhas no SonarQube (`line_coverage`) | 40,0% (196 / 490) | **74,9%** (562 / 750) | **95,90%** (562 / 586) no escopo de negócio JaCoCo |
-| Cobertura de condições/branches (`branch_coverage`) | 29,2% (70 / 240) | **85,7%** (264 / 308) | +56,5 p.p. |
-| Blocos / linhas duplicadas (`duplicated_blocks` / `lines`) | 2 blocos / 24 linhas | **2 blocos / 24 linhas** | Zero duplicações novas nos 14 novos arquivos |
-| Densidade de Code Smells por 1.000 NCLOC | 74,4 / kNCLOC | **57,1 / kNCLOC** | Redução de **23,2%** na densidade de smells |
-| Ratings SonarQube (Manutenibilidade / Segurança / Confiabilidade) | A / A / B | **A / A / B** | Quality Gate **OK** em ambas as fases |
-
-> **Observação sobre `Coverage %` (SonarQube vs. JaCoCo de negócio):** Na Fase 03, o plugin JaCoCo no `pom.xml` instrumenta exclusivamente os pacotes de regras de negócio (`562 / 586 = 95,90%` de linhas e `264 / 308 = 85,71%` de branches). Ao importar `jacoco.xml` sem `sonar.coverage.exclusions`, o *Zero Coverage Sensor* do SonarQube contabiliza também as linhas de `Main` (menus de console) e `infraestrutura` no denominador global (`750` linhas cobríveis), resultando em **78,1%** de *Coverage* combinado no SonarQube — ainda assim mais que o dobro dos **36,4%** da Fase 02.
-
----
-
 ## 3. Justificativa das Métricas que Pioraram em Relação à Fase 02
 
 Dentre as cinco métricas obrigatórias (`Code Smells`, `Bugs`, `Vulnerabilities`, `Coverage %` e `Duplications`), **apenas `Code Smells` apresentou piora numérica absoluta** (passando de **67** para **80**, um acréscimo líquido de **+13 ocorrências**), enquanto `Coverage %` (+41,7 p.p.) e `Duplications` (-0,4 p.p.) melhoraram e `Bugs` (1) e `Vulnerabilities` (0) mantiveram-se estáveis.
@@ -101,11 +83,3 @@ Para automatizar a verificação contínua de compilação, testes unitários co
 - [Métricas da Fase 02 (`evidencias/fase02/metricas.json`)](evidencias/fase02/metricas.json)
 - [Quality Gate da Fase 02 (`evidencias/fase02/quality-gate.json`)](evidencias/fase02/quality-gate.json)
 - [Log do Scanner da Fase 02 (`evidencias/fase02/sonar-scanner.txt`)](evidencias/fase02/sonar-scanner.txt)
-
-### Como reproduzir localmente
-
-Com JDK 21+, Maven 3.9+ e uma instância local do SonarQube ativa em `http://localhost:9000` com `SONAR_TOKEN` configurado no ambiente:
-
-```powershell
-mvn -B -f Simulador-de-Batalha-PokeSal-main/pom.xml clean verify sonar:sonar "-Dsonar.host.url=http://localhost:9000" "-Dsonar.qualitygate.wait=true"
-```
