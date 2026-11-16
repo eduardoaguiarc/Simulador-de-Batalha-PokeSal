@@ -94,4 +94,27 @@ class RequisitosMockitoTest {
     }
     verifyNoInteractions(registro);
   }
+
+  @Test
+  void testFalhaNoPrimeiroAvisoNaoImpedeAvisoAoPerdedor() {
+    doThrow(new IllegalStateException("Canal indisponível"))
+        .when(this.resultado)
+        .notificar(eq(1), any(ResultadoBatalha.class));
+
+    ResultadoBatalha resultado = resultado(2);
+
+    assertDoesNotThrow(() -> servico.processar(resultado));
+
+    verify(this.resultado).notificar(2, resultado);
+    verify(carteira).creditar(1, 150);
+
+    ArgumentCaptor<EventoBatalha> erro = ArgumentCaptor.forClass(EventoBatalha.class);
+
+    verify(registro).registrar(erro.capture());
+
+    assertEquals(TipoEvento.ERRO_NOTIFICACAO, erro.getValue().tipo());
+    assertTrue(erro.getValue().descricao().contains("Canal indisponível"));
+    assertEquals(9, erro.getValue().idBatalha());
+    assertEquals(1, resultado.vencedor().idTreinador());
+  }
 }
