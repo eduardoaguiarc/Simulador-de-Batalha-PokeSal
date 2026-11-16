@@ -13,6 +13,7 @@ import br.edu.ucsal.pokesal.enums.TipoElemental;
 import br.edu.ucsal.pokesal.enums.TipoTerreno;
 import br.edu.ucsal.pokesal.item.Antidoto;
 import br.edu.ucsal.pokesal.item.ItemCura;
+import br.edu.ucsal.pokesal.pokesal.EfeitoStatus;
 import br.edu.ucsal.pokesal.pokesal.Golpe;
 import br.edu.ucsal.pokesal.pokesal.Pokesal;
 import br.edu.ucsal.pokesal.treinador.Mochila;
@@ -24,55 +25,50 @@ import java.util.List;
 import java.util.Scanner;
 import org.junit.jupiter.api.Test;
 
-/** Verifica as regras de negócio da classe. */
 public class BatalhaTest {
 
-  /** Valida o cenário testOrdemDeAtaquePorVelocidade. */
+  // Valida o cenário testOrdemDeAtaquePorVelocidade.
   @Test
   public void testOrdemDeAtaquePorVelocidade() {
-    Pokesal pokesalRapido =
-        new Pokesal(
-            1, "PokéSal Rápido", 100, 100, 100, 100, TipoElemental.PLANTA, new ArrayList<>());
-    Pokesal pokesalLento =
-        new Pokesal(2, "PokéSal Lento", 100, 100, 100, 10, TipoElemental.PLANTA, new ArrayList<>());
+    Pokesal pokesalRapido = new Pokesal(1, "PokéSal Rápido", 100, 100, 100, 100, TipoElemental.PLANTA, new ArrayList<>());
+    Pokesal pokesalLento = new Pokesal(2, "PokéSal Lento", 100, 100, 100, 10, TipoElemental.PLANTA, new ArrayList<>());
 
     Treinador treinadorRapido = new Treinador(1, "Treinador Rápido", pokesalRapido, new Mochila());
     Treinador treinadorLento = new Treinador(2, "Treinador Lento", pokesalLento, new Mochila());
 
-    Batalha batalha =
-        ApoioTeste.batalha(
-            treinadorRapido,
-            treinadorLento,
-            ApoioTeste.arena(TipoTerreno.CANTEIRO_CENTRAL),
-            new Scanner(""));
+    Batalha batalha = ApoioTeste.batalha(treinadorRapido, treinadorLento, ApoioTeste.arena(TipoTerreno.CANTEIRO_CENTRAL), new Scanner(""));
 
     assertEquals(treinadorRapido, batalha.determinarPrimeiroAtacante());
 
     Treinador primeiro = ApoioTeste.treinador(1, 10, ApoioTeste.golpe(100));
     Treinador segundo = ApoioTeste.treinador(2, 10, ApoioTeste.golpe(100));
     Treinador estranho = ApoioTeste.treinador(3, 20, ApoioTeste.golpe(100));
-    Batalha batalhaLimite =
-        ApoioTeste.batalha(
-            primeiro, segundo, ApoioTeste.arena(TipoTerreno.CANTEIRO_CENTRAL), new Scanner(""));
+
+    Batalha batalhaLimite = ApoioTeste.batalha(primeiro, segundo, ApoioTeste.arena(TipoTerreno.CANTEIRO_CENTRAL), new Scanner(""));
+
     assertSame(segundo, batalhaLimite.determinarPrimeiroAtacante());
     assertNull(batalhaLimite.escolherItem(primeiro));
+
     assertThrows(IllegalArgumentException.class, () -> batalhaLimite.obterAdversario(estranho));
-    assertThrows(
-        IllegalArgumentException.class, () -> batalhaLimite.quantidadeItensUsados(estranho));
-    assertThrows(
-        IllegalArgumentException.class,
-        () -> batalhaLimite.executarUsoItem(primeiro, new ItemCura(1, "Potion", 20)));
+    assertThrows(IllegalArgumentException.class, () -> batalhaLimite.quantidadeItensUsados(estranho));
+    assertThrows(IllegalArgumentException.class, () -> batalhaLimite.executarUsoItem(primeiro, new ItemCura(1, "Potion", 20)));
+
     primeiro.getPokesal().receberDano(100);
     batalhaLimite.realizarAcao(primeiro);
     batalhaLimite.aplicarEfeitosFimDoTurno();
+
     assertEquals(0, primeiro.getPokesal().getHpAtual());
+
+    batalhaLimite.iniciarBatalha();
+
+    assertThrows(IllegalStateException.class, batalhaLimite::iniciarBatalha);
+    assertThrows(IllegalStateException.class, batalhaLimite::executarTurno);
   }
 
-  /** Valida o cenário testUsoLimiteDeItensExcedido. */
+  //Valida o cenário testUsoLimiteDeItensExcedido.
   @Test
   public void testUsoLimiteDeItensExcedido() {
-    Pokesal pokesal =
-        new Pokesal(1, "PokéSal Teste", 100, 50, 50, 50, TipoElemental.PLANTA, new ArrayList<>());
+    Pokesal pokesal = new Pokesal(1, "PokéSal Teste", 100, 50, 50, 50, TipoElemental.PLANTA, new ArrayList<>());
 
     Mochila mochila = new Mochila();
 
@@ -87,9 +83,7 @@ public class BatalhaTest {
     Treinador treinador = new Treinador(1, "Treinador 1", pokesal, mochila);
     Arena arena = ApoioTeste.arena(TipoTerreno.ASFALTO_QUENTE);
 
-    Batalha batalha =
-        ApoioTeste.batalha(
-            treinador, ApoioTeste.treinador(2, 10, ApoioTeste.golpe(100)), arena, new Scanner(""));
+    Batalha batalha = ApoioTeste.batalha(treinador, ApoioTeste.treinador(2, 10, ApoioTeste.golpe(100)), arena, new Scanner(""));
 
     batalha.executarUsoItem(treinador, antidoto);
     batalha.executarUsoItem(treinador, itemCura1);
@@ -98,26 +92,38 @@ public class BatalhaTest {
 
     final Pokesal alvoLimite = ApoioTeste.treinador(3, 10, ApoioTeste.golpe(100)).getPokesal();
     ItemCura curaLimite = new ItemCura(1, "Potion", 20);
+
     final Antidoto antidotoLimite = new Antidoto(2, "Antidote");
     Mochila mochilaLimite = new Mochila();
+
     assertThrows(IllegalArgumentException.class, () -> mochilaLimite.adicionarItem(null));
+
     mochilaLimite.adicionarItem(curaLimite);
+
     assertFalse(mochilaLimite.removerItem(null));
     assertFalse(mochilaLimite.removerItem(antidotoLimite));
+
     assertThrows(UnsupportedOperationException.class, () -> mochilaLimite.getItens().clear());
+
     assertEquals(List.of(curaLimite), mochilaLimite.getItens());
+
     alvoLimite.receberDano(100);
+
     assertFalse(curaLimite.podeUsar(alvoLimite));
     assertFalse(antidotoLimite.podeUsar(alvoLimite));
+
     curaLimite.aplicarEfeito(alvoLimite);
     antidotoLimite.aplicarEfeito(alvoLimite);
+
     var arenaLimite = ApoioTeste.arena(TipoTerreno.CANTEIRO_CENTRAL);
+
     arenaLimite.aplicarEfeitoFimDoTurno(null);
     arenaLimite.aplicarEfeitoFimDoTurno(alvoLimite);
+
     assertEquals(0, alvoLimite.getHpAtual());
   }
 
-  /** Valida o cenário testCalculoDanoBoundaryValues. */
+  //Valida o cenário testCalculoDanoBoundaryValues.
   @Test
   public void testCalculoDanoBoundaryValues() throws Exception {
     Arena arena = ApoioTeste.arena(TipoTerreno.CANTEIRO_CENTRAL);
@@ -204,5 +210,35 @@ public class BatalhaTest {
     assertEquals(Status.NENHUM, alvo.obterStatus());
     assertEquals(50, alvo.obterAtaqueEfetivo());
     assertThrows(UnsupportedOperationException.class, () -> alvo.getGolpes().clear());
+
+    final Pokesal alvoStatus = ApoioTeste.treinador(4, 10, ApoioTeste.golpe(100)).getPokesal();
+    EfeitoStatus queimadura = new EfeitoStatus(Status.QUEIMADO, 1);
+
+    assertEquals(25, queimadura.calcularAtaqueEfetivo(50));
+    assertEquals(10, queimadura.calcularVelocidadeEfetiva(10));
+    queimadura.aplicarFimDoTurno(alvoStatus);
+
+    assertEquals(93, alvoStatus.getHpAtual());
+    assertEquals(Status.NENHUM, queimadura.getTipo());
+    queimadura.aplicarFimDoTurno(alvoStatus);
+    assertEquals(93, alvoStatus.getHpAtual());
+
+    EfeitoStatus paralisia = new EfeitoStatus(Status.PARALISADO, 0);
+    assertEquals(5, paralisia.calcularVelocidadeEfetiva(10));
+    assertEquals(50, paralisia.calcularAtaqueEfetivo(50));
+    paralisia.aplicarFimDoTurno(alvoStatus);
+    assertEquals(93, alvoStatus.getHpAtual());
+
+    EfeitoStatus efeitoVeneno = new EfeitoStatus(Status.ENVENENADO, 0);
+    efeitoVeneno.aplicarFimDoTurno(alvoStatus);
+    assertEquals(80, alvoStatus.getHpAtual());
+    efeitoVeneno.aplicarFimDoTurno(alvoStatus);
+    assertEquals(55, alvoStatus.getHpAtual());
+    efeitoVeneno.aplicarFimDoTurno(null);
+
+    new EfeitoStatus(null, 0).aplicarFimDoTurno(alvoStatus);
+    alvoStatus.receberDano(100);
+    efeitoVeneno.aplicarFimDoTurno(alvoStatus);
+    assertEquals(0, alvoStatus.getHpAtual());
   }
 }

@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.argThat;
@@ -27,7 +26,6 @@ import br.edu.ucsal.pokesal.enums.Status;
 import br.edu.ucsal.pokesal.enums.TipoElemental;
 import br.edu.ucsal.pokesal.enums.TipoTerreno;
 import br.edu.ucsal.pokesal.item.ItemCura;
-import br.edu.ucsal.pokesal.pokesal.EfeitoStatus;
 import br.edu.ucsal.pokesal.pokesal.Golpe;
 import br.edu.ucsal.pokesal.pokesal.Pokesal;
 import br.edu.ucsal.pokesal.resultado.ParticipanteResultado;
@@ -46,12 +44,14 @@ import org.mockito.InOrder;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+/** Testes comportamentais de {@link Batalha} com colaboradores mockados via Mockito. */
 @ExtendWith(MockitoExtension.class)
-class  BatalhaMockitoTest {
+class BatalhaMockitoTest {
   @Mock private GeradorAleatorio gerador;
   @Mock private RepositorioResultados repositorio;
   @Mock private RegistroBatalha registro;
   @Mock private PosBatalha posBatalha;
+
   private final Treinador primeiro = ApoioTeste.treinador(1, 20, ApoioTeste.golpe(100));
   private final Treinador segundo = ApoioTeste.treinador(2, 10, ApoioTeste.golpe(100));
 
@@ -76,9 +76,9 @@ class  BatalhaMockitoTest {
     return batalha("1 2");
   }
 
+  /** Valida dano x1,5 quando o gerador mockado retorna valor dentro da faixa de crítico. */
   @Test
   void testAcertoCriticoComGeradorMockado() {
-    // Primeiro acerto/crítico; depois acerto/limite exclusivo do crítico.
     when(gerador.proximoDouble()).thenReturn(0.5, 0.01, 0.5, 0.0625);
 
     Batalha batalha = batalha("");
@@ -89,8 +89,8 @@ class  BatalhaMockitoTest {
     batalha.executarAtaque(primeiro, golpe);
 
     assertEquals(50, segundo.getPokesal().getHpAtual()); // dano normal = 20
-    ArgumentCaptor<EventoBatalha> eventos = ArgumentCaptor.forClass(EventoBatalha.class);
 
+    ArgumentCaptor<EventoBatalha> eventos = ArgumentCaptor.forClass(EventoBatalha.class);
     verify(registro, times(4)).registrar(eventos.capture());
 
     assertEquals(30, eventos.getAllValues().get(1).valor());
@@ -100,10 +100,10 @@ class  BatalhaMockitoTest {
     verify(gerador, times(4)).proximoDouble();
   }
 
+  /** Valida que o golpe erra com dano zero e HP do alvo inalterado quando a precisão falha. */
   @Test
   void testGolpeErraQuandoPrecisaoFalha() {
     Golpe golpe = ApoioTeste.golpe(75);
-
     primeiro.getPokesal().adicionarGolpe(golpe);
 
     when(gerador.proximoDouble()).thenReturn(0.75);
@@ -114,28 +114,15 @@ class  BatalhaMockitoTest {
     assertEquals(9, golpe.getUsosRestantes());
 
     ArgumentCaptor<EventoBatalha> eventos = ArgumentCaptor.forClass(EventoBatalha.class);
-
     verify(registro, times(2)).registrar(eventos.capture());
 
     assertEquals(TipoEvento.DANO, eventos.getValue().tipo());
     assertEquals(0, eventos.getValue().valor());
 
     verify(gerador, times(1)).proximoDouble();
-
-    for (double precisao : new double[] {-1, 100.01, Double.NaN, Double.POSITIVE_INFINITY}) {
-      assertThrows(IllegalArgumentException.class, () -> ApoioTeste.golpe(precisao));
-    }
-    assertThrows(
-        IllegalArgumentException.class,
-        () -> new Golpe("Teste", -1, 100, TipoElemental.FOGO, 1, Status.NENHUM, 0));
-    assertThrows(
-        IllegalArgumentException.class,
-        () -> new Golpe("Teste", 10, 100, TipoElemental.FOGO, 0, Status.NENHUM, 0));
-    assertThrows(
-        IllegalArgumentException.class,
-        () -> new Golpe(null, 10, 100, TipoElemental.FOGO, 1, Status.NENHUM, 0));
   }
 
+  /** Valida a ordem das chamadas ao {@link RegistroBatalha} no turno usando {@link InOrder}. */
   @Test
   void testSequenciaDeEventosNoTurno() {
     Golpe veneno = new Golpe("Veneno", 0, 100, TipoElemental.PLANTA, 5, Status.ENVENENADO, 1);
@@ -167,58 +154,28 @@ class  BatalhaMockitoTest {
     batalha.executarTurno();
 
     InOrder ordem = inOrder(registro);
-
     ordem.verify(registro).registrar(argThat(e -> e.tipo() == TipoEvento.ATAQUE));
     ordem.verify(registro).registrar(argThat(e -> e.tipo() == TipoEvento.DANO));
     ordem.verify(registro, times(2)).registrar(argThat(e -> e.tipo() == TipoEvento.EFEITO_STATUS));
-
     ordem.verify(registro).registrar(argThat(e -> e.tipo() == TipoEvento.EFEITO_TERRENO));
     ordem.verify(registro).registrar(argThat(e -> e.tipo() == TipoEvento.USO_ITEM));
     ordem.verifyNoMoreInteractions();
-    verify(registro, atLeastOnce()).registrar(any(EventoBatalha.class));
 
+    verify(registro, atLeastOnce()).registrar(any(EventoBatalha.class));
     assertEquals(85, planta.getPokesal().getHpAtual());
     assertEquals(1, batalha.quantidadeItensUsados(primeiro));
-
-    final Pokesal alvo = ApoioTeste.treinador(4, 10, ApoioTeste.golpe(100)).getPokesal();
-    EfeitoStatus queimadura = new EfeitoStatus(Status.QUEIMADO, 1);
-    assertEquals(25, queimadura.calcularAtaqueEfetivo(50));
-    assertEquals(10, queimadura.calcularVelocidadeEfetiva(10));
-    queimadura.aplicarFimDoTurno(alvo);
-    assertEquals(93, alvo.getHpAtual());
-    assertEquals(Status.NENHUM, queimadura.getTipo());
-    queimadura.aplicarFimDoTurno(alvo);
-    assertEquals(93, alvo.getHpAtual());
-
-    EfeitoStatus paralisia = new EfeitoStatus(Status.PARALISADO, 0);
-    assertEquals(5, paralisia.calcularVelocidadeEfetiva(10));
-    assertEquals(50, paralisia.calcularAtaqueEfetivo(50));
-    paralisia.aplicarFimDoTurno(alvo);
-    assertEquals(93, alvo.getHpAtual());
-
-    EfeitoStatus efeitoVeneno = new EfeitoStatus(Status.ENVENENADO, 0);
-    efeitoVeneno.aplicarFimDoTurno(alvo);
-    assertEquals(80, alvo.getHpAtual());
-    efeitoVeneno.aplicarFimDoTurno(alvo);
-    assertEquals(55, alvo.getHpAtual());
-    efeitoVeneno.aplicarFimDoTurno(null);
-    new EfeitoStatus(null, 0).aplicarFimDoTurno(alvo);
-    alvo.receberDano(100);
-    efeitoVeneno.aplicarFimDoTurno(alvo);
-    assertEquals(0, alvo.getHpAtual());
   }
 
+  /** Valida o {@link ResultadoBatalha} salvo no repositório ao fim da batalha via captor. */
   @Test
   void testResultadoSalvoAoFimDaBatalha() throws Exception {
     Batalha batalha = batalhaComNocaute();
     batalha.iniciarBatalha();
 
     ArgumentCaptor<ResultadoBatalha> captor = ArgumentCaptor.forClass(ResultadoBatalha.class);
-
     verify(repositorio, times(1)).salvar(captor.capture());
 
     ResultadoBatalha resultado = captor.getValue();
-
     assertEquals(ParticipanteResultado.de(primeiro), resultado.vencedor());
     assertEquals(ParticipanteResultado.de(segundo), resultado.perdedor());
     assertEquals(1, resultado.numeroTurnos());
@@ -227,16 +184,12 @@ class  BatalhaMockitoTest {
     assertSame(primeiro, batalha.obterVencedor());
 
     InOrder ordem = inOrder(repositorio, posBatalha);
-
     ordem.verify(repositorio).salvar(resultado);
     ordem.verify(posBatalha).processar(resultado);
-
-    assertThrows(IllegalStateException.class, batalha::iniciarBatalha);
-    assertThrows(IllegalStateException.class, batalha::executarTurno);
-
     verify(posBatalha, times(1)).processar(resultado);
   }
 
+  /** Valida que uma falha ao salvar no repositório não invalida o vencedor da batalha. */
   @Test
   void testFalhaNoRepositorioNaoInvalidaBatalha() throws Exception {
     doThrow(new IOException("Disco indisponível"))
@@ -259,6 +212,7 @@ class  BatalhaMockitoTest {
     verify(posBatalha).processar(batalha.getResultado());
   }
 
+  /** Valida que o repositório não é chamado enquanto a batalha ainda não terminou. */
   @Test
   void testRepositorioNaoChamadoSeBatalhaNaoTerminou() throws Exception {
     when(gerador.proximoDouble()).thenReturn(0.5);

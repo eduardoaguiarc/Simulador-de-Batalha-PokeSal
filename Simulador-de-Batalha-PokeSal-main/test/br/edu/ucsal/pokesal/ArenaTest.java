@@ -9,13 +9,12 @@ import br.edu.ucsal.pokesal.pokesal.Pokesal;
 import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 
-/** Verifica as regras de negócio da classe. */
 public class ArenaTest {
 
-  /** Valida o cenário testEfeitoTerrenoEstacionamentoUCSal. */
+  //Valida os três terrenos do estacionamento.
   @Test
   public void testEfeitoTerrenoEstacionamentoUCSal() {
-    Arena asfalto = ApoioTeste.arena(TipoTerreno.ASFALTO_QUENTE);
+    final Arena asfalto = ApoioTeste.arena(TipoTerreno.ASFALTO_QUENTE);
     final Arena poca = ApoioTeste.arena(TipoTerreno.POCA_DE_CHUVA);
     final Arena canteiro = ApoioTeste.arena(TipoTerreno.CANTEIRO_CENTRAL);
 
@@ -27,9 +26,7 @@ public class ArenaTest {
     assertEquals(1.0, poca.calcularMultiplicadorDano(TipoElemental.FOGO));
     assertEquals(1.0, poca.calcularMultiplicadorDano(TipoElemental.PLANTA));
 
-    Pokesal pokesalPlanta =
-        new Pokesal(
-            1, "PokéSal de Planta", 100, 50, 50, 50, TipoElemental.PLANTA, new ArrayList<>());
+    Pokesal pokesalPlanta = new Pokesal(1, "PokéSal de Planta", 100, 50, 50, 50, TipoElemental.PLANTA, new ArrayList<>());
 
     pokesalPlanta.receberDano(20);
 

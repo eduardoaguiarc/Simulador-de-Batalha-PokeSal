@@ -5,10 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import br.edu.ucsal.pokesal.enums.TipoElemental;
 import org.junit.jupiter.api.Test;
 
-/** Verifica as regras de negócio da classe. */
 public class TipoElementalTest {
 
-  /** Valida o cenário testVantagemElemental. */
+  //Valida o cenário testVantagemElemental.
   @Test
   public void testVantagemElemental() {
     // Super efetivo
