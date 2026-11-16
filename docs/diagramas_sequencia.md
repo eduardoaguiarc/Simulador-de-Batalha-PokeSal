@@ -202,4 +202,4 @@ sequenceDiagram
 ```
 
 > [!NOTE]
-> Falhas em `RepositorioResultados`, `CarteiraPontos` e `NotificadorResultado` são isoladas: viram eventos no `RegistroBatalha` e **não** alteram o vencedor nem interrompem o torneio.
+> Falhas em `RepositorioResultados`, `CarteiraPontos` e `ConsoleResultadoTorneio` são isoladas: viram eventos no `RegistroBatalha` e **não** alteram o vencedor nem interrompem o torneio.

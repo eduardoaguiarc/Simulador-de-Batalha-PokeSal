@@ -11,12 +11,12 @@ public final class ServicoPosBatalha implements PosBatalha {
   private static final int BONUS_VITORIA_RAPIDA = 50;
   private static final int LIMITE_TURNOS_RAPIDA = 3;
   private final CarteiraPontos carteira;
-  private final NotificadorResultado notificador;
+  private final ConsoleResultadoTorneio notificador;
   private final RegistroBatalha registro;
 
   /** Recebe carteira, canal de aviso e registro de erros substituíveis em testes. */
   public ServicoPosBatalha(
-      CarteiraPontos carteira, NotificadorResultado notificador, RegistroBatalha registro) {
+          CarteiraPontos carteira, ConsoleResultadoTorneio notificador, RegistroBatalha registro) {
     this.carteira = Objects.requireNonNull(carteira);
     this.notificador = Objects.requireNonNull(notificador);
     this.registro = Objects.requireNonNull(registro);

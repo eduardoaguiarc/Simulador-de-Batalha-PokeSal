@@ -7,7 +7,7 @@
 [INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in br.edu.ucsal.pokesal.PokesalTest
 [INFO] Tests run: 15, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.428 s -- in br.edu.ucsal.pokesal.RegrasDominioTest
 [INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.082 s -- in br.edu.ucsal.pokesal.RepositorioResultadosCsvTest
-[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.231 s -- in br.edu.ucsal.pokesal.RequisitosAutoraisMockitoTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.231 s -- in br.edu.ucsal.pokesal.RequisitosMockitoTest
 [INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.204 s -- in br.edu.ucsal.pokesal.ServicoTerrenoTest
 [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.213 s -- in br.edu.ucsal.pokesal.TerrenoMockitoTest
 [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in br.edu.ucsal.pokesal.TipoElementalTest

@@ -11,7 +11,7 @@ import br.edu.ucsal.pokesal.enums.Status;
 import br.edu.ucsal.pokesal.enums.TipoElemental;
 import br.edu.ucsal.pokesal.enums.TipoTerreno;
 import br.edu.ucsal.pokesal.infraestrutura.CarteiraPontosMemoria;
-import br.edu.ucsal.pokesal.infraestrutura.NotificadorResultadoConsole;
+import br.edu.ucsal.pokesal.infraestrutura.ResultadoTorneioVencedorConsole;
 import br.edu.ucsal.pokesal.infraestrutura.RegistroBatalhaConsole;
 import br.edu.ucsal.pokesal.infraestrutura.RepositorioResultadosCsv;
 import br.edu.ucsal.pokesal.item.Antidoto;
@@ -83,7 +83,7 @@ public class Main {
     RegistroBatalha registro = new RegistroBatalhaConsole(System.out);
     CarteiraPontosMemoria carteira = new CarteiraPontosMemoria();
     ServicoPosBatalha posBatalha =
-        new ServicoPosBatalha(carteira, new NotificadorResultadoConsole(System.out), registro);
+        new ServicoPosBatalha(carteira, new ResultadoTorneioVencedorConsole(System.out), registro);
 
     if (modo == 1) {
       new Batalha(

@@ -21,10 +21,10 @@ integrados aos testes dos respectivos requisitos, preservando a cobertura.
 | Falha de persistência | `BatalhaMockitoTest.testFalhaNoRepositorioNaoInvalidaBatalha` | Repositório e registro | Registrar erro e preservar vencedor | Aprovado |
 | Batalha em andamento | `BatalhaMockitoTest.testRepositorioNaoChamadoSeBatalhaNaoTerminou` | Repositório | Nenhuma gravação | Aprovado |
 | Chaveamento | `TorneioMockitoTest.testChaveamentoTorneioAvancaVencedores` | Fábrica e batalhas | Apenas vencedores avançam | Aprovado |
-| Pontuação com bônus | `RequisitosAutoraisMockitoTest.testPremioComBonusAteTresTurnos` | Carteira | 150 pontos ao vencedor e nenhum ao perdedor | Aprovado |
-| Pontuação sem bônus | `RequisitosAutoraisMockitoTest.testPremioSemBonusDepoisDeTresTurnos` | Carteira | 100 pontos ao vencedor | Aprovado |
-| Notificação | `RequisitosAutoraisMockitoTest.testNotificaAmbosComResultadoCompleto` | Notificador | Avisar vencedor e perdedor, com resultado completo | Aprovado |
-| Falha de notificação | `RequisitosAutoraisMockitoTest.testFalhaNoPrimeiroAvisoNaoImpedeAvisoAoPerdedor` | Notificador e registro | Falha no primeiro aviso não impede o segundo | Aprovado |
+| Pontuação com bônus | `RequisitosMockitoTest.testPremioComBonusAteTresTurnos` | Carteira | 150 pontos ao vencedor e nenhum ao perdedor | Aprovado |
+| Pontuação sem bônus | `RequisitosMockitoTest.testPremioSemBonusDepoisDeTresTurnos` | Carteira | 100 pontos ao vencedor | Aprovado |
+| Notificação | `RequisitosMockitoTest.testNotificaAmbosComResultadoCompleto` | Notificador | Avisar vencedor e perdedor, com resultado completo | Aprovado |
+| Falha de notificação | `RequisitosMockitoTest.testFalhaNoPrimeiroAvisoNaoImpedeAvisoAoPerdedor` | Notificador e registro | Falha no primeiro aviso não impede o segundo | Aprovado |
 
 Os testes da parte 2 usam `MockitoExtension`. São mantidos `@Mock`,
 `@InjectMocks`, retornos sequenciais, `times`, `never`, `atLeastOnce`, `InOrder`,

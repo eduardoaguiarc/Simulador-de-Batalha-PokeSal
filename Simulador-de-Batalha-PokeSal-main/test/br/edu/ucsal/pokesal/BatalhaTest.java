@@ -127,57 +127,41 @@ public class BatalhaTest {
   @Test
   public void testCalculoDanoBoundaryValues() throws Exception {
     Arena arena = ApoioTeste.arena(TipoTerreno.CANTEIRO_CENTRAL);
-    Pokesal pokesal =
-        new Pokesal(1, "PokeSal", 10, 10, 10, 10, TipoElemental.FOGO, new ArrayList<>());
+    Pokesal pokesal = new Pokesal(1, "PokeSal", 10, 10, 10, 10, TipoElemental.FOGO, new ArrayList<>());
     Treinador treinador = new Treinador(1, "treinador", pokesal, new Mochila());
-    Batalha batalha =
-        ApoioTeste.batalha(
-            treinador, ApoioTeste.treinador(2, 10, ApoioTeste.golpe(100)), arena, new Scanner(""));
+    Batalha batalha = ApoioTeste.batalha(treinador, ApoioTeste.treinador(2, 10, ApoioTeste.golpe(100)), arena, new Scanner(""));
 
-    Method calcularDano =
-        Batalha.class.getDeclaredMethod("calcularDano", Pokesal.class, Pokesal.class, Golpe.class);
+    Method calcularDano = Batalha.class.getDeclaredMethod("calcularDano", Pokesal.class, Pokesal.class, Golpe.class);
     calcularDano.setAccessible(true);
 
     // 1) ATK + poder <= DEF: dano travado no mínimo 1.
-    Pokesal atacante =
-        new Pokesal(1, "Atacante", 100, 10, 0, 10, TipoElemental.FOGO, new ArrayList<>());
-    Pokesal defensorForte =
-        new Pokesal(1, "Defensor Forte", 100, 0, 100, 10, TipoElemental.FOGO, new ArrayList<>());
+    Pokesal atacante = new Pokesal(1, "Atacante", 100, 10, 0, 10, TipoElemental.FOGO, new ArrayList<>());
+    Pokesal defensorForte = new Pokesal(1, "Defensor Forte", 100, 0, 100, 10, TipoElemental.FOGO, new ArrayList<>());
     Golpe golpe = new Golpe("Golpe Teste", 5, 100, TipoElemental.FOGO, 1, Status.NENHUM, 0.0);
 
     assertEquals(1, calcularDano.invoke(batalha, atacante, defensorForte, golpe));
 
     // 2) ATK = DEF = poder = 0: dano travado no mínimo 1.
-    Pokesal zerado =
-        new Pokesal(1, "PokeSal Zerado", 100, 0, 0, 10, TipoElemental.FOGO, new ArrayList<>());
+    Pokesal zerado = new Pokesal(1, "PokeSal Zerado", 100, 0, 0, 10, TipoElemental.FOGO, new ArrayList<>());
     Golpe golpeZerado = new Golpe("Golpe Teste", 0, 100, TipoElemental.FOGO, 1, Status.NENHUM, 0.0);
 
     assertEquals(1, calcularDano.invoke(batalha, zerado, zerado, golpeZerado));
 
     // 3) Dano não pode deixar o HP abaixo de zero.
-    Pokesal defensorFragil =
-        new Pokesal(1, "Defensor Frágil", 1, 0, 0, 10, TipoElemental.FOGO, new ArrayList<>());
+    Pokesal defensorFragil = new Pokesal(1, "Defensor Frágil", 1, 0, 0, 10, TipoElemental.FOGO, new ArrayList<>());
 
     defensorFragil.receberDano(9999);
 
     assertEquals(0, defensorFragil.getHpAtual());
 
-    // 4) Atributos extremos não podem produzir dano negativo por overflow.
-    Pokesal atacanteExtremo =
-        new Pokesal(
-            3, "Extremo", 100, Integer.MAX_VALUE, 0, 10, TipoElemental.FOGO, new ArrayList<>());
-    Golpe golpeExtremo =
-        new Golpe("Extremo", Integer.MAX_VALUE, 100, TipoElemental.FOGO, 1, Status.NENHUM, 0);
-    assertEquals(
-        Integer.MAX_VALUE, calcularDano.invoke(batalha, atacanteExtremo, zerado, golpeExtremo));
+    Pokesal atacanteExtremo = new Pokesal(3, "Extremo", 100, Integer.MAX_VALUE, 0, 10, TipoElemental.FOGO, new ArrayList<>());
+    Golpe golpeExtremo = new Golpe("Extremo", Integer.MAX_VALUE, 100, TipoElemental.FOGO, 1, Status.NENHUM, 0);
 
-    for (int[] atributos :
-        new int[][] {{0, 10, 10, 10}, {100, -1, 10, 10}, {100, 10, -1, 10}, {100, 10, 10, -1}}) {
-      assertThrows(
-          IllegalArgumentException.class,
-          () ->
-              new Pokesal(
-                  1,
+    assertEquals(Integer.MAX_VALUE, calcularDano.invoke(batalha, atacanteExtremo, zerado, golpeExtremo));
+
+    for (int[] atributos : new int[][] {{0, 10, 10, 10}, {100, -1, 10, 10}, {100, 10, -1, 10}, {100, 10, 10, -1}}) {
+      assertThrows(IllegalArgumentException.class, () -> new Pokesal(
+                        1,
                   "Teste",
                   atributos[0],
                   atributos[1],
@@ -187,16 +171,11 @@ public class BatalhaTest {
                   List.of()));
     }
     for (String nome : Arrays.asList(null, " ")) {
-      assertThrows(
-          IllegalArgumentException.class,
-          () -> new Pokesal(1, nome, 100, 10, 10, 10, TipoElemental.FOGO, List.of()));
+      assertThrows(IllegalArgumentException.class, () -> new Pokesal(1, nome, 100, 10, 10, 10, TipoElemental.FOGO, List.of()));
     }
-    assertThrows(
-        IllegalArgumentException.class,
-        () -> new Pokesal(1, "Teste", 100, 10, 10, 10, null, List.of()));
-    assertThrows(
-        IllegalArgumentException.class,
-        () -> new Pokesal(1, "Teste", 100, 10, 10, 10, TipoElemental.FOGO, null));
+
+    assertThrows(IllegalArgumentException.class, () -> new Pokesal(1, "Teste", 100, 10, 10, 10, null, List.of()));
+    assertThrows(IllegalArgumentException.class, () -> new Pokesal(1, "Teste", 100, 10, 10, 10, TipoElemental.FOGO, null));
 
     final Pokesal alvo = ApoioTeste.treinador(3, 10, ApoioTeste.golpe(100)).getPokesal();
     assertThrows(IllegalArgumentException.class, () -> alvo.receberDano(-1));
@@ -204,11 +183,14 @@ public class BatalhaTest {
     assertThrows(IllegalArgumentException.class, () -> alvo.adicionarGolpe(null));
     assertThrows(IllegalArgumentException.class, () -> alvo.aplicarStatus(null));
     assertEquals(100, alvo.getHpAtual());
+
     alvo.aplicarStatus(Status.QUEIMADO);
     assertEquals(25, alvo.obterAtaqueEfetivo());
+
     alvo.aplicarStatus(Status.NENHUM);
     assertEquals(Status.NENHUM, alvo.obterStatus());
     assertEquals(50, alvo.obterAtaqueEfetivo());
+
     assertThrows(UnsupportedOperationException.class, () -> alvo.getGolpes().clear());
 
     final Pokesal alvoStatus = ApoioTeste.treinador(4, 10, ApoioTeste.golpe(100)).getPokesal();

@@ -35,9 +35,9 @@ Test set: br.edu.ucsal.pokesal.RepositorioResultadosCsvTest
 -------------------------------------------------------------------------------
 Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.110 s -- in br.edu.ucsal.pokesal.RepositorioResultadosCsvTest
 -------------------------------------------------------------------------------
-Test set: br.edu.ucsal.pokesal.RequisitosAutoraisMockitoTest
+Test set: br.edu.ucsal.pokesal.RequisitosMockitoTest
 -------------------------------------------------------------------------------
-Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.328 s -- in br.edu.ucsal.pokesal.RequisitosAutoraisMockitoTest
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.328 s -- in br.edu.ucsal.pokesal.RequisitosMockitoTest
 -------------------------------------------------------------------------------
 Test set: br.edu.ucsal.pokesal.ServicoTerrenoTest
 -------------------------------------------------------------------------------

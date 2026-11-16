@@ -131,7 +131,14 @@ public class Batalha {
 
     finalizarBatalha();
     System.out.println("\n=== BATALHA ENCERRADA ===");
-    System.out.println("Vencedor: " + vencedor.getNome() + "!");
+    System.out.println(
+        "Vencedor: "
+            + vencedor.getNome()
+            + " com "
+            + vencedor.getPokesal().getNome()
+            + " em "
+            + numeroTurno
+            + " turno(s)!");
   }
 
   /** Executa as ações na ordem de velocidade e aplica os efeitos se a batalha continuar. */

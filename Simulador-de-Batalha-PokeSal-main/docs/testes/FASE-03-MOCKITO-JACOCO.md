@@ -34,8 +34,8 @@ no primeiro envio não impede o segundo; falhas geram `ERRO_NOTIFICACAO` sem
 desfazer o resultado nem a premiação. Não há repetição automática dos envios.
 
 - Regra: `ServicoPosBatalha.processar` e `notificar`.
-- Colaborador externo mockável: `NotificadorResultado`, injetado pelo construtor.
-- Adaptador: `NotificadorResultadoConsole`, que apresenta um aviso individual no
+- Colaborador externo mockável: `ConsoleResultadoTorneio`, injetado pelo construtor.
+- Adaptador: `ResultadoTorneioVencedorConsole`, que apresenta um aviso individual no
   terminal compartilhado dos jogadores. Nenhuma integração de e-mail é necessária.
 - Testes Mockito: `testNotificaAmbosComResultadoCompleto`,
   `testFalhaNoPrimeiroAvisoNaoImpedeAvisoAoPerdedor` e

@@ -47,10 +47,17 @@ import org.mockito.junit.jupiter.MockitoExtension;
 /** Testes comportamentais de {@link Batalha} com colaboradores mockados via Mockito. */
 @ExtendWith(MockitoExtension.class)
 class BatalhaMockitoTest {
-  @Mock private GeradorAleatorio gerador;
-  @Mock private RepositorioResultados repositorio;
-  @Mock private RegistroBatalha registro;
-  @Mock private PosBatalha posBatalha;
+  @Mock
+  private GeradorAleatorio gerador;
+
+  @Mock
+  private RepositorioResultados repositorio;
+
+  @Mock
+  private RegistroBatalha registro;
+
+  @Mock
+  private PosBatalha posBatalha;
 
   private final Treinador primeiro = ApoioTeste.treinador(1, 20, ApoioTeste.golpe(100));
   private final Treinador segundo = ApoioTeste.treinador(2, 10, ApoioTeste.golpe(100));
@@ -69,9 +76,7 @@ class BatalhaMockitoTest {
   }
 
   private Batalha batalhaComNocaute() {
-    primeiro
-        .getPokesal()
-        .adicionarGolpe(new Golpe("Final", 200, 100, TipoElemental.FOGO, 2, Status.NENHUM, 0));
+    primeiro.getPokesal().adicionarGolpe(new Golpe("Final", 200, 100, TipoElemental.FOGO, 2, Status.NENHUM, 0));
     when(gerador.proximoDouble()).thenReturn(0.5);
     return batalha("1 2");
   }
@@ -161,6 +166,7 @@ class BatalhaMockitoTest {
     ordem.verify(registro).registrar(argThat(e -> e.tipo() == TipoEvento.USO_ITEM));
     ordem.verifyNoMoreInteractions();
 
+    //confirma que registrar recebeu pelo menos um EventoBatalha.
     verify(registro, atLeastOnce()).registrar(any(EventoBatalha.class));
     assertEquals(85, planta.getPokesal().getHpAtual());
     assertEquals(1, batalha.quantidadeItensUsados(primeiro));

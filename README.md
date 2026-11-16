@@ -79,7 +79,7 @@ Além das regras propostas para o trabalho, acrescentamos:
 2. **Aviso do resultado:** vencedor e perdedor recebem avisos individuais ao final.
    A falha em um envio não impede o outro nem invalida a batalha.
 
-As regras dependem de `CarteiraPontos` e `NotificadorResultado`, respectivamente,
+As regras dependem de `CarteiraPontos` e `ConsoleResultadoTorneio`, respectivamente,
 ambos injetados e mockados nos testes.
 
 ## Organização do código

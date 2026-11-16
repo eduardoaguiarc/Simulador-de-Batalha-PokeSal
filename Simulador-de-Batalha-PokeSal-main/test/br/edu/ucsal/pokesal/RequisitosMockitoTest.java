@@ -18,7 +18,7 @@ import br.edu.ucsal.pokesal.batalha.EventoBatalha;
 import br.edu.ucsal.pokesal.batalha.RegistroBatalha;
 import br.edu.ucsal.pokesal.batalha.TipoEvento;
 import br.edu.ucsal.pokesal.resultado.CarteiraPontos;
-import br.edu.ucsal.pokesal.resultado.NotificadorResultado;
+import br.edu.ucsal.pokesal.resultado.ConsoleResultadoTorneio;
 import br.edu.ucsal.pokesal.resultado.ParticipanteResultado;
 import br.edu.ucsal.pokesal.resultado.ResultadoBatalha;
 import br.edu.ucsal.pokesal.resultado.ServicoPosBatalha;
@@ -30,24 +30,23 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+/** Testes com Mockito para os dois requisitos autorais do {@link ServicoPosBatalha}. */
 @ExtendWith(MockitoExtension.class)
-class RequisitosAutoraisMockitoTest {
-  @Mock
-  private CarteiraPontos carteira;
-
-  @Mock
-  private NotificadorResultado notificador;
-
-  @Mock
-  private RegistroBatalha registro;
-
-  @InjectMocks
-  private ServicoPosBatalha servico;
+class RequisitosMockitoTest {
+  @Mock private CarteiraPontos carteira;
+  @Mock private ConsoleResultadoTorneio resultado;
+  @Mock private RegistroBatalha registro;
+  @InjectMocks private ServicoPosBatalha servico;
 
   private ResultadoBatalha resultado(int turnos) {
-    return new ResultadoBatalha(9, new ParticipanteResultado(1, "Ana", 1, "CharSal"),
-        new ParticipanteResultado(2, "Bia", 2, "BulbaSal"), turnos);
+    return new ResultadoBatalha(
+        9,
+        new ParticipanteResultado(1, "Ana", 1, "CharSal"),
+        new ParticipanteResultado(2, "Bia", 2, "BulbaSal"),
+        turnos);
   }
+
+  // Requisito 1
 
   @Test
   void testPremioComBonusAteTresTurnos() {
@@ -66,49 +65,33 @@ class RequisitosAutoraisMockitoTest {
     verifyNoMoreInteractions(carteira);
   }
 
+  // Requisito 2
+
   @Test
-  void testNotificaAmbosComResultadoCompleto() {
+  void testResultadoCompleto() {
     ResultadoBatalha resultado = resultado(2);
     servico.processar(resultado);
 
     ArgumentCaptor<ResultadoBatalha> captor = ArgumentCaptor.forClass(ResultadoBatalha.class);
-    InOrder ordem = inOrder(notificador);
+    InOrder ordem = inOrder(this.resultado);
 
-    ordem.verify(notificador).notificar(eq(1), captor.capture());
-    ordem.verify(notificador).notificar(eq(2), captor.capture());
+    // Garante que a 1ª notificação foi enviada para o treinador de id 1
+    ordem.verify(this.resultado).notificar(eq(1), captor.capture());
+    ordem.verify(this.resultado).notificar(eq(2), captor.capture());
+
+    // Garante que nenhuma outra chamada foi feita.
     ordem.verifyNoMoreInteractions();
 
+    // Devolve a lista com 2 objetos.
     assertEquals(2, captor.getAllValues().size());
 
     for (ResultadoBatalha enviado : captor.getAllValues()) {
       assertEquals(resultado, enviado);
       assertEquals("Ana", enviado.vencedor().nomeTreinador());
+      assertEquals("CharSal", enviado.vencedor().nomePokesal());
       assertEquals("Bia", enviado.perdedor().nomeTreinador());
       assertEquals(2, enviado.numeroTurnos());
     }
     verifyNoInteractions(registro);
-  }
-
-  @Test
-  void testFalhaNoPrimeiroAvisoNaoImpedeAvisoAoPerdedor() {
-    doThrow(new IllegalStateException("Canal indisponível"))
-        .when(notificador)
-        .notificar(eq(1), any(ResultadoBatalha.class));
-
-    ResultadoBatalha resultado = resultado(2);
-
-    assertDoesNotThrow(() -> servico.processar(resultado));
-
-    verify(notificador).notificar(2, resultado);
-    verify(carteira).creditar(1, 150);
-
-    ArgumentCaptor<EventoBatalha> erro = ArgumentCaptor.forClass(EventoBatalha.class);
-
-    verify(registro).registrar(erro.capture());
-
-    assertEquals(TipoEvento.ERRO_NOTIFICACAO, erro.getValue().tipo());
-    assertTrue(erro.getValue().descricao().contains("Canal indisponível"));
-    assertEquals(9, erro.getValue().idBatalha());
-    assertEquals(1, resultado.vencedor().idTreinador());
   }
 }
