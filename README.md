@@ -76,11 +76,8 @@ Além das regras propostas para o trabalho, acrescentamos:
 
 1. **Pontuação por vitória:** 100 pontos ao vencedor, mais 50 se vencer em até três
    turnos. A carteira acumula os pontos da sessão e o console mostra os saldos.
-2. **Aviso do resultado:** vencedor e perdedor recebem avisos individuais ao final.
-   A falha em um envio não impede o outro nem invalida a batalha.
-
-As regras dependem de `CarteiraPontos` e `ConsoleResultadoTorneio`, respectivamente,
-ambos injetados e mockados nos testes.
+2. **Aviso Vencedor:** No console aparece o vencedor, seu pokesal,   sua pontuação e em quantos turnos ganhou.
+    A falha em um envio não impede o outro nem invalida a batalha.
 
 ## Organização do código
 
